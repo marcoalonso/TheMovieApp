@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nck-d1-0lY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nck-d1-0lY">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -194,6 +195,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iKa-Xf-XOb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1737" y="-27"/>
+        </scene>
+        <!--Trailer View Controller-->
+        <scene sceneID="FnW-mH-VDt">
+            <objects>
+                <viewController storyboardIdentifier="TrailerViewController" id="ATw-fO-0Op" customClass="TrailerViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cka-C9-7o0">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-PG-7co" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="100" width="393" height="718"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="87" translatesAutoresizingMaskIntoConstraints="NO" id="XAR-2w-Gfu">
+                                <rect key="frame" x="20" y="59" width="353" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JV3-4F-Eg7">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="hPj-qJ-1Nc"/>
+                                            <constraint firstAttribute="width" constant="40" id="qCu-wI-IQ2"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" ">
+                                            <backgroundConfiguration key="background" image="arrow.left" catalog="system"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backButton:" destination="ATw-fO-0Op" eventType="touchUpInside" id="7rO-ac-4RG"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRAILER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1i-6D-gjD">
+                                        <rect key="frame" x="127" y="4" width="226" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="gBC-sa-6xK"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZYC-4k-36V"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="D3d-PG-7co" firstAttribute="leading" secondItem="ZYC-4k-36V" secondAttribute="leading" id="Qdo-Mj-ZOx"/>
+                            <constraint firstItem="ZYC-4k-36V" firstAttribute="trailing" secondItem="D3d-PG-7co" secondAttribute="trailing" id="SU5-bW-pno"/>
+                            <constraint firstItem="D3d-PG-7co" firstAttribute="top" secondItem="XAR-2w-Gfu" secondAttribute="bottom" constant="1" id="aI1-JP-8jD"/>
+                            <constraint firstItem="XAR-2w-Gfu" firstAttribute="top" secondItem="ZYC-4k-36V" secondAttribute="top" id="hNq-ej-vww"/>
+                            <constraint firstItem="ZYC-4k-36V" firstAttribute="bottom" secondItem="D3d-PG-7co" secondAttribute="bottom" id="j8o-fm-Ol6"/>
+                            <constraint firstItem="XAR-2w-Gfu" firstAttribute="leading" secondItem="cka-C9-7o0" secondAttribute="leading" constant="20" id="lbL-Li-yoJ"/>
+                            <constraint firstAttribute="trailing" secondItem="XAR-2w-Gfu" secondAttribute="trailing" constant="20" id="vG0-TX-MuB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="trailerView" destination="D3d-PG-7co" id="U7B-48-Z28"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l4b-ew-UDm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2436" y="-73"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y9i-uZ-V4c">
