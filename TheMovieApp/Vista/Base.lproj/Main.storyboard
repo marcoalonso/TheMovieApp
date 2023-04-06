@@ -331,11 +331,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-PG-7co" customClass="YTPlayerView">
-                                <rect key="frame" x="0.0" y="100" width="393" height="718"/>
+                                <rect key="frame" x="0.0" y="90" width="393" height="728"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="87" translatesAutoresizingMaskIntoConstraints="NO" id="XAR-2w-Gfu">
-                                <rect key="frame" x="10" y="59" width="363" height="40"/>
+                                <rect key="frame" x="10" y="49" width="363" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JV3-4F-Eg7" userLabel="back">
                                         <rect key="frame" x="0.0" y="15" width="25" height="25"/>
@@ -365,12 +365,12 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZYC-4k-36V"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="D3d-PG-7co" firstAttribute="leading" secondItem="ZYC-4k-36V" secondAttribute="leading" id="Qdo-Mj-ZOx"/>
                             <constraint firstItem="ZYC-4k-36V" firstAttribute="trailing" secondItem="D3d-PG-7co" secondAttribute="trailing" id="SU5-bW-pno"/>
                             <constraint firstItem="D3d-PG-7co" firstAttribute="top" secondItem="XAR-2w-Gfu" secondAttribute="bottom" constant="1" id="aI1-JP-8jD"/>
-                            <constraint firstItem="XAR-2w-Gfu" firstAttribute="top" secondItem="ZYC-4k-36V" secondAttribute="top" id="hNq-ej-vww"/>
+                            <constraint firstItem="XAR-2w-Gfu" firstAttribute="top" secondItem="ZYC-4k-36V" secondAttribute="top" constant="-10" id="hNq-ej-vww"/>
                             <constraint firstItem="ZYC-4k-36V" firstAttribute="bottom" secondItem="D3d-PG-7co" secondAttribute="bottom" id="j8o-fm-Ol6"/>
                             <constraint firstItem="XAR-2w-Gfu" firstAttribute="leading" secondItem="cka-C9-7o0" secondAttribute="leading" constant="10" id="lbL-Li-yoJ"/>
                             <constraint firstAttribute="trailing" secondItem="XAR-2w-Gfu" secondAttribute="trailing" constant="20" id="vG0-TX-MuB"/>

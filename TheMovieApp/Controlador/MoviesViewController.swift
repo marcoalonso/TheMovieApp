@@ -57,7 +57,7 @@ class MoviesViewController: UIViewController {
                 DispatchQueue.main.async { ///Hilo principal, actualizar la Interfaz de usuario
                     self.estrenosCollection.reloadData()
                     self.isLoadingMoreCharacters = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         ProgressHUD.remove()
                     }
                     self.numPagina += 1

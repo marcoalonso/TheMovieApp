@@ -40,7 +40,7 @@ class DetalleMovieViewController: UIViewController {
                     print("No hay trailer disponible")
                 } else {
                     self.trailerDisponible = true
-                    self.urlTrailer = listaTrailes[0].key
+                    self.urlTrailer = listaTrailes.last!.key
                 }
             }
         }
