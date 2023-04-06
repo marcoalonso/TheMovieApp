@@ -37,6 +37,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         playerView.delegate = self
         trailersTableView.delegate = self
         trailersTableView.dataSource = self
+        trailersTableView.register(UINib(nibName: "TrailerCell", bundle: nil), forCellReuseIdentifier: "TrailerCell")
 
         setupUI()
         getTrailers()
@@ -68,7 +69,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         
         ///- Constraints for moviesRelated and trailers table
         relatedMoviesConstraint.constant = 0
-        trailersMovieConstraint.constant = 400
+        trailersMovieConstraint.constant = 1400
         
         nameOfMovieLabel.text = recibirPeliculaMostrar?.title
         descripcionMovie.text = recibirPeliculaMostrar?.overview
@@ -124,11 +125,18 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         
         switch sender.selectedSegmentIndex {
         case 0:
-            relatedMoviesConstraint.constant = 0
-            trailersMovieConstraint.constant = 400
+            
+            UIView.animate(withDuration: 0.6, delay: 0.0, options: .transitionCurlUp) {
+                self.relatedMoviesConstraint.constant = 0
+                self.trailersMovieConstraint.constant = 1400
+            }
+            
+            
         case 1:
-            relatedMoviesConstraint.constant = 400
-            trailersMovieConstraint.constant = 0
+            UIView.animate(withDuration: 0.6, delay: 0.0, options: .transitionCurlUp) {
+                self.relatedMoviesConstraint.constant = 400
+                self.trailersMovieConstraint.constant = 0
+            }
         default:
             break
         }
@@ -142,21 +150,30 @@ extension DetailTrailersMovieViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let celda = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let celda = tableView.dequeueReusableCell(withIdentifier: "TrailerCell", for: indexPath) as! TrailerCell
         
-        celda.textLabel?.text = trailersMovie[indexPath.row].name
+        celda.nameTrailerLabel.text = trailersMovie[indexPath.row].name
         ///Se le quitan los ulitmos caracteres a la fecha con este formato: 2022-12-09T19:59:51.000Z
         let dateTrailer = trailersMovie[indexPath.row].publishedAt
         let index = dateTrailer.index(dateTrailer.startIndex, offsetBy: 10)
         let mySubstring = dateTrailer[..<index]
         
-        celda.detailTextLabel?.text = "Fecha: \(mySubstring)"
+        celda.dateReleaseTrailerLabel.text = "Fecha: \(mySubstring)"
+        
+        if let urlImagen = recibirPeliculaMostrar?.backdrop_path {
+            let url = URL(string: "https://image.tmdb.org/t/p/w200/\(urlImagen)")
+            
+            celda.posterTrailer.kf.setImage(with: url)
+            celda.posterTrailer.layer.cornerRadius = 20
+            celda.posterTrailer.layer.masksToBounds = true
+        }
+        
         
         return celda
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 250
     }
     
     
