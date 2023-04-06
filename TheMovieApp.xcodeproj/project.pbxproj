@@ -21,6 +21,8 @@
 		6C8A1C6229DBB23400F44ECA /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A1C6129DBB23400F44ECA /* TrailerViewController.swift */; };
 		6C8A1C6429DBBA7500F44ECA /* ResponseTrailerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A1C6329DBBA7500F44ECA /* ResponseTrailerModel.swift */; };
 		6CBD79F629D5392900A490DF /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6CBD79F529D5392900A490DF /* YouTubeiOSPlayerHelper */; };
+		6CCF020C29DEF5E9006B5FB7 /* DetalleMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CCF020B29DEF5E9006B5FB7 /* DetalleMovie.storyboard */; };
+		6CCF020E29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF020D29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift */; };
 		6CD1A3A529DE9F9800D29B64 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 6CD1A3A429DE9F9800D29B64 /* ProgressHUD */; };
 		6CD1A3A729DEA6E200D29B64 /* PopularesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD1A3A629DEA6E200D29B64 /* PopularesCell.swift */; };
 		6CD1A3A929DEA8E600D29B64 /* PopularResponseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD1A3A829DEA8E600D29B64 /* PopularResponseDataModel.swift */; };
@@ -44,6 +46,8 @@
 		6C1B60AD29D5300100BE1767 /* DetalleMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleMovieViewController.swift; sourceTree = "<group>"; };
 		6C8A1C6129DBB23400F44ECA /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
 		6C8A1C6329DBBA7500F44ECA /* ResponseTrailerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTrailerModel.swift; sourceTree = "<group>"; };
+		6CCF020B29DEF5E9006B5FB7 /* DetalleMovie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetalleMovie.storyboard; sourceTree = "<group>"; };
+		6CCF020D29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrailersMovieViewController.swift; sourceTree = "<group>"; };
 		6CD1A3A629DEA6E200D29B64 /* PopularesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularesCell.swift; sourceTree = "<group>"; };
 		6CD1A3A829DEA8E600D29B64 /* PopularResponseDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularResponseDataModel.swift; sourceTree = "<group>"; };
 		6CD1A3AA29DEAB1500D29B64 /* PopularMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularMoviesViewController.swift; sourceTree = "<group>"; };
@@ -122,12 +126,22 @@
 		6C8A1C6729DBBB6900F44ECA /* Vista */ = {
 			isa = PBXGroup;
 			children = (
+				6CCF020A29DEF5D0006B5FB7 /* DetalleMovie */,
 				6C1B609B29D5192800BE1767 /* LaunchScreen.storyboard */,
 				6C1B609629D5192500BE1767 /* Main.storyboard */,
 				6C1B60A429D51AEE00BE1767 /* EstrenosCell.swift */,
 				6CD1A3A629DEA6E200D29B64 /* PopularesCell.swift */,
 			);
 			path = Vista;
+			sourceTree = "<group>";
+		};
+		6CCF020A29DEF5D0006B5FB7 /* DetalleMovie */ = {
+			isa = PBXGroup;
+			children = (
+				6CCF020B29DEF5E9006B5FB7 /* DetalleMovie.storyboard */,
+				6CCF020D29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift */,
+			);
+			path = DetalleMovie;
 			sourceTree = "<group>";
 		};
 		6CD1A3AC29DEB1C100D29B64 /* Utils */ = {
@@ -215,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C1B609D29D5192800BE1767 /* LaunchScreen.storyboard in Resources */,
+				6CCF020C29DEF5E9006B5FB7 /* DetalleMovie.storyboard in Resources */,
 				6C1B609A29D5192800BE1767 /* Assets.xcassets in Resources */,
 				6C1B609829D5192500BE1767 /* Main.storyboard in Resources */,
 			);
@@ -227,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CCF020E29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift in Sources */,
 				6C8A1C6229DBB23400F44ECA /* TrailerViewController.swift in Sources */,
 				6CD1A3AF29DEB1D600D29B64 /* UIView+Extension.swift in Sources */,
 				6CD1A3A729DEA6E200D29B64 /* PopularesCell.swift in Sources */,

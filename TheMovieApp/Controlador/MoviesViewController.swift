@@ -140,8 +140,12 @@ extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let ViewController = storyboard.instantiateViewController(withIdentifier: "DetalleMovieViewController") as! DetalleMovieViewController
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let ViewController = storyboard.instantiateViewController(withIdentifier: "DetalleMovieViewController") as! DetalleMovieViewController
+        
+        ///- * New Flow of Movie Detail
+        let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
+        let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
         
         ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
