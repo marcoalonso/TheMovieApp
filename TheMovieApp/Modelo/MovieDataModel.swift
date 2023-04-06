@@ -8,12 +8,12 @@
 import Foundation
 
 struct MovieDataModel : Codable {
-    let results: [EstrenoMovie]?
+    let results: [DataMovie]?
     let total_pages: Int?
     let total_results: Int?
 }
 
-struct EstrenoMovie : Codable {
+struct DataMovie : Codable {
     let backdrop_path: String?
     let id: Int?
     let original_title : String?

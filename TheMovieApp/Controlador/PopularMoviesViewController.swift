@@ -1,19 +1,20 @@
 //
-//  ViewController.swift
+//  PopularMoviesViewController.swift
 //  TheMovieApp
 //
-//  Created by Marco Alonso Rodriguez on 29/03/23.
+//  Created by Marco Alonso Rodriguez on 06/04/23.
 //
 
 import UIKit
 import Kingfisher
 import ProgressHUD
 
-class MoviesViewController: UIViewController {
+class PopularMoviesViewController: UIViewController {
     
-    @IBOutlet weak var estrenosCollection: UICollectionView!
     
-    var listaProximosEstrenos: [DataMovie] = []
+    @IBOutlet weak var popularMoviesCollection: UICollectionView!
+    
+    var popularMoviesList: [DataMovie] = []
     var numPagina = 1
     var totalPages = 1
     
@@ -23,17 +24,17 @@ class MoviesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        estrenosCollection.dataSource = self
-        estrenosCollection.delegate = self
+
+        popularMoviesCollection.delegate = self
+        popularMoviesCollection.dataSource = self
         
         setupCollection()
         obtenerPeliculas(numPag: self.numPagina)
     }
     
     private func setupCollection(){
-        estrenosCollection.collectionViewLayout = UICollectionViewFlowLayout()
-        if let flowLayout = estrenosCollection.collectionViewLayout as? UICollectionViewFlowLayout {
+        popularMoviesCollection.collectionViewLayout = UICollectionViewFlowLayout()
+        if let flowLayout = popularMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
         }
     }
@@ -48,14 +49,16 @@ class MoviesViewController: UIViewController {
         print("Fetching more characters")
         ProgressHUD.show("Buscando", icon: .shuffle)
         
-        manager.getUpcomingMovies(numPagina: numPag) { numPages, listaPeliculas, error in
+        manager.getPopularMovies(numPagina: numPag) { numPages, listaPeliculas, error in
             self.totalPages = numPages
             
             if let listaPeliculas = listaPeliculas {
-                self.listaProximosEstrenos.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
+                print("Debug: listaPeliculas \(listaPeliculas)")
+
+                self.popularMoviesList.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
                 
                 DispatchQueue.main.async { ///Hilo principal, actualizar la Interfaz de usuario
-                    self.estrenosCollection.reloadData()
+                    self.popularMoviesCollection.reloadData()
                     self.isLoadingMoreCharacters = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                         ProgressHUD.remove()
@@ -67,10 +70,11 @@ class MoviesViewController: UIViewController {
             }
         }
     }
-    
+
 }
 
-extension MoviesViewController: UIScrollViewDelegate {
+// MARK:  DidScroll
+extension PopularMoviesViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         guard !isLoadingMoreCharacters else { return }
@@ -96,18 +100,10 @@ extension MoviesViewController: UIScrollViewDelegate {
             t.invalidate()
         }
     }
-    
-    func mostrarAlerta(titulo: String, mensaje: String) {
-        let alerta = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
-        let accionAceptar = UIAlertAction(title: "OK", style: .default) { _ in
-            //Do something
-        }
-        alerta.addAction(accionAceptar)
-        present(alerta, animated: true)
-    }
 }
 
-extension MoviesViewController: UICollectionViewDelegateFlowLayout {
+// MARK:  FlowLayout
+extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 100, height: 140)
     }
@@ -121,19 +117,15 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
-// MARK:  UICollectionViewDataSource
-extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listaProximosEstrenos.count
+        popularMoviesList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let celda = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularesCell", for: indexPath) as! PopularesCell
         
-        let celda = collectionView.dequeueReusableCell(withReuseIdentifier: "EstrenosCell", for: indexPath) as! EstrenosCell
-        
-        celda.setupCell(movie: listaProximosEstrenos[indexPath.row])
-        
+        celda.setupCell(movie: popularMoviesList[indexPath.row])
         
         return celda
     }
@@ -147,7 +139,7 @@ extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDele
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
         
         ///Enviar informacion a traves de la instancia del view controller
-        ViewController.recibirPeliculaMostrar = listaProximosEstrenos[indexPath.row]
+        ViewController.recibirPeliculaMostrar = popularMoviesList[indexPath.row]
         
         present(ViewController, animated: true)
     }

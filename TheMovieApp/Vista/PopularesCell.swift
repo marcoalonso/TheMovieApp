@@ -1,14 +1,14 @@
 //
-//  EstrenosCell.swift
+//  PopularesCell.swift
 //  TheMovieApp
 //
-//  Created by Marco Alonso Rodriguez on 29/03/23.
+//  Created by Marco Alonso Rodriguez on 06/04/23.
 //
 
+import Foundation
 import UIKit
 
-class EstrenosCell: UICollectionViewCell {
-    
+class PopularesCell: UICollectionViewCell {
     
     @IBOutlet weak var posterMovie: UIImageView!
     

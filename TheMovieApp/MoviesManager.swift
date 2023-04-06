@@ -8,7 +8,50 @@
 import Foundation
 
 struct MoviesManager {
-    func obtenerProximosEstrenos(numPagina: Int = 1, completion: @escaping (Int, [EstrenoMovie]?, Error?) -> Void ) {
+    ///-* Retorna un entero con el numero de paginas, los datos de la pelicual y un error*
+    func getPopularMovies(numPagina: Int = 1, completion: @escaping (Int, [DataMovie]?, Error?) -> Void ) {
+        //URL
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=2cfa8720256036601fb9ac4e4bce1a9b&language=es-MX&page=\(numPagina)") else { return }
+        
+        print("Debug: \(url)")
+
+        
+        let tarea = URLSession.shared.dataTask(with: url) { data, _, error in
+            
+            guard let data = data, error == nil else {
+                print("Error al obtener la data desde el server")
+                completion(0, nil, error)
+                return
+            }
+            
+//            print("Debug:  data \(data)")
+
+//            ///Mostrar data decodificada usando utf8
+//            let str = String(decoding: data, as: UTF8.self)
+//            print("Data : \(str)")
+            
+            do {
+                
+                ///Decodificando la data que previamente desenvolvi
+                let dataDecodificada = try JSONDecoder().decode(PopularResponseDataModel.self, from: data)
+                let listaPeliculas = dataDecodificada.results ///Extraer la informacion de las peliculas
+                print("Debug: listaPeliculas \(listaPeliculas)")
+
+                
+                let numPages = dataDecodificada.total_pages
+                completion(numPages ?? 0, listaPeliculas, nil) ///Devuelve al ViewController el arreglo de peliculas
+                
+            } catch {
+                print("Error al decodificar la data \(error.localizedDescription)")
+                completion(0, nil, error)
+            }
+            
+        }
+        
+        tarea.resume()
+    }
+    
+    func getUpcomingMovies(numPagina: Int = 1, completion: @escaping (Int, [DataMovie]?, Error?) -> Void ) {
         //URL
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=2cfa8720256036601fb9ac4e4bce1a9b&language=es-MX&page=\(numPagina)") else { return }
         
@@ -19,12 +62,6 @@ struct MoviesManager {
                 completion(0, nil, error)
                 return
             }
-            
-            print("Debug: data : \(data)")
-
-            ///Mostrar data decodificada usando utf8
-            let str = String(decoding: data, as: UTF8.self)
-            print("Data str : \(str)")
             
             do {
                 

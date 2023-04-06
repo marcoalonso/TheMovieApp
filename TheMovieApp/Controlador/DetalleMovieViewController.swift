@@ -10,11 +10,12 @@ import Kingfisher
 
 class DetalleMovieViewController: UIViewController {
     
-    var recibirPeliculaMostrar: EstrenoMovie?
+    var recibirPeliculaMostrar: DataMovie?
     var manager = MoviesManager()
     var trailerDisponible = false
     var urlTrailer: String = ""
     
+    @IBOutlet weak var releaseDateMovie: UILabel!
     @IBOutlet weak var descripcionMovie: UITextView!
     @IBOutlet weak var tituloMovie: UILabel!
     @IBOutlet weak var posterMovie: UIImageView!
@@ -48,6 +49,7 @@ class DetalleMovieViewController: UIViewController {
     private func configurarUI(){
         tituloMovie.text = recibirPeliculaMostrar?.title
         descripcionMovie.text = recibirPeliculaMostrar?.overview
+        releaseDateMovie.text = recibirPeliculaMostrar?.release_date
         
         ///URL
         guard let urlImagen = recibirPeliculaMostrar?.backdrop_path else { return }
