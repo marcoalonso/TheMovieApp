@@ -29,11 +29,14 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     var trailerDisponible = false
     var urlTrailer: String = ""
     
+    var trailersMovie : [Trailer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         playerView.delegate = self
+        trailersTableView.delegate = self
+        trailersTableView.dataSource = self
 
         setupUI()
         getTrailers()
@@ -47,6 +50,8 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
                 } else {
                     //Play First Trailer and show a list of trailers
                     DispatchQueue.main.async {
+                        self?.trailersMovie.append(contentsOf: listOfTrailers)
+                        self?.trailersTableView.reloadData()
                         self?.playerView.load(withVideoId: listOfTrailers.last!.key)
                     }
                 }
@@ -62,8 +67,8 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         showOnlyImageOfMovie()
         
         ///- Constraints for moviesRelated and trailers table
-        relatedMoviesConstraint.constant = 400
-        trailersMovieConstraint.constant = 0
+        relatedMoviesConstraint.constant = 0
+        trailersMovieConstraint.constant = 400
         
         nameOfMovieLabel.text = recibirPeliculaMostrar?.title
         descripcionMovie.text = recibirPeliculaMostrar?.overview
@@ -128,6 +133,31 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             break
         }
     }
-    
+}
 
+// MARK:  Table View Trailers
+extension DetailTrailersMovieViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        trailersMovie.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let celda = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        
+        celda.textLabel?.text = trailersMovie[indexPath.row].name
+        ///Se le quitan los ulitmos caracteres a la fecha con este formato: 2022-12-09T19:59:51.000Z
+        let dateTrailer = trailersMovie[indexPath.row].publishedAt
+        let index = dateTrailer.index(dateTrailer.startIndex, offsetBy: 10)
+        let mySubstring = dateTrailer[..<index]
+        
+        celda.detailTextLabel?.text = "Fecha: \(mySubstring)"
+        
+        return celda
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    
 }
