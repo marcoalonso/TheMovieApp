@@ -19,11 +19,13 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     @IBOutlet weak var trailersMovieConstraint: NSLayoutConstraint!
     @IBOutlet weak var relatedMoviesConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailersTableView: UITableView!
+    @IBOutlet weak var posterMovieImage: UIImageView!
+    
+    
     
     /// Variables
     var recibirPeliculaMostrar: DataMovie?
     var manager = MoviesManager()
-    
     var trailerDisponible = false
     var urlTrailer: String = ""
     
@@ -42,10 +44,6 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             manager.getTrailersMovie(id: idMovie) { [weak self] listOfTrailers, error in
                 if listOfTrailers.isEmpty {
                     print("No hay trailer disponible")
-                    DispatchQueue.main.async {
-                        //Show only image
-                        self?.showOnlyImageOfMovie()
-                    }
                 } else {
                     //Play First Trailer and show a list of trailers
                     DispatchQueue.main.async {
@@ -58,6 +56,14 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
     private func setupUI(){
         setupPlayerStyleView()
+        /// - Hide playerView and show the posterMovie
+        self.playerView.isHidden = true
+        self.posterMovieImage.isHidden = false
+        showOnlyImageOfMovie()
+        
+        ///- Constraints for moviesRelated and trailers table
+        relatedMoviesConstraint.constant = 400
+        trailersMovieConstraint.constant = 0
         
         nameOfMovieLabel.text = recibirPeliculaMostrar?.title
         descripcionMovie.text = recibirPeliculaMostrar?.overview
@@ -69,11 +75,9 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     private func showOnlyImageOfMovie(){
         guard let urlImagen = recibirPeliculaMostrar?.backdrop_path else { return }
         let url = URL(string: "https://image.tmdb.org/t/p/w200/\(urlImagen)")
-        let posterImage = UIImage()
-        let posterMovieImage = UIImageView(image: posterImage)
-        self.playerView.addSubview(posterMovieImage)
+        
         posterMovieImage.kf.setImage(with: url)
-        posterMovieImage.frame = CGRect(x: 0, y: 0, width: self.playerView.frame.size.width, height: 180)
+        
     }
     
     private func setupPlayerStyleView(){
@@ -96,7 +100,12 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     }
     
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
-        self.playerView.playVideo()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.playerView.isHidden = false
+            self.posterMovieImage.isHidden = true
+            self.playerView.playVideo()
+        }
+        
     }
     
     @IBAction func backButtonAction(_ sender: UIButton) {
