@@ -49,7 +49,7 @@ class DetalleMovieViewController: UIViewController {
     private func configurarUI(){
         tituloMovie.text = recibirPeliculaMostrar?.title
         descripcionMovie.text = recibirPeliculaMostrar?.overview
-        releaseDateMovie.text = recibirPeliculaMostrar?.release_date
+        releaseDateMovie.text = "Fecha estreno: \(recibirPeliculaMostrar?.release_date ?? "Próximamente")"
         
         ///URL
         guard let urlImagen = recibirPeliculaMostrar?.backdrop_path else { return }

@@ -9,7 +9,7 @@ import UIKit
 import YouTubeiOSPlayerHelper
 
 
-class TrailerViewController: UIViewController {
+class TrailerViewController: UIViewController, YTPlayerViewDelegate {
     
     var recibirIdTrailerMostrar: String = "QtJ46rYli1U"
 
@@ -17,10 +17,15 @@ class TrailerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        trailerView.delegate = self
 
         self.trailerView.load(withVideoId: recibirIdTrailerMostrar)
     }
     
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        self.trailerView.playVideo()
+    }
     
     @IBAction func backButton(_ sender: UIButton) {
         dismiss(animated: true)

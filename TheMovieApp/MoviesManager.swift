@@ -23,20 +23,11 @@ struct MoviesManager {
                 completion(0, nil, error)
                 return
             }
-            
-//            print("Debug:  data \(data)")
-
-//            ///Mostrar data decodificada usando utf8
-//            let str = String(decoding: data, as: UTF8.self)
-//            print("Data : \(str)")
-            
             do {
                 
                 ///Decodificando la data que previamente desenvolvi
                 let dataDecodificada = try JSONDecoder().decode(PopularResponseDataModel.self, from: data)
                 let listaPeliculas = dataDecodificada.results ///Extraer la informacion de las peliculas
-                print("Debug: listaPeliculas \(listaPeliculas)")
-
                 
                 let numPages = dataDecodificada.total_pages
                 completion(numPages ?? 0, listaPeliculas, nil) ///Devuelve al ViewController el arreglo de peliculas
