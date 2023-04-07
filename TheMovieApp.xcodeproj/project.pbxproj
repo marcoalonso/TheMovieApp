@@ -21,6 +21,7 @@
 		6C8A1C6229DBB23400F44ECA /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A1C6129DBB23400F44ECA /* TrailerViewController.swift */; };
 		6C8A1C6429DBBA7500F44ECA /* ResponseTrailerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A1C6329DBBA7500F44ECA /* ResponseTrailerModel.swift */; };
 		6C9DD39529E09C4B0044DEBC /* SimilarMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9DD39429E09C4B0044DEBC /* SimilarMovieCell.swift */; };
+		6C9DD39829E0A1670044DEBC /* UIView-Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 6C9DD39729E0A1670044DEBC /* UIView-Shimmer */; };
 		6CBD79F629D5392900A490DF /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6CBD79F529D5392900A490DF /* YouTubeiOSPlayerHelper */; };
 		6CCF020C29DEF5E9006B5FB7 /* DetalleMovie.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CCF020B29DEF5E9006B5FB7 /* DetalleMovie.storyboard */; };
 		6CCF020E29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF020D29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift */; };
@@ -69,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CD1A3A529DE9F9800D29B64 /* ProgressHUD in Frameworks */,
+				6C9DD39829E0A1670044DEBC /* UIView-Shimmer in Frameworks */,
 				6C1B60AC29D529C000BE1767 /* Kingfisher in Frameworks */,
 				6CBD79F629D5392900A490DF /* YouTubeiOSPlayerHelper in Frameworks */,
 			);
@@ -192,6 +194,7 @@
 				6C1B60AB29D529C000BE1767 /* Kingfisher */,
 				6CBD79F529D5392900A490DF /* YouTubeiOSPlayerHelper */,
 				6CD1A3A429DE9F9800D29B64 /* ProgressHUD */,
+				6C9DD39729E0A1670044DEBC /* UIView-Shimmer */,
 			);
 			productName = TheMovieApp;
 			productReference = 6C1B608D29D5192500BE1767 /* TheMovieApp.app */;
@@ -225,6 +228,7 @@
 				6C1B60AA29D529C000BE1767 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				6CBD79F429D5392800A490DF /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 				6CD1A3A329DE9F9800D29B64 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
+				6C9DD39629E0A1670044DEBC /* XCRemoteSwiftPackageReference "UIView-Shimmer" */,
 			);
 			productRefGroup = 6C1B608E29D5192500BE1767 /* Products */;
 			projectDirPath = "";
@@ -502,6 +506,14 @@
 				kind = branch;
 			};
 		};
+		6C9DD39629E0A1670044DEBC /* XCRemoteSwiftPackageReference "UIView-Shimmer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/omerfarukozturk/UIView-Shimmer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		6CBD79F429D5392800A490DF /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
@@ -525,6 +537,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6C1B60AA29D529C000BE1767 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		6C9DD39729E0A1670044DEBC /* UIView-Shimmer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C9DD39629E0A1670044DEBC /* XCRemoteSwiftPackageReference "UIView-Shimmer" */;
+			productName = "UIView-Shimmer";
 		};
 		6CBD79F529D5392900A490DF /* YouTubeiOSPlayerHelper */ = {
 			isa = XCSwiftPackageProductDependency;

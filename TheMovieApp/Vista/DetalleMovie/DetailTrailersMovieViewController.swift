@@ -213,6 +213,7 @@ extension DetailTrailersMovieViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let ViewController = storyboard.instantiateViewController(withIdentifier: "TrailerViewController") as! TrailerViewController
         
@@ -250,14 +251,14 @@ extension DetailTrailersMovieViewController: UICollectionViewDelegate, UICollect
 //EXTENSION
 extension DetailTrailersMovieViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 144, height: 166)
+        return CGSize(width: 120, height: 180)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        2
+        15
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        2
+        15
     }
 }
