@@ -23,6 +23,14 @@ class TrailerViewController: UIViewController, YTPlayerViewDelegate {
         self.trailerView.load(withVideoId: recibirIdTrailerMostrar)
     }
     
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscapeRight
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         self.trailerView.playVideo()
     }

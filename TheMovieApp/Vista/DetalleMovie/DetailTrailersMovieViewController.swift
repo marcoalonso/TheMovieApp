@@ -11,6 +11,7 @@ import YouTubeiOSPlayerHelper
 
 class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate {
     
+    @IBOutlet weak var similarMoviesCollection: UICollectionView!
     @IBOutlet weak var descripcionMovie: UITextView!
     @IBOutlet weak var moreMoviesTrailersSegmented: UISegmentedControl!
     @IBOutlet weak var nameOfMovieLabel: UILabel!
@@ -30,6 +31,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     var urlTrailer: String = ""
     
     var trailersMovie : [Trailer] = []
+    var similarMovies: [DataMovie] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +40,47 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         trailersTableView.delegate = self
         trailersTableView.dataSource = self
         trailersTableView.register(UINib(nibName: "TrailerCell", bundle: nil), forCellReuseIdentifier: "TrailerCell")
+        
+        similarMoviesCollection.delegate = self
+        similarMoviesCollection.dataSource = self
 
         setupUI()
         getTrailers()
+        getSimilarMovies()
+       
+        setupCollectionWithLayout()
+    }
+    
+    func setupCollectionWithLayout() {
+        similarMoviesCollection.collectionViewLayout = UICollectionViewFlowLayout()
+        if let flowLayout = similarMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .horizontal
+        }
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .portrait
+    }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    private func getSimilarMovies() {
+        if let idMovie = recibirPeliculaMostrar?.id {
+            manager.getSimilarMovies(idMovie: idMovie) { [weak self] similarMovies, error in
+                if similarMovies.isEmpty {
+                    print("No hay peliculas similares")
+                } else {
+                    ///Save in array and reload collection
+                    DispatchQueue.main.async {
+                        self?.similarMovies = similarMovies
+                        self?.similarMoviesCollection.reloadData()
+                    }
+                    
+                }
+            }
+        }
     }
     
     private func getTrailers(){
@@ -126,14 +166,14 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         switch sender.selectedSegmentIndex {
         case 0:
             
-            UIView.animate(withDuration: 0.6, delay: 0.0, options: .transitionCurlUp) {
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut) {
                 self.relatedMoviesConstraint.constant = 0
                 self.trailersMovieConstraint.constant = 1400
             }
             
             
         case 1:
-            UIView.animate(withDuration: 0.6, delay: 0.0, options: .transitionCurlUp) {
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseIn) {
                 self.relatedMoviesConstraint.constant = 400
                 self.trailersMovieConstraint.constant = 0
             }
@@ -172,9 +212,52 @@ extension DetailTrailersMovieViewController: UITableViewDelegate, UITableViewDat
         return celda
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let ViewController = storyboard.instantiateViewController(withIdentifier: "TrailerViewController") as! TrailerViewController
+        
+        ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
+        ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
+        
+        ViewController.recibirIdTrailerMostrar = trailersMovie[indexPath.row].key
+        
+        present(ViewController, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
     }
     
     
+}
+
+extension DetailTrailersMovieViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        similarMovies.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let celda = collectionView.dequeueReusableCell(withReuseIdentifier: "SimilarMovieCell", for: indexPath) as! SimilarMovieCell
+        
+        celda.setup(movie: similarMovies[indexPath.row])
+        
+        return celda
+    }
+    
+    
+}
+
+//EXTENSION
+extension DetailTrailersMovieViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 144, height: 166)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        2
+    }
 }

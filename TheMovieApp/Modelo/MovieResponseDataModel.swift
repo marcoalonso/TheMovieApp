@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct PopularResponseDataModel: Codable {
+struct MovieResponseDataModel: Codable {
     let page: Int?
-    let results: [DataMovie]?
+    let results: [DataMovie]
     let total_pages : Int?
     let total_results: Int?
 }

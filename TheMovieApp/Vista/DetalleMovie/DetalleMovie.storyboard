@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -20,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYF-LL-DAN" customClass="YTPlayerView">
                                 <rect key="frame" x="0.0" y="59" width="393" height="220"/>
-                                <color key="backgroundColor" systemColor="systemRedColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="NIb-Kq-MBd"/>
                                 </constraints>
@@ -52,14 +52,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-yg-4qc">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descripcion de la pelicula" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-yg-4qc">
                                                 <rect key="frame" x="0.0" y="90" width="373" height="120"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="Gpx-wr-e3M"/>
                                                 </constraints>
                                                 <color key="textColor" systemColor="labelColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0vY-yK-qFq">
@@ -71,16 +71,9 @@
                                                     <segment title="Tráilers"/>
                                                     <segment title="Más títulos similares"/>
                                                 </segments>
-                                                <color key="selectedSegmentTintColor" systemColor="systemPurpleColor"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                        <real key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                        <real key="value" value="0.59999999999999998"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
@@ -89,24 +82,39 @@
                                             </segmentedControl>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sm8-y1-6Ua">
                                                 <rect key="frame" x="0.0" y="290" width="373" height="400"/>
-                                                <color key="backgroundColor" red="0.2117646933" green="0.46274507050000002" blue="0.5176470876" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="400" id="rp5-hq-xKU"/>
                                                 </constraints>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FfS-8Q-wjh">
-                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="itemSize" width="144" height="166"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ArP-Hf-KGv">
-                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimilarMovieCell" id="ArP-Hf-KGv" customClass="SimilarMovieCell" customModule="TheMovieApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="144" height="166"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Kxd-DQ-cdM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="144" height="166"/>
                                                             <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z62-OM-6bQ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="144" height="166"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="Z62-OM-6bQ" secondAttribute="bottom" id="Ixt-1M-sd4"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Z62-OM-6bQ" secondAttribute="trailing" id="ai9-FC-yvc"/>
+                                                                <constraint firstItem="Z62-OM-6bQ" firstAttribute="leading" secondItem="Kxd-DQ-cdM" secondAttribute="leading" id="mZZ-Sl-i6c"/>
+                                                                <constraint firstItem="Z62-OM-6bQ" firstAttribute="top" secondItem="Kxd-DQ-cdM" secondAttribute="top" id="pn5-fI-dJi"/>
+                                                            </constraints>
                                                         </collectionViewCellContentView>
+                                                        <size key="customSize" width="144" height="166"/>
+                                                        <connections>
+                                                            <outlet property="posterSimilarMovie" destination="Z62-OM-6bQ" id="1Oi-w0-Ji9"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -200,6 +208,7 @@
                         <outlet property="posterMovieImage" destination="nzq-E6-OHs" id="yhe-4I-npJ"/>
                         <outlet property="relatedMoviesConstraint" destination="rp5-hq-xKU" id="dFj-vT-ji2"/>
                         <outlet property="releaseDateMovieLabel" destination="sUd-id-QUn" id="nrR-p7-IBt"/>
+                        <outlet property="similarMoviesCollection" destination="sm8-y1-6Ua" id="Bxa-Gn-ENe"/>
                         <outlet property="trailersMovieConstraint" destination="03M-Tg-dNM" id="Xww-L4-g94"/>
                         <outlet property="trailersTableView" destination="Hgu-p6-vEX" id="X8S-lj-awq"/>
                     </connections>
@@ -207,21 +216,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="LUc-v6-pM4">
-            <objects>
-                <viewController id="ooQ-Cg-9hD" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="yV7-Nq-Fl8">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="HVA-7x-UId"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0L9-pZ-8xp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="939" y="15"/>
         </scene>
     </scenes>
     <resources>
@@ -232,12 +226,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

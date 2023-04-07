@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0PG-Sl-Dmq">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -16,11 +15,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MoviesViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q5S-Df-9iX">
-                                <rect key="frame" x="10" y="102" width="373" height="667"/>
+                                <rect key="frame" x="69" y="43" width="714" height="297"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NPk-ay-D4V">
                                     <size key="itemSize" width="172" height="247"/>
@@ -55,7 +54,7 @@
                                 </cells>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estrenos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UDz-Wn-Ywr">
-                                <rect key="frame" x="20" y="59" width="353" height="40"/>
+                                <rect key="frame" x="79" y="0.0" width="694" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="WS8-ed-oVL"/>
                                 </constraints>
@@ -91,11 +90,11 @@
             <objects>
                 <viewController id="dDD-ga-KIA" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zcz-g7-aQW">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="🔍    " minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d1Q-Xb-ZSJ">
-                                <rect key="frame" x="20" y="59" width="353" height="50"/>
+                                <rect key="frame" x="79" y="0.0" width="694" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Fa3-qZ-uib"/>
@@ -123,11 +122,11 @@
             <objects>
                 <viewController id="h4y-l7-rQC" customClass="PopularMoviesViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Hvq-rM-AUc">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ug5-uL-WgQ">
-                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <rect key="frame" x="59" y="0.0" width="734" height="340"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mKs-lb-lUe">
                                     <size key="itemSize" width="165" height="238"/>
@@ -189,7 +188,7 @@
             <objects>
                 <viewController id="J7d-oX-9gN" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fgj-qp-4gv">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="iEZ-5E-LAi"/>
                         <color key="backgroundColor" systemColor="systemYellowColor"/>
@@ -205,17 +204,17 @@
             <objects>
                 <viewController storyboardIdentifier="DetalleMovieViewController" id="EDt-Q7-v2g" customClass="DetalleMovieViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vMM-VA-ZcZ">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ve9-L0-OM7">
-                                <rect key="frame" x="20" y="59" width="353" height="739"/>
+                                <rect key="frame" x="20" y="0.0" width="753" height="352"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jou-o3-VCe">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="753" height="120"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="megan" translatesAutoresizingMaskIntoConstraints="NO" id="msT-Lz-UaW">
-                                                <rect key="frame" x="-20" y="0.0" width="393" height="120"/>
+                                                <rect key="frame" x="-20" y="0.0" width="793" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="uPo-ye-kDE"/>
                                                 </constraints>
@@ -241,7 +240,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On a Wing and a Prayer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRF-36-J1D">
-                                        <rect key="frame" x="0.0" y="135" width="353" height="50"/>
+                                        <rect key="frame" x="0.0" y="135" width="753" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="kCy-ws-11M"/>
                                         </constraints>
@@ -250,7 +249,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="GBJ-Le-dSq">
-                                        <rect key="frame" x="0.0" y="200" width="353" height="442"/>
+                                        <rect key="frame" x="0.0" y="200" width="753" height="55"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <string key="text">Después de que un piloto muere inesperadamente mientras volaba el avión, un pasajero se ve obligado a aterrizar el avión de manera segura para salvar a toda su familia."</string>
                                         <color key="textColor" systemColor="labelColor"/>
@@ -258,13 +257,13 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2023-01-05" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2O-FO-nii">
-                                        <rect key="frame" x="0.0" y="657" width="353" height="17"/>
+                                        <rect key="frame" x="0.0" y="270" width="753" height="17"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUe-oB-ehw">
-                                        <rect key="frame" x="0.0" y="689" width="353" height="50"/>
+                                        <rect key="frame" x="0.0" y="302" width="753" height="50"/>
                                         <color key="backgroundColor" systemColor="systemRedColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="uNB-sZ-2a0"/>
@@ -285,7 +284,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4X-PS-lBK">
-                                <rect key="frame" x="10" y="59" width="25" height="25"/>
+                                <rect key="frame" x="69" y="0.0" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="1Gk-KK-aPe"/>
                                     <constraint firstAttribute="width" constant="25" id="mMd-yG-0Rb"/>
@@ -327,53 +326,38 @@
             <objects>
                 <viewController storyboardIdentifier="TrailerViewController" id="ATw-fO-0Op" customClass="TrailerViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cka-C9-7o0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="852" height="393"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-PG-7co" customClass="YTPlayerView">
-                                <rect key="frame" x="0.0" y="90" width="393" height="728"/>
+                                <rect key="frame" x="59" y="0.0" width="793" height="393"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="87" translatesAutoresizingMaskIntoConstraints="NO" id="XAR-2w-Gfu">
-                                <rect key="frame" x="10" y="49" width="363" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JV3-4F-Eg7" userLabel="back">
-                                        <rect key="frame" x="0.0" y="15" width="25" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="25" id="hPj-qJ-1Nc"/>
-                                            <constraint firstAttribute="width" constant="25" id="qCu-wI-IQ2"/>
-                                        </constraints>
-                                        <color key="tintColor" name="AccentColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title=" ">
-                                            <backgroundConfiguration key="background" image="arrow.left" catalog="system"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="backButton:" destination="ATw-fO-0Op" eventType="touchUpInside" id="7rO-ac-4RG"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRAILER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1i-6D-gjD">
-                                        <rect key="frame" x="112" y="4" width="251" height="36"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JV3-4F-Eg7" userLabel="back">
+                                <rect key="frame" x="792" y="25" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="gBC-sa-6xK"/>
+                                    <constraint firstAttribute="height" constant="35" id="hPj-qJ-1Nc"/>
+                                    <constraint firstAttribute="width" constant="35" id="qCu-wI-IQ2"/>
                                 </constraints>
-                            </stackView>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title=" ">
+                                    <backgroundConfiguration key="background" image="xmark" catalog="system"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="backButton:" destination="ATw-fO-0Op" eventType="touchUpInside" id="7rO-ac-4RG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ZYC-4k-36V"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="D3d-PG-7co" firstAttribute="leading" secondItem="ZYC-4k-36V" secondAttribute="leading" id="Qdo-Mj-ZOx"/>
-                            <constraint firstItem="ZYC-4k-36V" firstAttribute="trailing" secondItem="D3d-PG-7co" secondAttribute="trailing" id="SU5-bW-pno"/>
-                            <constraint firstItem="D3d-PG-7co" firstAttribute="top" secondItem="XAR-2w-Gfu" secondAttribute="bottom" constant="1" id="aI1-JP-8jD"/>
-                            <constraint firstItem="XAR-2w-Gfu" firstAttribute="top" secondItem="ZYC-4k-36V" secondAttribute="top" constant="-10" id="hNq-ej-vww"/>
-                            <constraint firstItem="ZYC-4k-36V" firstAttribute="bottom" secondItem="D3d-PG-7co" secondAttribute="bottom" id="j8o-fm-Ol6"/>
-                            <constraint firstItem="XAR-2w-Gfu" firstAttribute="leading" secondItem="cka-C9-7o0" secondAttribute="leading" constant="10" id="lbL-Li-yoJ"/>
-                            <constraint firstAttribute="trailing" secondItem="XAR-2w-Gfu" secondAttribute="trailing" constant="20" id="vG0-TX-MuB"/>
+                            <constraint firstItem="D3d-PG-7co" firstAttribute="leading" secondItem="ZYC-4k-36V" secondAttribute="leading" id="MmT-FB-yKt"/>
+                            <constraint firstItem="D3d-PG-7co" firstAttribute="top" secondItem="cka-C9-7o0" secondAttribute="top" id="NUA-Vc-kgD"/>
+                            <constraint firstAttribute="trailing" secondItem="JV3-4F-Eg7" secondAttribute="trailing" constant="25" id="QvL-59-LOq"/>
+                            <constraint firstItem="JV3-4F-Eg7" firstAttribute="top" secondItem="ZYC-4k-36V" secondAttribute="top" constant="25" id="g0Y-du-Vvb"/>
+                            <constraint firstItem="D3d-PG-7co" firstAttribute="trailing" secondItem="cka-C9-7o0" secondAttribute="trailing" id="i5u-xk-DkW"/>
+                            <constraint firstItem="D3d-PG-7co" firstAttribute="bottom" secondItem="cka-C9-7o0" secondAttribute="bottom" id="qAQ-2e-7km"/>
                         </constraints>
                     </view>
                     <connections>
@@ -382,7 +366,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l4b-ew-UDm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3362.5954198473282" y="-73.239436619718319"/>
+            <point key="canvasLocation" x="3563" y="-70"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5z8-fm-Qpl">
@@ -390,6 +374,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0PG-Sl-Dmq" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VrM-tI-wez">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" systemColor="systemRedColor"/>
@@ -413,9 +398,7 @@
         <image name="megan" width="279" height="402"/>
         <image name="play.rectangle" catalog="system" width="128" height="93"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
-        <namedColor name="AccentColor">
-            <color red="0.637446716516192" green="0.8548414578468525" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
