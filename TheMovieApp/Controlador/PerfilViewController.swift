@@ -6,9 +6,16 @@
 //
 
 import UIKit
+import CoreData
 
 class PerfilViewController: UIViewController {
-
+    
+    @IBOutlet weak var photoUser: UIImageView!
+    @IBOutlet weak var nameUser: UILabel!
+    @IBOutlet weak var genresUser: UITextView!
+    
+    @IBOutlet weak var tableWishListMovies: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -16,14 +23,5 @@ class PerfilViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
