@@ -23,7 +23,7 @@ class SearchMovieViewController: UIViewController {
         foundMoviesCollection.delegate = self
         foundMoviesCollection.dataSource = self
         
-        
+        setupCollection()
     }
     
     private func setupCollection() {
@@ -91,19 +91,19 @@ extension SearchMovieViewController: UICollectionViewDelegate, UICollectionViewD
 }
 
 //EXTENSION
-//extension SearchMovieViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 120, height: 200)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        10
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        10
-//    }
-//}
+extension SearchMovieViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120, height: 200)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        10
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        10
+    }
+}
 
 //MARK: UITextFieldDelegate
 extension SearchMovieViewController: UITextFieldDelegate {
@@ -117,7 +117,7 @@ extension SearchMovieViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         //Hacer algo
         if textField.text!.count > 2 {
-            let nameOfMovie = textField.text!.replacingOccurrences(of: " ", with: "%20")
+            let nameOfMovie = textField.text!.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current)
             searchMovie(nameOfMovie: nameOfMovie )
             print("Debug: nameOfMovie \(nameOfMovie)")
 
@@ -142,8 +142,7 @@ extension SearchMovieViewController: UITextFieldDelegate {
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        print(textField.text!)
-        if let nameOfMovie = textField.text?.replacingOccurrences(of: " ", with: "%20") {
+        if let nameOfMovie = textField.text?.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current) {
             if nameOfMovie.count > 3 {
                 self.searchMovie(nameOfMovie: nameOfMovie)
             }
