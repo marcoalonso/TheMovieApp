@@ -123,15 +123,14 @@ extension SearchMovieViewController: UICollectionViewDelegateFlowLayout {
 
 //MARK: UITextFieldDelegate
 extension SearchMovieViewController: UITextFieldDelegate {
-    //1.- Habilitar el boton del teclado virtual
+    ///1.- Habilitar el boton del teclado virtual
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
     }
     
-    //2.- Identificar cuando el usuario termina de editar y que pueda borrar el contenido del textField
+    ///2.- Identificar cuando el usuario termina de editar y que pueda borrar el contenido del textField
     func textFieldDidEndEditing(_ textField: UITextField) {
-        //Hacer algo
         if textField.text!.count > 2 {
             let nameOfMovie = textField.text!.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current)
             searchMovie(nameOfMovie: nameOfMovie )
@@ -145,7 +144,7 @@ extension SearchMovieViewController: UITextFieldDelegate {
         textField.endEditing(true)
     }
     
-    //3.- Evitar que el usuario no escriba nada
+    ///3.- Evitar que el usuario no escriba nada
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField.text != "" {
             return true
@@ -157,11 +156,16 @@ extension SearchMovieViewController: UITextFieldDelegate {
         }
     }
     
-//    func textFieldDidChangeSelection(_ textField: UITextField) {
-//        if let nameOfMovie = textField.text?.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current) {
-//            if nameOfMovie.count > 3 {
-//                self.searchMovie(nameOfMovie: nameOfMovie)
-//            }
-//        }
-//    }
+    ///4.- Buscando cada vez que el usuario escribe un nuevo caracter.
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if textField.text == "" {
+            self.moviesFound.removeAll()
+        }
+        if let nameOfMovie = textField.text?.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current) {
+            if nameOfMovie.count > 3 {
+                self.moviesFound.removeAll()
+                self.searchMovie(nameOfMovie: nameOfMovie)
+            }
+        }
+    }
 }

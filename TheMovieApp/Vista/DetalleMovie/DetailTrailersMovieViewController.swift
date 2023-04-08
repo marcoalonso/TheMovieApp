@@ -20,7 +20,9 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     @IBOutlet weak var trailersMovieConstraint: NSLayoutConstraint!
     @IBOutlet weak var relatedMoviesConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailersTableView: UITableView!
+    @IBOutlet weak var favouriteStyleButton: UIButton!
     @IBOutlet weak var posterMovieImage: UIImageView!
+    @IBOutlet weak var favouriteInfoLabel: UILabel!
     
     
     
@@ -32,6 +34,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
     var trailersMovie : [Trailer] = []
     var similarMovies: [DataMovie] = []
+    var isFavourite = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +119,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         descripcionMovie.text = recibirPeliculaMostrar?.overview
         releaseDateMovieLabel.text = "Fecha estreno: \(recibirPeliculaMostrar?.release_date ?? "Próximamente")"
         
-        
+        favouriteInfoLabel.isHidden = true
     }
     
     private func showOnlyImageOfMovie(){
@@ -155,9 +158,27 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         
     }
     
-    @IBAction func backButtonAction(_ sender: UIButton) {
-        self.dismiss(animated: true)
+    
+    // MARK:  Actions
+    @IBAction func favouriteButton(_ sender: UIButton) {
+        if !isFavourite {
+            isFavourite = true
+            favouriteStyleButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.favouriteInfoLabel.isHidden = false
+            }, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseIn, animations: {
+                    self.favouriteInfoLabel.isHidden = true
+                }, completion: nil)
+            }
+        }
     }
+  
+  
+
     
     
     @IBAction func relatedMoviesTrailersAction(_ sender: UISegmentedControl) {

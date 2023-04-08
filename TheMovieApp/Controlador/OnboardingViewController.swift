@@ -62,11 +62,18 @@ class OnboardingViewController: UIViewController {
             
             if (indicatorPagecontrol.currentPage >= 0) && (indicatorPagecontrol.currentPage <= slides.count-1) {
                 indicatorPagecontrol.currentPage += 1
+                
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
+                
             }
             
         case .right:
             if (indicatorPagecontrol.currentPage <= slides.count-1) && (indicatorPagecontrol.currentPage >= 0) {
                 indicatorPagecontrol.currentPage -= 1
+                
+                let generator = UINotificationFeedbackGenerator()
+                generator.notificationOccurred(.success)
             }
             
             
