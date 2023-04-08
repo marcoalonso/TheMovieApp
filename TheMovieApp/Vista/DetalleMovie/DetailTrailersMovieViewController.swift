@@ -22,6 +22,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     @IBOutlet weak var relatedMoviesConstraint: NSLayoutConstraint!
     @IBOutlet weak var trailersTableView: UITableView!
     @IBOutlet weak var favouriteStyleButton: UIButton!
+    @IBOutlet weak var wishLateStyleButton: UIButton!
     @IBOutlet weak var posterMovieImage: UIImageView!
     @IBOutlet weak var favouriteInfoLabel: UILabel!
     
@@ -36,6 +37,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     var trailersMovie : [Trailer] = []
     var similarMovies: [DataMovie] = []
     var isFavourite = false
+    var watchLate = false
     
     let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     //Predicados en core data para filtrar elementos
@@ -197,19 +199,6 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         
     }
     
-    
-    // MARK:  Actions
-    @IBAction func favouriteButton(_ sender: UIButton) {
-        if !isFavourite {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.success)
-            saveMovieAsFavourite()
-        } else {
-            let generator = UINotificationFeedbackGenerator()
-            generator.notificationOccurred(.warning)
-        }
-    }
-  
     private func saveMovieAsFavourite(){
         let newMovie = FavouriteMovie(context: contexto)
         if let movie = recibirPeliculaMostrar {
@@ -228,15 +217,20 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             }
         }
     }
+    
+    private func saveMovieToWathcLate(){
+        //Guardar en core data
+    }
   
     
-    private func animationIsFavourite(){
-        if !isFavourite {
-            isFavourite = true
-            favouriteStyleButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+    private func animationWatchLate(){
+        if !watchLate {
+            watchLate = true
+            wishLateStyleButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             
             UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.favouriteInfoLabel.isHidden = false
+                self.favouriteInfoLabel.text = "¡Me gustaría verla!"
             }, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -246,6 +240,46 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             }
         }
     }
+    
+    private func animationIsFavourite(){
+        if !isFavourite {
+            isFavourite = true
+            favouriteStyleButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            
+            UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.favouriteInfoLabel.isHidden = false
+                self.favouriteInfoLabel.text = "¡Agregada a favoritos!"
+            }, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseIn, animations: {
+                    self.favouriteInfoLabel.isHidden = true
+                }, completion: nil)
+            }
+        }
+    }
+    
+    
+    // MARK:  Actions
+    @IBAction func favouriteButton(_ sender: UIButton) {
+        if !isFavourite {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+            saveMovieAsFavourite()
+        }
+    }
+    
+    @IBAction func wishButton(_ sender: UIButton) {
+        if !watchLate {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
+            //Guardar en core data
+            animationWatchLate()
+        } 
+    }
+    
+  
+    
     
     
     @IBAction func relatedMoviesTrailersAction(_ sender: UISegmentedControl) {
