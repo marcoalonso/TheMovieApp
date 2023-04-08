@@ -29,19 +29,22 @@ class SearchMovieViewController: UIViewController {
     private func setupCollection() {
         foundMoviesCollection.collectionViewLayout = UICollectionViewFlowLayout()
         if let flowLayout = foundMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.scrollDirection = .horizontal
+            flowLayout.scrollDirection = .vertical
         }
     }
         
      
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     private func searchMovie(nameOfMovie: String){
+        self.moviesFound.removeAll()
         manager.searchMovies(nameOfMovie: nameOfMovie) { [weak self] numPagesFounded, listOfMovies, error in
             
             if error != nil || listOfMovies.isEmpty {
                 DispatchQueue.main.async {
-                    self?.showAlert(title: "Atención", message: error!)
+                    self?.showAlert(title: "Atención", message: "No se encontraron películas con ese nombre, favor de verificar de nuevo.")
                 }
             }
             
@@ -87,13 +90,26 @@ extension SearchMovieViewController: UICollectionViewDelegate, UICollectionViewD
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
+        let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
+        
+        
+        ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
+        ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
+        
+        ///Enviar informacion a traves de la instancia del view controller
+        ViewController.recibirPeliculaMostrar = moviesFound[indexPath.row]
+        
+        present(ViewController, animated: true)
+    }
     
 }
 
 //EXTENSION
 extension SearchMovieViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120, height: 200)
+        return CGSize(width: 160, height: 230)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -141,15 +157,11 @@ extension SearchMovieViewController: UITextFieldDelegate {
         }
     }
     
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        if let nameOfMovie = textField.text?.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current) {
-            if nameOfMovie.count > 3 {
-                self.searchMovie(nameOfMovie: nameOfMovie)
-            }
-        }
-            
-       
-        
-        
-    }
+//    func textFieldDidChangeSelection(_ textField: UITextField) {
+//        if let nameOfMovie = textField.text?.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current) {
+//            if nameOfMovie.count > 3 {
+//                self.searchMovie(nameOfMovie: nameOfMovie)
+//            }
+//        }
+//    }
 }

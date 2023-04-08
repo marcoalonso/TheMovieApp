@@ -109,7 +109,8 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         
         ///- Constraints for moviesRelated and trailers table
         relatedMoviesConstraint.constant = 0
-        trailersMovieConstraint.constant = 1400
+        trailersMovieConstraint.constant = 400
+        self.trailersTableView.isHidden = false
         
         nameOfMovieLabel.text = recibirPeliculaMostrar?.title
         descripcionMovie.text = recibirPeliculaMostrar?.overview
@@ -168,7 +169,8 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             
             UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut) {
                 self.relatedMoviesConstraint.constant = 0
-                self.trailersMovieConstraint.constant = 1400
+                self.trailersMovieConstraint.constant = 400
+                self.trailersTableView.isHidden = false
             }
             
             
@@ -176,6 +178,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseIn) {
                 self.relatedMoviesConstraint.constant = 400
                 self.trailersMovieConstraint.constant = 0
+                self.trailersTableView.isHidden = true
             }
         default:
             break

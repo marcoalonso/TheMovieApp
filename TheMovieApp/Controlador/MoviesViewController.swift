@@ -19,6 +19,7 @@ class MoviesViewController: UIViewController {
     
     private var isLoadingMoreCharacters = false
     
+    var activityView: UIActivityIndicatorView?
     var manager = MoviesManager()
     
     override func viewDidLoad() {
@@ -29,6 +30,20 @@ class MoviesViewController: UIViewController {
         
         setupCollection()
         obtenerPeliculas(numPag: self.numPagina)
+    }
+    
+    
+    func showActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: .large)
+        activityView?.center = self.view.center
+        self.view.addSubview(activityView!)
+        activityView?.startAnimating()
+    }
+    
+    func hideActivityIndicator(){
+        if (activityView != nil){
+            activityView?.stopAnimating()
+        }
     }
     
     private func setupCollection(){
@@ -46,22 +61,21 @@ class MoviesViewController: UIViewController {
         }
         isLoadingMoreCharacters = true
         print("Fetching more characters")
-        ProgressHUD.show("Buscando", icon: .shuffle)
+        self.showActivityIndicator()
         
-        manager.getUpcomingMovies(numPagina: numPag) { numPages, listaPeliculas, error in
-            self.totalPages = numPages
+        manager.getUpcomingMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
+            self?.totalPages = numPages
             
             if let listaPeliculas = listaPeliculas {
-                self.listaProximosEstrenos.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
+                self?.listaProximosEstrenos.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
                 
                 DispatchQueue.main.async { ///Hilo principal, actualizar la Interfaz de usuario
-                    self.estrenosCollection.reloadData()
-                    self.isLoadingMoreCharacters = false
+                    self?.estrenosCollection.reloadData()
+                    self?.isLoadingMoreCharacters = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        ProgressHUD.remove()
+                        self?.hideActivityIndicator()
                     }
-                    self.numPagina += 1
-                    print("Debug: numPag func\(self.numPagina)")
+                    self?.numPagina += 1
 
                 }
             }
@@ -109,15 +123,15 @@ extension MoviesViewController: UIScrollViewDelegate {
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 140)
+        return CGSize(width: 115, height: 155)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        5
+        10
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        5
+        10
     }
 }
 
@@ -147,7 +161,7 @@ extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDele
         let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
         let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
         
-        ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
+        ViewController.modalPresentationStyle = .pageSheet ///Tipo de visualizacion
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
         
         ///Enviar informacion a traves de la instancia del view controller
