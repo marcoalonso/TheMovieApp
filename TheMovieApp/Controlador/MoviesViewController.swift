@@ -80,7 +80,6 @@ class MoviesViewController: UIViewController {
             return
         }
         isLoadingMoreCharacters = true
-        print("Fetching more characters")
         self.showActivityIndicator()
         
         manager.getUpcomingMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in

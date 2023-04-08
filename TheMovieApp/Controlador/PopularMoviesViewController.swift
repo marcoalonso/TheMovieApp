@@ -46,7 +46,6 @@ class PopularMoviesViewController: UIViewController {
             return
         }
         isLoadingMoreCharacters = true
-        print("Fetching more characters")
         ProgressHUD.show("Buscando", icon: .shuffle)
         
         manager.getPopularMovies(numPagina: numPag) { numPages, listaPeliculas, error in

@@ -26,6 +26,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     @IBOutlet weak var posterMovieImage: UIImageView!
     @IBOutlet weak var favouriteInfoLabel: UILabel!
     
+    @IBOutlet weak var watchLateInfoLabel: UILabel!
     
     
     /// Variables
@@ -40,8 +41,11 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     var watchLate = false
     
     let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     //Predicados en core data para filtrar elementos
     var commitPredicate: NSPredicate?
+    var wishCommitPredicateW: NSPredicate?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +63,12 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         getSimilarMovies()
        
         setupCollectionWithLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        searchInFavouriteMovies()
+        searchInWatchLate()
     }
     
     func setupCollectionWithLayout() {
@@ -125,31 +135,28 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         nameOfMovieLabel.text = recibirPeliculaMostrar?.title
         descripcionMovie.text = recibirPeliculaMostrar?.overview
         releaseDateMovieLabel.text = "Fecha estreno: \(recibirPeliculaMostrar?.release_date ?? "Próximamente")"
-        searchInFavouriteMovies()
+        
+        
         
     }
     
     ///This function verify if the selected movie is already saved as favorite
     private func searchInFavouriteMovies() {
-        // Crea una instancia de NSFetchRequest para la entidad 'Persona'
         let fetchRequest: NSFetchRequest<FavouriteMovie> = FavouriteMovie.fetchRequest()
 
         guard let id = recibirPeliculaMostrar!.id else { return }
         print("Debug: idMovie \(id)")
-
-        // Crea un predicado que filtra los resultados por el ID deseado
+        
         self.commitPredicate = NSPredicate(format: "id = %i", id)
 
-        // Asigna el predicado al fetch request
         fetchRequest.predicate = self.commitPredicate
 
-        // Realiza la consulta a Core Data
         do {
           let resultados = try contexto.fetch(fetchRequest)
-          if let movie = resultados.first {
+            if resultados.first != nil {
             // Marcar como favorita la movie y poder eliminarla
               favouriteInfoLabel.isHidden = false
-              favouriteInfoLabel.text = "Favorita"
+                self.favouriteInfoLabel.text = "¡Favorita!"
               favouriteStyleButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
               isFavourite = true
           } else {
@@ -161,6 +168,32 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
           print("Error al consultar movie por ID: \(error.localizedDescription)")
         }
 
+    }
+    
+    private func searchInWatchLate(){
+        let fetchRequest: NSFetchRequest<WishMovie> = WishMovie.fetchRequest()
+        guard let id = recibirPeliculaMostrar!.id else { return }
+        print("Debug: watchLate \(id)")
+        
+        self.wishCommitPredicateW = NSPredicate(format: "id = %i", id)
+
+        fetchRequest.predicate = self.commitPredicate
+
+        do {
+          let resultados = try contexto.fetch(fetchRequest)
+            if resultados.first != nil {
+            // Marcar como favorita la movie y poder eliminarla
+              watchLateInfoLabel.isHidden = false
+                self.watchLateInfoLabel.text = "¡Quiero verla!"
+              wishLateStyleButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+              watchLate = true
+          } else {
+              watchLateInfoLabel.isHidden = true
+          }
+        } catch {
+          // Ocurrió un error al realizar la consulta a Core Data
+          print("Error al consultar movie por ID: \(error.localizedDescription)")
+        }
     }
     
     private func showOnlyImageOfMovie(){
@@ -219,7 +252,22 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     }
     
     private func saveMovieToWathcLate(){
-        //Guardar en core data
+        let watchLateMovie = WishMovie(context: contexto)
+        if let movie = recibirPeliculaMostrar {
+            let idMovie = Int64(movie.id!)
+            watchLateMovie.id = idMovie
+            watchLateMovie.titulo = self.nameOfMovieLabel.text
+            watchLateMovie.descripcion = self.descripcionMovie.text
+            watchLateMovie.fecha = self.releaseDateMovieLabel.text
+            watchLateMovie.poster = self.posterMovieImage.image?.pngData()
+            do {
+                try contexto.save()
+                print("DEbug: Guardado en ver mas tarde!")
+                animationWatchLate()
+            } catch  {
+                print("Error al guardar en la bd", error.localizedDescription)
+            }
+        }
     }
   
     
@@ -229,13 +277,13 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             wishLateStyleButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
             
             UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseInOut, animations: {
-                self.favouriteInfoLabel.isHidden = false
-                self.favouriteInfoLabel.text = "¡Me gustaría verla!"
+                self.watchLateInfoLabel.isHidden = false
+                self.watchLateInfoLabel.text = "¡Me gustaría verla!"
             }, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseIn, animations: {
-                    self.favouriteInfoLabel.isHidden = true
+                    self.watchLateInfoLabel.text = "¡Quiero verla!"
                 }, completion: nil)
             }
         }
@@ -253,7 +301,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 UIView.animate(withDuration: 1.0, delay: 0.0, options: .curveEaseIn, animations: {
-                    self.favouriteInfoLabel.isHidden = true
+                    self.favouriteInfoLabel.text = "¡Favorita!"
                 }, completion: nil)
             }
         }
@@ -274,8 +322,8 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             let generator = UINotificationFeedbackGenerator()
             generator.notificationOccurred(.success)
             //Guardar en core data
-            animationWatchLate()
-        } 
+            saveMovieToWathcLate()
+        }
     }
     
   

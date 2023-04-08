@@ -7,4 +7,11 @@
         <attribute name="poster" optional="YES" attributeType="Binary"/>
         <attribute name="titulo" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="WishMovie" representedClassName="WishMovie" syncable="YES" codeGenerationType="class">
+        <attribute name="descripcion" optional="YES" attributeType="String"/>
+        <attribute name="fecha" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="poster" optional="YES" attributeType="Binary"/>
+        <attribute name="titulo" optional="YES" attributeType="String"/>
+    </entity>
 </model>

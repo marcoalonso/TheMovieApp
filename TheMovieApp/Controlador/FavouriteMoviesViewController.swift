@@ -60,7 +60,11 @@ extension FavouriteMoviesViewController: UITableViewDelegate, UITableViewDataSou
         cell.titleMovie.text = favoriteMovies[indexPath.row].titulo ?? ""
         cell.releaseDateMovie.text = favoriteMovies[indexPath.row].fecha
         cell.descripctionMovie.text = favoriteMovies[indexPath.row].descripcion
-        cell.posterMovie.image = UIImage(data: favoriteMovies[indexPath.row].poster!)
+        
+        if let image = UIImage(data: favoriteMovies[indexPath.row].poster!) {
+            cell.posterMovie.image = image
+        }
+       
         cell.posterMovie.layer.cornerRadius = 12
         cell.posterMovie.layer.masksToBounds = true
         return cell

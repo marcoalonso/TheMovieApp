@@ -76,33 +76,41 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eP-Ck-Q8j">
-                                                <rect key="frame" x="0.0" y="50" width="373" height="20"/>
+                                                <rect key="frame" x="0.0" y="50" width="373" height="30"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha lanzamiento: 23 Abril 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-id-QUn">
-                                                        <rect key="frame" x="0.0" y="0.0" width="254" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="tEb-yt-VqA"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="0.0" y="0.0" width="276" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="¡Agregada a favoritos!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpF-it-fdL">
-                                                        <rect key="frame" x="254" y="0.0" width="119" height="20"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="lCO-5a-jVN">
+                                                        <rect key="frame" x="276" y="0.0" width="97" height="30"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="¡Agregada a favoritos!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TpF-it-fdL">
+                                                                <rect key="frame" x="0.0" y="0.0" width="97" height="15"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Me gustaría verla!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qFE-Ih-1qQ">
+                                                                <rect key="frame" x="0.0" y="15" width="97" height="15"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="ScG-oO-Her"/>
+                                                    <constraint firstAttribute="height" constant="30" id="ScG-oO-Her"/>
                                                 </constraints>
                                             </stackView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descripcion de la pelicula" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-yg-4qc">
-                                                <rect key="frame" x="0.0" y="90" width="373" height="120"/>
+                                                <rect key="frame" x="0.0" y="100" width="373" height="110"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="120" id="Gpx-wr-e3M"/>
+                                                    <constraint firstAttribute="height" constant="110" id="Gpx-wr-e3M"/>
                                                 </constraints>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -247,6 +255,7 @@
                         <outlet property="similarMoviesCollection" destination="sm8-y1-6Ua" id="Bxa-Gn-ENe"/>
                         <outlet property="trailersMovieConstraint" destination="wF6-QN-rCQ" id="zD7-TT-ojs"/>
                         <outlet property="trailersTableView" destination="Hgu-p6-vEX" id="X8S-lj-awq"/>
+                        <outlet property="watchLateInfoLabel" destination="qFE-Ih-1qQ" id="aTb-db-t4w"/>
                         <outlet property="wishLateStyleButton" destination="Y5F-ND-51x" id="7o7-eY-bRP"/>
                     </connections>
                 </viewController>
