@@ -96,16 +96,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="1Ha-k3-vBL">
-                                <rect key="frame" x="20" y="79" width="353" height="670"/>
+                                <rect key="frame" x="20" y="79" width="353" height="719"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Aqui podrás cambiar tus datos e iniciar sesion en Firebase (Proximamente)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8km-xK-FRd">
-                                        <rect key="frame" x="0.0" y="0.0" width="336.33333333333331" height="99"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="336.33333333333331" height="148"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="2MA-vd-vvY">
-                                        <rect key="frame" x="0.0" y="158" width="353" height="512"/>
+                                        <rect key="frame" x="0.0" y="207" width="353" height="512"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
@@ -569,7 +569,6 @@
                         <segue destination="dDD-ga-KIA" kind="relationship" relationship="viewControllers" id="OWP-FQ-ohe"/>
                         <segue destination="h4y-l7-rQC" kind="relationship" relationship="viewControllers" id="nPJ-zN-I1v"/>
                         <segue destination="J7d-oX-9gN" kind="relationship" relationship="viewControllers" id="rpH-V7-WHs"/>
-                        <segue destination="JlC-TB-JyR" kind="relationship" relationship="viewControllers" id="HYx-NO-RTm"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7GS-DF-gLH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
