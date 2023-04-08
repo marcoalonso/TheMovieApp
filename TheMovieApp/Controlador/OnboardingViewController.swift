@@ -13,9 +13,6 @@ struct Slide {
 }
 
 class OnboardingViewController: UIViewController {
-    
-    
-    
     @IBOutlet weak var instruccionesText: UITextView!
     @IBOutlet weak var indicatorPagecontrol: UIPageControl!
     @IBOutlet weak var tutorialImagen: UIImageView!
@@ -27,6 +24,8 @@ class OnboardingViewController: UIViewController {
         Slide(texto: "Tenemos una sección de cientos de películas populares que has sido publicadas en cines a lo largo de los años, echa un vistazo, te aseguro que encontrarás mas de alguna que hayas visto.", imagen: UIImage(named: "4")!),
         Slide(texto: "Escribe el nombre de la película de tu interés y dale click al boton de buscar", imagen: UIImage(named: "5")!),
         Slide(texto: "Aqui podrás ver los resultados de tu búsqueda o algún mensaje si es que no se encontró la pelicula que buscabas. Recuerda que puedes ver los diferentes tráilers seleccionadno una pelicula.", imagen: UIImage(named: "6")!),
+        Slide(texto: "Aqui podrás ver el tráiler en automático cuando cargue, recuerda tener conexión a internet. Tambien podrás ver la descripción de la película y un listado de trailers disponibles.", imagen: UIImage(named: "7")!),
+        Slide(texto: "Recueda que puedes ver cada trailer de la lista en una pantalla completa al seleccionarlo y tambien adelantar o retroceder la reproducción del mismo. Y hay una sección de películas similares que puedes explorar.", imagen: UIImage(named: "8")!),
         ]
     
     override func viewDidLoad() {
@@ -38,6 +37,7 @@ class OnboardingViewController: UIViewController {
     
     func setupSlides(){
         tutorialImagen.isUserInteractionEnabled = true
+        indicatorPagecontrol.numberOfPages = slides.count
         indicatorPagecontrol.addTarget(self, action: #selector(swipePageControl(_:)), for: .valueChanged)
         tutorialImagen.addGestureRecognizer(createSwipeGestureRecognizer(for: .left))
         tutorialImagen.addGestureRecognizer(createSwipeGestureRecognizer(for: .right))
@@ -46,10 +46,7 @@ class OnboardingViewController: UIViewController {
     }
     
     private func createSwipeGestureRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
-        // Initialize Swipe Gesture Recognizer
         let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
-
-        // Configure Swipe Gesture Recognizer
         swipeGestureRecognizer.direction = direction
 
         return swipeGestureRecognizer
@@ -62,28 +59,14 @@ class OnboardingViewController: UIViewController {
         case .down:
             print("down")
         case .left:
-            print("left") //avanza siguiente pagina
             
-            //si es 2, no hacer nada
             if (indicatorPagecontrol.currentPage >= 0) && (indicatorPagecontrol.currentPage <= slides.count-1) {
                 indicatorPagecontrol.currentPage += 1
-                print(slides[indicatorPagecontrol.currentPage])
-                //FondoOnboView.backgroundColor = slides[OnboPageControll.currentPage].color
-//                OnboImagen.image = slides[OnboPageControll.currentPage].imagen
-//                OnboLabel.text = slides[OnboPageControll.currentPage].texto
             }
-            //si es mayor de 0 deslizar a la derecha +1
-            
             
         case .right:
-            print("right") //retrocede pagina anterior
-            
             if (indicatorPagecontrol.currentPage <= slides.count-1) && (indicatorPagecontrol.currentPage >= 0) {
                 indicatorPagecontrol.currentPage -= 1
-                print(slides[indicatorPagecontrol.currentPage])
-                //FondoOnboView.backgroundColor = slides[OnboPageControll.currentPage].color
-//                OnboImagen.image = slides[OnboPageControll.currentPage].imagen
-//                OnboLabel.text = slides[OnboPageControll.currentPage].texto
             }
             
             
