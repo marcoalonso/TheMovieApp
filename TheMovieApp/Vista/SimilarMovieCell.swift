@@ -16,7 +16,7 @@ class SimilarMovieCell: UICollectionViewCell {
     func setup(movie: DataMovie) {
         posterSimilarMovie.setTemplateWithSubviews(true, viewBackgroundColor: .gray)
         
-        if let urlImagen = movie.backdrop_path {
+        if let urlImagen = movie.poster_path {
             let url = URL(string: "https://image.tmdb.org/t/p/w200/\(urlImagen)")
             posterSimilarMovie.kf.setImage(with: url)
             posterSimilarMovie.layer.cornerRadius = 20

@@ -32,7 +32,7 @@
                                 <rect key="frame" x="10" y="289" width="373" height="563"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hpu-Lu-D0f">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="2110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="1110"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de pelicula" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n6L-XV-GES">
                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="30"/>
@@ -119,10 +119,10 @@
                                                 </cells>
                                             </collectionView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Hgu-p6-vEX">
-                                                <rect key="frame" x="0.0" y="710" width="373" height="1400"/>
+                                                <rect key="frame" x="0.0" y="710" width="373" height="400"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="1400" id="03M-Tg-dNM"/>
+                                                    <constraint firstAttribute="height" constant="400" id="03M-Tg-dNM"/>
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TrailerCell" textLabel="67L-VY-Uvu" detailTextLabel="Vv5-8v-U7R" imageView="x5u-h2-zeU" rowHeight="188" style="IBUITableViewCellStyleSubtitle" id="0OO-pe-gcP">

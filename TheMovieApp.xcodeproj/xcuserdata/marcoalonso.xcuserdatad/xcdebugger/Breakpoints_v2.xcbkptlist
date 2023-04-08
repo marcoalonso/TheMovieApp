@@ -14,8 +14,8 @@
             filePath = "TheMovieApp/MoviesManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "getPopularMovies(numPagina:completion:)"
             landmarkType = "7">
             <Locations>
