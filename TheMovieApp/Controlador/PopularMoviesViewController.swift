@@ -60,9 +60,9 @@ class PopularMoviesViewController: UIViewController {
                 DispatchQueue.main.async { ///Hilo principal, actualizar la Interfaz de usuario
                     self.popularMoviesCollection.reloadData()
                     self.isLoadingMoreCharacters = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+
                         ProgressHUD.remove()
-                    }
+                    
                     self.numPagina += 1
                     print("Debug: numPag func\(self.numPagina)")
 
@@ -140,7 +140,7 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
         let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
         
         
-        ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
+        ViewController.modalPresentationStyle = .pageSheet ///Tipo de visualizacion
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
         
         ///Enviar informacion a traves de la instancia del view controller

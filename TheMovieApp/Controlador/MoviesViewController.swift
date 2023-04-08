@@ -30,8 +30,26 @@ class MoviesViewController: UIViewController {
         
         setupCollection()
         obtenerPeliculas(numPag: self.numPagina)
+        
+        shouldShowOnboarding()
+        
     }
     
+    private func shouldShowOnboarding(){
+        if !UserDefaults.standard.bool(forKey: "onboarding") {
+            showTutorial()
+            print("Mostrar tutorial")
+            UserDefaults.standard.set(true, forKey: "onboarding")
+        }
+    }
+    
+    private func showTutorial(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
+        vc.modalPresentationStyle = .formSheet
+        vc.modalTransitionStyle = .coverVertical
+        self.present(vc, animated: true)
+    }
     
     func showActivityIndicator() {
         activityView = UIActivityIndicatorView(style: .large)
@@ -52,6 +70,8 @@ class MoviesViewController: UIViewController {
             flowLayout.scrollDirection = .horizontal
         }
     }
+    
+    
     
     private func obtenerPeliculas(numPag: Int){
         
@@ -81,6 +101,12 @@ class MoviesViewController: UIViewController {
             }
         }
     }
+    
+    
+    @IBAction func infoButton(_ sender: UIBarButtonItem) {
+        showTutorial()
+    }
+    
     
 }
 
