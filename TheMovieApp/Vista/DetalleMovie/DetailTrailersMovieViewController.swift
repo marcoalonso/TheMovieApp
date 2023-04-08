@@ -200,11 +200,13 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
     // MARK:  Actions
     @IBAction func favouriteButton(_ sender: UIButton) {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-        
         if !isFavourite {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.success)
             saveMovieAsFavourite()
+        } else {
+            let generator = UINotificationFeedbackGenerator()
+            generator.notificationOccurred(.warning)
         }
     }
   
