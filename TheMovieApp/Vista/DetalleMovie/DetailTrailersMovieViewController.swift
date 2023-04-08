@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import YouTubeiOSPlayerHelper
+import CoreData
 
 class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate {
     
@@ -35,6 +36,10 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     var trailersMovie : [Trailer] = []
     var similarMovies: [DataMovie] = []
     var isFavourite = false
+    
+    let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    //Predicados en core data para filtrar elementos
+    var commitPredicate: NSPredicate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -118,8 +123,42 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         nameOfMovieLabel.text = recibirPeliculaMostrar?.title
         descripcionMovie.text = recibirPeliculaMostrar?.overview
         releaseDateMovieLabel.text = "Fecha estreno: \(recibirPeliculaMostrar?.release_date ?? "Próximamente")"
+        searchInFavouriteMovies()
         
-        favouriteInfoLabel.isHidden = true
+    }
+    
+    ///This function verify if the selected movie is already saved as favorite
+    private func searchInFavouriteMovies() {
+        // Crea una instancia de NSFetchRequest para la entidad 'Persona'
+        let fetchRequest: NSFetchRequest<FavouriteMovie> = FavouriteMovie.fetchRequest()
+
+        guard let id = recibirPeliculaMostrar!.id else { return }
+        print("Debug: idMovie \(id)")
+
+        // Crea un predicado que filtra los resultados por el ID deseado
+        self.commitPredicate = NSPredicate(format: "id = %i", id)
+
+        // Asigna el predicado al fetch request
+        fetchRequest.predicate = self.commitPredicate
+
+        // Realiza la consulta a Core Data
+        do {
+          let resultados = try contexto.fetch(fetchRequest)
+          if let movie = resultados.first {
+            // Marcar como favorita la movie y poder eliminarla
+              favouriteInfoLabel.isHidden = false
+              favouriteInfoLabel.text = "Favorita"
+              favouriteStyleButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+              isFavourite = true
+          } else {
+            // Se puede marcar como favorita
+              favouriteInfoLabel.isHidden = true
+          }
+        } catch {
+          // Ocurrió un error al realizar la consulta a Core Data
+          print("Error al consultar movie por ID: \(error.localizedDescription)")
+        }
+
     }
     
     private func showOnlyImageOfMovie(){
@@ -161,6 +200,35 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
     // MARK:  Actions
     @IBAction func favouriteButton(_ sender: UIButton) {
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
+        if !isFavourite {
+            saveMovieAsFavourite()
+        }
+    }
+  
+    private func saveMovieAsFavourite(){
+        let newMovie = FavouriteMovie(context: contexto)
+        if let movie = recibirPeliculaMostrar {
+            let idMovie = Int64(movie.id!)
+            newMovie.id = idMovie
+            newMovie.titulo = self.nameOfMovieLabel.text
+            newMovie.descripcion = self.descripcionMovie.text
+            newMovie.fecha = self.releaseDateMovieLabel.text
+            newMovie.poster = self.posterMovieImage.image?.pngData()
+            do {
+                try contexto.save()
+                print("Guardado en favoritos!")
+                animationIsFavourite()
+            } catch  {
+                print("Error al guardar en la bd", error.localizedDescription)
+            }
+        }
+    }
+  
+    
+    private func animationIsFavourite(){
         if !isFavourite {
             isFavourite = true
             favouriteStyleButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
@@ -176,9 +244,6 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
             }
         }
     }
-  
-  
-
     
     
     @IBAction func relatedMoviesTrailersAction(_ sender: UISegmentedControl) {

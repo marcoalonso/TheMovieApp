@@ -347,37 +347,39 @@
         <!--Favoritos-->
         <scene sceneID="3vO-OS-7Q7">
             <objects>
-                <viewController id="J7d-oX-9gN" sceneMemberID="viewController">
+                <viewController id="J7d-oX-9gN" customClass="FavouriteMoviesViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fgj-qp-4gv">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aqui podrás encontrar las películas que marques como favoritas. (PROXIMAMENTE)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVq-IO-R9B">
-                                <rect key="frame" x="20" y="109.00000000000001" width="353" height="143.33333333333337"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="EL7-P1-fpc">
-                                <rect key="frame" x="161.66666666666666" y="390.66666666666669" width="70" height="69.666666666666686"/>
-                                <color key="tintColor" red="0.961753517" green="0.96841138599999999" blue="0.71680770370000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="S1e-aH-QdW"/>
-                                    <constraint firstAttribute="width" constant="70" id="eco-Zr-bqg"/>
-                                </constraints>
-                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="7RP-ta-0bC">
+                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Y0U-G2-ycx">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Y0U-G2-ycx" id="yor-Dv-DL6">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iEZ-5E-LAi"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="qVq-IO-R9B" secondAttribute="trailing" constant="20" id="WNT-t3-dxd"/>
-                            <constraint firstItem="EL7-P1-fpc" firstAttribute="centerY" secondItem="Fgj-qp-4gv" secondAttribute="centerY" id="bFU-tQ-sGD"/>
-                            <constraint firstItem="qVq-IO-R9B" firstAttribute="leading" secondItem="iEZ-5E-LAi" secondAttribute="leading" constant="20" id="heV-J3-9f4"/>
-                            <constraint firstItem="EL7-P1-fpc" firstAttribute="centerX" secondItem="Fgj-qp-4gv" secondAttribute="centerX" id="iqA-iV-d09"/>
-                            <constraint firstItem="qVq-IO-R9B" firstAttribute="top" secondItem="iEZ-5E-LAi" secondAttribute="top" constant="50" id="xGB-tE-Eft"/>
+                            <constraint firstItem="iEZ-5E-LAi" firstAttribute="trailing" secondItem="7RP-ta-0bC" secondAttribute="trailing" id="9jx-yq-NO9"/>
+                            <constraint firstItem="7RP-ta-0bC" firstAttribute="leading" secondItem="iEZ-5E-LAi" secondAttribute="leading" id="FAs-T2-HLR"/>
+                            <constraint firstItem="7RP-ta-0bC" firstAttribute="top" secondItem="iEZ-5E-LAi" secondAttribute="top" id="Yc3-tt-pcY"/>
+                            <constraint firstItem="iEZ-5E-LAi" firstAttribute="bottom" secondItem="7RP-ta-0bC" secondAttribute="bottom" id="wKj-Gy-S5X"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favoritos" image="star.fill" catalog="system" id="bfY-aX-C4T"/>
+                    <connections>
+                        <outlet property="tableFavouriteMovies" destination="7RP-ta-0bC" id="qyn-RH-RaA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ez-rF-z3F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
