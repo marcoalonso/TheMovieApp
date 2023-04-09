@@ -25,7 +25,6 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     @IBOutlet weak var wishLateStyleButton: UIButton!
     @IBOutlet weak var posterMovieImage: UIImageView!
     @IBOutlet weak var favouriteInfoLabel: UILabel!
-    
     @IBOutlet weak var watchLateInfoLabel: UILabel!
     
     

@@ -71,8 +71,6 @@ class MoviesViewController: UIViewController {
         }
     }
     
-    
-    
     private func obtenerPeliculas(numPag: Int){
         
         ///Si esta cargando mas caracteres detente
@@ -148,15 +146,7 @@ extension MoviesViewController: UIScrollViewDelegate {
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 115, height: 155)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        10
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        10
+        return CGSize(width: 145, height: 195)
     }
 }
 

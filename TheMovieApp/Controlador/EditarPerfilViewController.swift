@@ -19,6 +19,8 @@ class EditarPerfilViewController: UIViewController {
     
     var accessOfUser: Bool = false
     
+    var dataUser : Usuario?
+    let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +30,21 @@ class EditarPerfilViewController: UIViewController {
     }
     
     private func setupUI(){
-        //agregar una gestura a la imagen
         let gestura = UITapGestureRecognizer(target: self, action: #selector(clickImagen))
         gestura.numberOfTapsRequired = 1
         gestura.numberOfTouchesRequired = 1
         profileUser.addGestureRecognizer(gestura)
         profileUser.isUserInteractionEnabled = true
+        
+        if let dataPhoto = dataUser?.foto {
+            profileUser.image = UIImage(data: dataPhoto)
+            nameOfUser.text = dataUser?.nombre
+            genresUser.text = dataUser?.generos
+        }
+        
+        profileUser.layer.cornerRadius = 45
+        profileUser.layer.masksToBounds = true
+        
     }
     
     private func requestUserPermission(){
@@ -128,13 +139,46 @@ class EditarPerfilViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    // MARK:  Action
-    @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        dismiss(animated: true)
+    func mostrarAlerta(titulo: String, mensaje: String) {
+        let alerta = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
+        let accionAceptar = UIAlertAction(title: "OK", style: .default) { _ in
+            //Do something
+        }
+        alerta.addAction(accionAceptar)
+        present(alerta, animated: true)
     }
     
+    // MARK:  Actions
     
-
+    @IBAction func saveButton(_ sender: UIButton) {
+        if nameOfUser.text != "" {
+            
+            if dataUser == nil {
+                let newUser = Usuario(context: contexto)
+                newUser.nombre = nameOfUser.text
+                newUser.generos = genresUser.text
+                newUser.foto = self.profileUser.image?.pngData()
+            } else {
+                dataUser?.nombre = nameOfUser.text
+                dataUser?.generos = genresUser.text
+                dataUser?.foto = self.profileUser.image?.pngData()
+            }
+            
+            do {
+                try contexto.save()
+                print("Guardado en core data!")
+                self.dismiss(animated: true)
+                
+            } catch {
+                print("Debug: error al guardar contacto \(error.localizedDescription)")
+            }
+            
+        } else {
+            mostrarAlerta(titulo: "Atención", mensaje: "Escribe tu nombre para guardar tus datos y si quieres puedes cambiar tu foto de perfil tocando la imagen.")
+        }
+        
+    }
+    
 }
 
 extension EditarPerfilViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

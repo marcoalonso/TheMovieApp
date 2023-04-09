@@ -17,7 +17,6 @@ class PopularMoviesViewController: UIViewController {
     var popularMoviesList: [DataMovie] = []
     var numPagina = 1
     var totalPages = 1
-    
     private var isLoadingMoreCharacters = false
     
     var manager = MoviesManager()
@@ -104,16 +103,9 @@ extension PopularMoviesViewController: UIScrollViewDelegate {
 // MARK:  FlowLayout
 extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 115, height: 155)
+        return CGSize(width: 145, height: 195)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        5
-    }
+
 }
 
 extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -7,6 +7,11 @@
         <attribute name="poster" optional="YES" attributeType="Binary"/>
         <attribute name="titulo" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Usuario" representedClassName="Usuario" syncable="YES" codeGenerationType="class">
+        <attribute name="foto" optional="YES" attributeType="Binary"/>
+        <attribute name="generos" optional="YES" attributeType="String"/>
+        <attribute name="nombre" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="WishMovie" representedClassName="WishMovie" syncable="YES" codeGenerationType="class">
         <attribute name="descripcion" optional="YES" attributeType="String"/>
         <attribute name="fecha" optional="YES" attributeType="String"/>

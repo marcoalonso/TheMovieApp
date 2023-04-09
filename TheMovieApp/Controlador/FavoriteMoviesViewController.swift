@@ -1,5 +1,5 @@
 //
-//  FavouriteMoviesViewController.swift
+//  FavoriteMoviesViewController.swift
 //  TheMovieApp
 //
 //  Created by Marco Alonso Rodriguez on 08/04/23.
@@ -8,12 +8,11 @@
 import UIKit
 import CoreData
 
-class FavouriteMoviesViewController: UIViewController {
+class FavoriteMoviesViewController: UIViewController {
 
     
     @IBOutlet weak var tableFavouriteMovies: UITableView!
     
-    // MARK: - Contexto
     let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var favoriteMovies: [FavouriteMovie] = []
@@ -30,6 +29,7 @@ class FavouriteMoviesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         readMovies()
+        
     }
     
     private func readMovies(){
@@ -42,13 +42,25 @@ class FavouriteMoviesViewController: UIViewController {
             print("Error al leer de core data,",error.localizedDescription)
         }
         tableFavouriteMovies.reloadData()
+        
+        if favoriteMovies.isEmpty {
+            mostrarAlerta(titulo: "Atención", mensaje: "Aún no has agregado ninguna película como favorita, selecciona una y presiona el icono de ⭐️")
+        }
     }
 
+    func mostrarAlerta(titulo: String, mensaje: String) {
+        let alerta = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
+        let accionAceptar = UIAlertAction(title: "OK", style: .default) { _ in
+            //Do something
+        }
+        alerta.addAction(accionAceptar)
+        present(alerta, animated: true)
+    }
     
 
 }
 
-extension FavouriteMoviesViewController: UITableViewDelegate, UITableViewDataSource {
+extension FavoriteMoviesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         favoriteMovies.count
     }
