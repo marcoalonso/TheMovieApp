@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import ProgressHUD
+import Network
 
 class MoviesViewController: UIViewController {
     
@@ -33,6 +34,17 @@ class MoviesViewController: UIViewController {
         
         shouldShowOnboarding()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        checkInternetConnectivity { isInternetAvailable in
+            if isInternetAvailable {
+                print("La aplicación tiene conexión a Internet.")
+            } else {
+                print("La aplicación no tiene conexión a Internet.")
+                //Get info from Cache
+            }
+        }
     }
     
     private func shouldShowOnboarding(){
@@ -99,6 +111,28 @@ class MoviesViewController: UIViewController {
         }
     }
     
+    func checkInternetConnectivity(completion: @escaping (Bool) -> Void) {
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "Monitor")
+        
+        
+        monitor.start(queue: queue)
+        
+        monitor.pathUpdateHandler = { path in
+            
+            if path.usesInterfaceType(.cellular) {
+                print("Conection with mobile data")
+            } else if path.usesInterfaceType(.wifi) {
+                print("Conection with wifi")
+            }
+            
+            if path.status == .satisfied {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
     
     @IBAction func infoButton(_ sender: UIBarButtonItem) {
         showTutorial()
