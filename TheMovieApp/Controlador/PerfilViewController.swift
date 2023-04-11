@@ -99,7 +99,37 @@ class PerfilViewController: UIViewController {
     
     
     @IBAction func comprarBoletos(_ sender: UIButton) {
-        self.mostrarAlerta(titulo: "ATENCIÓN", mensaje: "Estás a punto de navegar en un sitio web de películas sugerido y ajeno a la aplicación, ¿Deseas continuar?")
+        
+        let alerta = UIAlertController(title: "Atención", message: "Las siguientes páginas web son ajenas a la aplicación, ¿Deseas continuar?", preferredStyle: .actionSheet)
+        
+        let cinepolis = UIAlertAction(title: "Visitar Cinemex", style: .default) { _ in
+            let vcWeb = WebViewController(nibName: "WebViewController", bundle: nil)
+            vcWeb.modalPresentationStyle = .fullScreen
+            vcWeb.modalTransitionStyle = .crossDissolve
+            vcWeb.urlBusqueda = "https://cinemex.com/"
+            vcWeb.nameMovieTeather = "Cinemex"
+            self.present(vcWeb, animated: true)
+        }
+        
+        let cinemex = UIAlertAction(title: "Visitar Cinepolis", style: .default) { _ in
+            let vcWeb = WebViewController(nibName: "WebViewController", bundle: nil)
+            vcWeb.modalPresentationStyle = .fullScreen
+            vcWeb.modalTransitionStyle = .crossDissolve
+            vcWeb.urlBusqueda = "https://cinepolis.com/"
+            vcWeb.nameMovieTeather = "Cinepolis"
+            self.present(vcWeb, animated: true)
+        }
+        
+        let accionCancelar = UIAlertAction(title: "Cancelar", style: .destructive)
+        
+        alerta.addAction(cinepolis)
+        alerta.addAction(cinemex)
+        alerta.addAction(accionCancelar)
+        
+        present(alerta, animated: true)
+        
+       
+        
     }
     
     @IBAction func editProfileButton(_ sender: UIBarButtonItem) {

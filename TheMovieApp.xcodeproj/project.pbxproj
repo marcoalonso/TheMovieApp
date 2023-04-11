@@ -19,6 +19,8 @@
 		6C1B60AC29D529C000BE1767 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6C1B60AB29D529C000BE1767 /* Kingfisher */; };
 		6C1B60AE29D5300100BE1767 /* DetalleMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B60AD29D5300100BE1767 /* DetalleMovieViewController.swift */; };
 		6C1D0DC329E1351400379BC7 /* demo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 6C1D0DC229E1351400379BC7 /* demo.gif */; };
+		6C44FAF329E5F1BF0017E605 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C44FAF129E5F1BF0017E605 /* WebViewController.swift */; };
+		6C44FAF429E5F1BF0017E605 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C44FAF229E5F1BF0017E605 /* WebViewController.xib */; };
 		6C5195BF29E1B460008D275C /* MoreInfoSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5195BE29E1B460008D275C /* MoreInfoSheetViewController.swift */; };
 		6C5195C229E1B86B008D275C /* FavouriteMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C5195C029E1B86B008D275C /* FavouriteMovies.xcdatamodeld */; };
 		6C5195C429E1BA1A008D275C /* FavoriteMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5195C329E1BA19008D275C /* FavoriteMoviesViewController.swift */; };
@@ -65,6 +67,8 @@
 		6C1B60A829D5201900BE1767 /* MoviesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesManager.swift; sourceTree = "<group>"; };
 		6C1B60AD29D5300100BE1767 /* DetalleMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleMovieViewController.swift; sourceTree = "<group>"; };
 		6C1D0DC229E1351400379BC7 /* demo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = demo.gif; sourceTree = "<group>"; };
+		6C44FAF129E5F1BF0017E605 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		6C44FAF229E5F1BF0017E605 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		6C5195BE29E1B460008D275C /* MoreInfoSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInfoSheetViewController.swift; sourceTree = "<group>"; };
 		6C5195C129E1B86B008D275C /* FavouriteMovies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavouriteMovies.xcdatamodel; sourceTree = "<group>"; };
 		6C5195C329E1BA19008D275C /* FavoriteMoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 				6C5195C329E1BA19008D275C /* FavoriteMoviesViewController.swift */,
 				6C5195C929E1DD69008D275C /* EditarPerfilViewController.swift */,
 				6C5195CB29E1DD81008D275C /* PerfilViewController.swift */,
+				6C44FAF129E5F1BF0017E605 /* WebViewController.swift */,
+				6C44FAF229E5F1BF0017E605 /* WebViewController.xib */,
 			);
 			path = Controlador;
 			sourceTree = "<group>";
@@ -300,6 +306,7 @@
 				6C1B609D29D5192800BE1767 /* LaunchScreen.storyboard in Resources */,
 				6C1D0DC329E1351400379BC7 /* demo.gif in Resources */,
 				6CCF020C29DEF5E9006B5FB7 /* DetalleMovie.storyboard in Resources */,
+				6C44FAF429E5F1BF0017E605 /* WebViewController.xib in Resources */,
 				6C1B609A29D5192800BE1767 /* Assets.xcassets in Resources */,
 				6C1B609829D5192500BE1767 /* Main.storyboard in Resources */,
 				6CCF021229DF099A006B5FB7 /* TrailerCell.xib in Resources */,
@@ -329,6 +336,7 @@
 				6C1B609529D5192500BE1767 /* MoviesViewController.swift in Sources */,
 				6C1B60A729D51D3700BE1767 /* MovieDataModel.swift in Sources */,
 				6C63325329E0EDB100E8B2E9 /* OnboardingViewController.swift in Sources */,
+				6C44FAF329E5F1BF0017E605 /* WebViewController.swift in Sources */,
 				6CD1A3A929DEA8E600D29B64 /* MovieResponseDataModel.swift in Sources */,
 				6C1B609129D5192500BE1767 /* AppDelegate.swift in Sources */,
 				6C63325129E0E21F00E8B2E9 /* Constants.swift in Sources */,
