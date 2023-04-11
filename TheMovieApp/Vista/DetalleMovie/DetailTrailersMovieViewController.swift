@@ -30,6 +30,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
     /// Variables
     var recibirPeliculaMostrar: DataMovie?
+    var recibirPosterMovie: Data?
     var manager = MoviesManager()
     var trailerDisponible = false
     var urlTrailer: String = ""
@@ -376,6 +377,13 @@ extension DetailTrailersMovieViewController: UITableViewDelegate, UITableViewDat
             let url = URL(string: "https://image.tmdb.org/t/p/w200/\(urlImagen)")
             
             celda.posterTrailer.kf.setImage(with: url)
+            celda.posterTrailer.layer.cornerRadius = 20
+            celda.posterTrailer.layer.masksToBounds = true
+        }
+        
+        if let imagenCoreData = recibirPosterMovie {
+            let image = UIImage(data: imagenCoreData)
+            celda.posterTrailer.image = image
             celda.posterTrailer.layer.cornerRadius = 20
             celda.posterTrailer.layer.masksToBounds = true
         }

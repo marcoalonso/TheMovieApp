@@ -9,6 +9,7 @@ import UIKit
 
 class WatchLateCell: UITableViewCell {
     
+    @IBOutlet weak var releaseDateWatchLate: UILabel!
     @IBOutlet weak var posterMovieWatchLate: UIImageView!
     @IBOutlet weak var namoOfMovieWatchLate: UILabel!
     

@@ -101,6 +101,7 @@ extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WatchLateCell", for: indexPath) as! WatchLateCell
         
         cell.namoOfMovieWatchLate.text = watchLateMovies[indexPath.row].titulo
+        cell.releaseDateWatchLate.text = watchLateMovies[indexPath.row].fecha
         if let dataImage = watchLateMovies[indexPath.row].poster {
             cell.posterMovieWatchLate.image = UIImage(data: dataImage)
             cell.posterMovieWatchLate.layer.masksToBounds = true
@@ -110,21 +111,28 @@ extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie = watchLateMovies[indexPath.row]
-        self.mostrarAlerta(titulo: "\(movie.titulo ?? "")", mensaje: "\(movie.description)")
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let movieSelected = watchLateMovies[indexPath.row]
+
+        let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
+        let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
+        
+        ViewController.modalPresentationStyle = .pageSheet ///Tipo de visualizacion
+        ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
+        
+        let movieData = DataMovie(backdrop_path: "", id: Int(movieSelected.id), original_title: movieSelected.titulo, overview: movieSelected.descripcion, title: movieSelected.titulo, release_date: movieSelected.fecha, poster_path: "")
+        ViewController.recibirPeliculaMostrar = movieData
+        ViewController.recibirPosterMovie = movieSelected.poster
+        
+        present(ViewController, animated: true)
+        
     }
     
-    func mostrarAlerta(titulo: String, mensaje: String) {
-        let alerta = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
-        let accionAceptar = UIAlertAction(title: "OK", style: .default) { _ in
-            //Do something
-        }
-        alerta.addAction(accionAceptar)
-        present(alerta, animated: true)
-    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 190
+        return 100
     }
     
     

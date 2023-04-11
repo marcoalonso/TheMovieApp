@@ -82,6 +82,26 @@ extension FavoriteMoviesViewController: UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        ///Send data to DetailTrailerMovie
+        
+        let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
+        let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
+        
+        ViewController.modalPresentationStyle = .pageSheet ///Tipo de visualizacion
+        ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
+        
+        ///Enviar informacion a traves de la instancia del view controller
+        let movieSelected = favoriteMovies[indexPath.row]
+        
+        let movieData = DataMovie(backdrop_path: "", id: Int(movieSelected.id), original_title: movieSelected.titulo, overview: movieSelected.descripcion, title: movieSelected.titulo, release_date: movieSelected.fecha, poster_path: "")
+        ViewController.recibirPeliculaMostrar = movieData
+        ViewController.recibirPosterMovie = movieSelected.poster
+        
+        present(ViewController, animated: true)
+    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
