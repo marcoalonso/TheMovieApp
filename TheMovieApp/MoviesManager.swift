@@ -11,7 +11,7 @@ struct MoviesManager {
     
     func searchMovies(numPage: Int = 1, nameOfMovie: String, completion: @escaping (Int, [DataMovie], String?) -> Void ) {
         
-        guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=2cfa8720256036601fb9ac4e4bce1a9b&language=es-MX&page=\(numPage)&include_adult=true&query=\(nameOfMovie)") else {
+        guard let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=2cfa8720256036601fb9ac4e4bce1a9b&language=es-MX&page=\(numPage)&include_adult=false&query=\(nameOfMovie)") else {
             completion(0, [], "Error al encnotrar peliculas con tu búsqueda")
             return }
         

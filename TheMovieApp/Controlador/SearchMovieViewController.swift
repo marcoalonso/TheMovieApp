@@ -91,16 +91,19 @@ extension SearchMovieViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        print("Debug: moviesFound \(moviesFound[indexPath.row])")
+
         let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
         let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
-        
-        
+
+
         ViewController.modalPresentationStyle = .pageSheet ///Tipo de visualizacion
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
-        
+
         ///Enviar informacion a traves de la instancia del view controller
         ViewController.recibirPeliculaMostrar = moviesFound[indexPath.row]
-        
+
         present(ViewController, animated: true)
     }
     
