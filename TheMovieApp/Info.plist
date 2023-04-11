@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Necesitamos permiso para acceder a tu ubicación y mostrarte cines cercanos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Necesitamos permiso para acceder a la galeria de fotos y usarla como foto de perfil</string>
 	<key>NSCameraUsageDescription</key>

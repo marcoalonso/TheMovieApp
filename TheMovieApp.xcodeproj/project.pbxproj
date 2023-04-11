@@ -32,6 +32,8 @@
 		6C63325329E0EDB100E8B2E9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63325229E0EDB100E8B2E9 /* OnboardingViewController.swift */; };
 		6C8A1C6229DBB23400F44ECA /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A1C6129DBB23400F44ECA /* TrailerViewController.swift */; };
 		6C8A1C6429DBBA7500F44ECA /* ResponseTrailerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A1C6329DBBA7500F44ECA /* ResponseTrailerModel.swift */; };
+		6C9A507629E5D5780017219D /* CinesCercanosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9A507429E5D5780017219D /* CinesCercanosViewController.swift */; };
+		6C9A507729E5D5780017219D /* CinesCercanosViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C9A507529E5D5780017219D /* CinesCercanosViewController.xib */; };
 		6C9DD39529E09C4B0044DEBC /* SimilarMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9DD39429E09C4B0044DEBC /* SimilarMovieCell.swift */; };
 		6C9DD39829E0A1670044DEBC /* UIView-Shimmer in Frameworks */ = {isa = PBXBuildFile; productRef = 6C9DD39729E0A1670044DEBC /* UIView-Shimmer */; };
 		6CBD79F629D5392900A490DF /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 6CBD79F529D5392900A490DF /* YouTubeiOSPlayerHelper */; };
@@ -76,6 +78,8 @@
 		6C63325229E0EDB100E8B2E9 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		6C8A1C6129DBB23400F44ECA /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
 		6C8A1C6329DBBA7500F44ECA /* ResponseTrailerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseTrailerModel.swift; sourceTree = "<group>"; };
+		6C9A507429E5D5780017219D /* CinesCercanosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CinesCercanosViewController.swift; sourceTree = "<group>"; };
+		6C9A507529E5D5780017219D /* CinesCercanosViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CinesCercanosViewController.xib; sourceTree = "<group>"; };
 		6C9DD39429E09C4B0044DEBC /* SimilarMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMovieCell.swift; sourceTree = "<group>"; };
 		6CCF020B29DEF5E9006B5FB7 /* DetalleMovie.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetalleMovie.storyboard; sourceTree = "<group>"; };
 		6CCF020D29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrailersMovieViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 		6C1B608F29D5192500BE1767 /* TheMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				6C9A507329E5D5500017219D /* CinesCercanos */,
 				6C1D0DC229E1351400379BC7 /* demo.gif */,
 				6C1B60A829D5201900BE1767 /* MoviesManager.swift */,
 				6CD1A3AD29DEB1CB00D29B64 /* Extensions */,
@@ -185,6 +190,15 @@
 				6CDAA4FE29E22E7B0050F0BD /* WatchLateCell.xib */,
 			);
 			path = Vista;
+			sourceTree = "<group>";
+		};
+		6C9A507329E5D5500017219D /* CinesCercanos */ = {
+			isa = PBXGroup;
+			children = (
+				6C9A507429E5D5780017219D /* CinesCercanosViewController.swift */,
+				6C9A507529E5D5780017219D /* CinesCercanosViewController.xib */,
+			);
+			path = CinesCercanos;
 			sourceTree = "<group>";
 		};
 		6CCF020A29DEF5D0006B5FB7 /* DetalleMovie */ = {
@@ -290,6 +304,7 @@
 				6C1B609829D5192500BE1767 /* Main.storyboard in Resources */,
 				6CCF021229DF099A006B5FB7 /* TrailerCell.xib in Resources */,
 				6C5195C829E1C937008D275C /* FavoriteCell.xib in Resources */,
+				6C9A507729E5D5780017219D /* CinesCercanosViewController.xib in Resources */,
 				6CDAA50029E22E7B0050F0BD /* WatchLateCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +344,7 @@
 				6C8A1C6429DBBA7500F44ECA /* ResponseTrailerModel.swift in Sources */,
 				6C1B60AE29D5300100BE1767 /* DetalleMovieViewController.swift in Sources */,
 				6CCF021129DF099A006B5FB7 /* TrailerCell.swift in Sources */,
+				6C9A507629E5D5780017219D /* CinesCercanosViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

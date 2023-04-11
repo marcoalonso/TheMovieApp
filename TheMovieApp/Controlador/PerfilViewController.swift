@@ -74,7 +74,34 @@ class PerfilViewController: UIViewController {
         }
         tableWishListMovies.reloadData()
     }
-
+    
+    func mostrarAlerta(titulo: String, mensaje: String) {
+        let alerta = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
+        let accionAceptar = UIAlertAction(title: "Si", style: .default) { _ in
+            //Navegar
+        }
+        let accionCancelar = UIAlertAction(title: "No", style: .destructive) { _ in
+            //Navegar
+        }
+        alerta.addAction(accionAceptar)
+        alerta.addAction(accionCancelar)
+        present(alerta, animated: true)
+    }
+    
+    // MARK:  Actions
+    
+    @IBAction func cinesCercanosButton(_ sender: UIButton) {
+        let viewControllerCines = CinesCercanosViewController(nibName: "CinesCercanosViewController", bundle: nil)
+        viewControllerCines.modalPresentationStyle = .fullScreen
+        viewControllerCines.modalTransitionStyle = .crossDissolve
+        self.present(viewControllerCines, animated: true)
+    }
+    
+    
+    @IBAction func comprarBoletos(_ sender: UIButton) {
+        self.mostrarAlerta(titulo: "ATENCIÓN", mensaje: "Estás a punto de navegar en un sitio web de películas sugerido y ajeno a la aplicación, ¿Deseas continuar?")
+    }
+    
     @IBAction func editProfileButton(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "EditarPerfilViewController") as! EditarPerfilViewController
