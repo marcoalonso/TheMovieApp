@@ -186,6 +186,43 @@ extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let deleteAction  = UIContextualAction(style: .normal, title: "quitar") { _, _, _ in
+            
+            self.contexto.delete(self.watchLateMovies[indexPath.row])
+            self.watchLateMovies.remove(at: indexPath.row)
+        
+            do {
+                try self.contexto.save()
+            } catch  {
+                print("Error al guardar en la bd", error.localizedDescription)
+            }
+            self.tableWishListMovies.reloadData()
+        }
+        
+        let shareAction = UIContextualAction(style: .normal, title: "compartir") { _, _, _ in
+            
+            guard let poster = self.watchLateMovies[indexPath.row].poster else { return }
+            guard let image = UIImage(data: poster) else { return }
+            
+            let vc = UIActivityViewController(
+                activityItems:
+                    ["\(self.watchLateMovies[indexPath.row].titulo ?? "") descarga la app en: https://testflight.apple.com/join/QCF7X63I", image], applicationActivities: nil)
+            self.present(vc, animated: true)
+            
+        }
+        
+        
+        shareAction.image = UIImage(systemName: "arrowshape.turn.up.right")
+        shareAction.backgroundColor = .blue
+        
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.backgroundColor = .red
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, shareAction ])
+    }
+    
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
