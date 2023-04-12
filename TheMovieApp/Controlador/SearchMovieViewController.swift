@@ -26,6 +26,27 @@ class SearchMovieViewController: UIViewController {
         setupCollection()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        manager.checkInternetConnectivity { isInternetAvailable in
+            if !isInternetAvailable {
+                DispatchQueue.main.async {
+                    self.showAlertToAction()
+                }
+            }
+        }
+    }
+    
+    func showAlertToAction(){
+        let alerta = UIAlertController(title: "Atención", message: "Para buscar películas necesitas tener conexión a internet.", preferredStyle: .alert)
+        let verificarConexion = UIAlertAction(title: "Abrir configuración", style: .default) { _ in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+            }
+        }
+        alerta.addAction(verificarConexion)
+        present(alerta, animated: true)
+    }
+    
     private func setupCollection() {
         foundMoviesCollection.collectionViewLayout = UICollectionViewFlowLayout()
         if let flowLayout = foundMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
