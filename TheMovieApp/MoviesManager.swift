@@ -6,8 +6,33 @@
 //
 
 import Foundation
+import DataCache
+import Network
 
 struct MoviesManager {
+    
+    func checkInternetConnectivity(completion: @escaping (Bool) -> Void) {
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "Monitor")
+        
+        
+        monitor.start(queue: queue)
+        
+        monitor.pathUpdateHandler = { path in
+            
+            if path.usesInterfaceType(.cellular) {
+                print("Conection with mobile data")
+            } else if path.usesInterfaceType(.wifi) {
+                print("Conection with wifi")
+            }
+            
+            if path.status == .satisfied {
+                completion(true)
+            } else {
+                completion(false)
+            }
+        }
+    }
     
     func searchMovies(numPage: Int = 1, nameOfMovie: String, completion: @escaping (Int, [DataMovie], String?) -> Void ) {
         
@@ -56,6 +81,11 @@ struct MoviesManager {
                 completion(0, nil, error)
                 return
             }
+            
+            ///** Guardar Cache **
+            DataCache.instance.write(data: data, forKey: "dataPopularMovies")
+            print("Debug: cache creada \(data)")
+            
             do {
                 
                 ///Decodificando la data que previamente desenvolvi
@@ -86,6 +116,10 @@ struct MoviesManager {
                 completion(0, nil, error)
                 return
             }
+
+            ///** Guardar Cache **
+            DataCache.instance.write(data: data, forKey: "dataUpcoming")
+            print("Debug: cache creada \(data)")
             
             do {
                 

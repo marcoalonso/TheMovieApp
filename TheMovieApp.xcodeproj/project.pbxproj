@@ -32,6 +32,7 @@
 		6C63324F29E0DD5A00E8B2E9 /* FoundMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63324E29E0DD5A00E8B2E9 /* FoundMovieCell.swift */; };
 		6C63325129E0E21F00E8B2E9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63325029E0E21F00E8B2E9 /* Constants.swift */; };
 		6C63325329E0EDB100E8B2E9 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63325229E0EDB100E8B2E9 /* OnboardingViewController.swift */; };
+		6C6E9DDA29E71DDB005B0297 /* DataCache in Frameworks */ = {isa = PBXBuildFile; productRef = 6C6E9DD929E71DDB005B0297 /* DataCache */; };
 		6C8A1C6229DBB23400F44ECA /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A1C6129DBB23400F44ECA /* TrailerViewController.swift */; };
 		6C8A1C6429DBBA7500F44ECA /* ResponseTrailerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8A1C6329DBBA7500F44ECA /* ResponseTrailerModel.swift */; };
 		6C9A507629E5D5780017219D /* CinesCercanosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9A507429E5D5780017219D /* CinesCercanosViewController.swift */; };
@@ -104,6 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CD1A3A529DE9F9800D29B64 /* ProgressHUD in Frameworks */,
+				6C6E9DDA29E71DDB005B0297 /* DataCache in Frameworks */,
 				6C9DD39829E0A1670044DEBC /* UIView-Shimmer in Frameworks */,
 				6C1B60AC29D529C000BE1767 /* Kingfisher in Frameworks */,
 				6CBD79F629D5392900A490DF /* YouTubeiOSPlayerHelper in Frameworks */,
@@ -254,6 +256,7 @@
 				6CBD79F529D5392900A490DF /* YouTubeiOSPlayerHelper */,
 				6CD1A3A429DE9F9800D29B64 /* ProgressHUD */,
 				6C9DD39729E0A1670044DEBC /* UIView-Shimmer */,
+				6C6E9DD929E71DDB005B0297 /* DataCache */,
 			);
 			productName = TheMovieApp;
 			productReference = 6C1B608D29D5192500BE1767 /* TheMovieApp.app */;
@@ -288,6 +291,7 @@
 				6CBD79F429D5392800A490DF /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 				6CD1A3A329DE9F9800D29B64 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				6C9DD39629E0A1670044DEBC /* XCRemoteSwiftPackageReference "UIView-Shimmer" */,
+				6C6E9DD829E71DDB005B0297 /* XCRemoteSwiftPackageReference "DataCache" */,
 			);
 			productRefGroup = 6C1B608E29D5192500BE1767 /* Products */;
 			projectDirPath = "";
@@ -582,6 +586,14 @@
 				kind = branch;
 			};
 		};
+		6C6E9DD829E71DDB005B0297 /* XCRemoteSwiftPackageReference "DataCache" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huynguyencong/DataCache.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		6C9DD39629E0A1670044DEBC /* XCRemoteSwiftPackageReference "UIView-Shimmer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/omerfarukozturk/UIView-Shimmer";
@@ -613,6 +625,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6C1B60AA29D529C000BE1767 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		6C6E9DD929E71DDB005B0297 /* DataCache */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6C6E9DD829E71DDB005B0297 /* XCRemoteSwiftPackageReference "DataCache" */;
+			productName = DataCache;
 		};
 		6C9DD39729E0A1670044DEBC /* UIView-Shimmer */ = {
 			isa = XCSwiftPackageProductDependency;

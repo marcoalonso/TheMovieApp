@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "datacache",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/huynguyencong/DataCache.git",
+      "state" : {
+        "revision" : "cdef39b1f7f539ff722e7954746b2876ef12178c",
+        "version" : "1.7.0"
+      }
+    },
+    {
       "identity" : "kingfisher",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/onevcat/Kingfisher.git",

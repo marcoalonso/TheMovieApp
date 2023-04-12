@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 import ProgressHUD
 import Network
+import DataCache
 
 class MoviesViewController: UIViewController {
     
@@ -37,12 +38,50 @@ class MoviesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        checkInternetConnectivity { isInternetAvailable in
-            if isInternetAvailable {
-                print("La aplicación tiene conexión a Internet.")
-            } else {
-                print("La aplicación no tiene conexión a Internet.")
-                //Get info from Cache
+        manager.checkInternetConnectivity { isInternetAvailable in
+            if !isInternetAvailable {
+                DispatchQueue.main.async {
+                    self.showAlertToAction()
+                }
+            }
+        }
+    }
+    
+    func showAlertToAction(){
+        let alerta = UIAlertController(title: "Atención", message: "Para continuar necesitas tener conexión a internet.", preferredStyle: .alert)
+        
+        let aceptar = UIAlertAction(title: "Continuar", style: .default) { _ in
+            self.checkCacheUpcoming()
+        }
+        
+        let verificarConexion = UIAlertAction(title: "Abrir configuración", style: .default) { _ in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+            }
+        }
+        
+        alerta.addAction(aceptar)
+        alerta.addAction(verificarConexion)
+        present(alerta, animated: true)
+    }
+    
+    private func checkCacheUpcoming(){
+        if let dataCache = DataCache.instance.readData(forKey: "dataUpcoming") {
+            do {
+                let moviesFromCache = try JSONDecoder().decode(MovieDataModel.self, from: dataCache)
+                self.listaProximosEstrenos = moviesFromCache.results ?? []
+                print("Debug: listaProximosEstrenos \(self.listaProximosEstrenos.count)")
+
+                DispatchQueue.main.async {
+                    self.estrenosCollection.reloadData()
+                    self.hideActivityIndicator()
+                }
+            } catch {
+                print("Debug: error al codificar data de cache \(error.localizedDescription)")
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.showAlertToAction()
             }
         }
     }
@@ -111,28 +150,7 @@ class MoviesViewController: UIViewController {
         }
     }
     
-    func checkInternetConnectivity(completion: @escaping (Bool) -> Void) {
-        let monitor = NWPathMonitor()
-        let queue = DispatchQueue(label: "Monitor")
-        
-        
-        monitor.start(queue: queue)
-        
-        monitor.pathUpdateHandler = { path in
-            
-            if path.usesInterfaceType(.cellular) {
-                print("Conection with mobile data")
-            } else if path.usesInterfaceType(.wifi) {
-                print("Conection with wifi")
-            }
-            
-            if path.status == .satisfied {
-                completion(true)
-            } else {
-                completion(false)
-            }
-        }
-    }
+    
     
     @IBAction func infoButton(_ sender: UIBarButtonItem) {
         showTutorial()

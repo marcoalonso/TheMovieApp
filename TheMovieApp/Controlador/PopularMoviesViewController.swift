@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import ProgressHUD
+import DataCache
 
 class PopularMoviesViewController: UIViewController {
     
@@ -31,10 +32,58 @@ class PopularMoviesViewController: UIViewController {
         obtenerPeliculas(numPag: self.numPagina)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        manager.checkInternetConnectivity { isInternetAvailable in
+            if !isInternetAvailable {
+                DispatchQueue.main.async {
+                    self.showAlertToAction()
+                }
+            }
+        }
+    }
+    
     private func setupCollection(){
         popularMoviesCollection.collectionViewLayout = UICollectionViewFlowLayout()
         if let flowLayout = popularMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
+        }
+    }
+    
+    func showAlertToAction(){
+        let alerta = UIAlertController(title: "Atención", message: "Para continuar necesitas tener conexión a internet.", preferredStyle: .alert)
+        
+        let aceptar = UIAlertAction(title: "Continuar", style: .default) { _ in
+            self.checkCachePopularMovies()
+        }
+        
+        let verificarConexion = UIAlertAction(title: "Abrir configuración", style: .default) { _ in
+            if let appSettings = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(appSettings, options: [:], completionHandler: nil)
+            }
+        }
+        
+        alerta.addAction(aceptar)
+        alerta.addAction(verificarConexion)
+        present(alerta, animated: true)
+    }
+    
+    private func checkCachePopularMovies(){
+        if let dataCache = DataCache.instance.readData(forKey: "dataPopularMovies") {
+            do {
+                let moviesFromCache = try JSONDecoder().decode(MovieDataModel.self, from: dataCache)
+                self.popularMoviesList = moviesFromCache.results ?? []
+                print("Debug: listaProximosEstrenos \(self.popularMoviesList.count)")
+
+                DispatchQueue.main.async {
+                    self.popularMoviesCollection.reloadData()
+                }
+            } catch {
+                print("Debug: error al codificar data de cache \(error.localizedDescription)")
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.showAlertToAction()
+            }
         }
     }
     
