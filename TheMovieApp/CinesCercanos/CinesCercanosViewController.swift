@@ -131,7 +131,8 @@ extension CinesCercanosViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .notDetermined:
-            mostrarAlerta(titulo: "ATENCIÓN", mensaje: "No hemos podido obtener tu ubicación.")
+            print("No determinada")
+//            mostrarAlerta(titulo: "ATENCIÓN", mensaje: "No hemos podido obtener tu ubicación.")
         case .restricted:
             mostrarAlerta(titulo: "ATENCIÓN", mensaje: "Es posible que tu ubicación no sea la más precisa ya que esta limitada, cambia los permisos en configuración.")
         case .denied:

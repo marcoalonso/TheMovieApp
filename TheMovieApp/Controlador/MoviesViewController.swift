@@ -7,7 +7,6 @@
 
 import UIKit
 import Kingfisher
-import ProgressHUD
 import Network
 import DataCache
 
@@ -136,7 +135,7 @@ class MoviesViewController: UIViewController {
             return
         }
         isLoadingMoreCharacters = true
-        self.showActivityIndicator()
+//        self.showActivityIndicator()
         
         manager.getUpcomingMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
             
@@ -151,7 +150,7 @@ class MoviesViewController: UIViewController {
                     self?.estrenosCollection.reloadData()
                     self?.isLoadingMoreCharacters = false
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        self?.hideActivityIndicator()
+//                        self?.hideActivityIndicator()
                     }
                 }
             }

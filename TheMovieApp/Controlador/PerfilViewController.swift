@@ -100,7 +100,7 @@ class PerfilViewController: UIViewController {
     
     @IBAction func comprarBoletos(_ sender: UIButton) {
         
-        let alerta = UIAlertController(title: "Atención", message: "Las siguientes páginas web son ajenas a la aplicación, ¿Deseas continuar?", preferredStyle: .actionSheet)
+        let alerta = UIAlertController(title: "Atención", message: "Las siguientes páginas web son ajenas a la aplicación, ¿Deseas continuar?", preferredStyle: .alert)
         
         let cinepolis = UIAlertAction(title: "Visitar Cinemex", style: .default) { _ in
             let vcWeb = WebViewController(nibName: "WebViewController", bundle: nil)

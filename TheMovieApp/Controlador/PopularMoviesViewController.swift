@@ -115,7 +115,7 @@ class PopularMoviesViewController: UIViewController {
             return
         }
         isLoadingMoreCharacters = true
-        showActivityIndicator()
+//        showActivityIndicator()
         
         manager.getPopularMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
             guard let self = self else { return }
@@ -132,7 +132,7 @@ class PopularMoviesViewController: UIViewController {
                     self.popularMoviesCollection.reloadData()
                     self.isLoadingMoreCharacters = false
 
-                    self.hideActivityIndicator()
+//                    self.hideActivityIndicator()
                 }
             }
             
