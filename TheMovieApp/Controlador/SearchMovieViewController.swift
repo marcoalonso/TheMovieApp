@@ -158,6 +158,7 @@ extension SearchMovieViewController: UITextFieldDelegate {
         textField.text = ""
         //ocultar teclado
         textField.endEditing(true)
+        
     }
     
     ///3.- Evitar que el usuario no escriba nada
@@ -174,8 +175,9 @@ extension SearchMovieViewController: UITextFieldDelegate {
     
     ///4.- Buscando cada vez que el usuario escribe un nuevo caracter.
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        if textField.text == "" {
+        if textField.text!.count < 4 {
             self.moviesFound.removeAll()
+            self.foundMoviesCollection.reloadData()
         }
         if let nameOfMovie = textField.text?.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current) {
             if nameOfMovie.count > 3 {

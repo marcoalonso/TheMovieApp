@@ -31,7 +31,7 @@ class PopularMoviesViewController: UIViewController {
         setupCollection()
         obtenerPeliculas(numPag: self.numPagina)
         
-        timerGetMoteMovies = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(getMoreMovies), userInfo: nil, repeats: true)
+        timerGetMoteMovies = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getMoreMovies), userInfo: nil, repeats: true)
         
     }
 
