@@ -122,25 +122,26 @@ extension FavoriteMoviesViewController: UITableViewDelegate, UITableViewDataSour
             self.tableFavouriteMovies.reloadData()
         }
         
-        let shareAction = UIContextualAction(style: .normal, title: "compartir") { _, _, _ in
-            
-            guard let poster = self.favoriteMovies[indexPath.row].poster else { return }
-            guard let image = UIImage(data: poster) else { return }
-            
-            let vc = UIActivityViewController(
-                activityItems:
-                    ["\(self.favoriteMovies[indexPath.row].titulo ?? "") descarga la app en: https://testflight.apple.com/join/QCF7X63I", image], applicationActivities: nil)
-            self.present(vc, animated: true)
-            
-        }
+//        let shareAction = UIContextualAction(style: .normal, title: "compartir") { _, _, _ in
+//
+//            guard let poster = self.favoriteMovies[indexPath.row].poster else { return }
+//            guard let image = UIImage(data: poster) else { return }
+//
+//            let vc = UIActivityViewController(
+//                activityItems:
+//                    ["\(self.favoriteMovies[indexPath.row].titulo ?? "") descarga la app en: https://testflight.apple.com/join/QCF7X63I", image], applicationActivities: nil)
+//
+//            self.present(vc, animated: true)
+//
+//        }
         
         
-        shareAction.image = UIImage(systemName: "arrowshape.turn.up.right")
-        shareAction.backgroundColor = .blue
+//        shareAction.image = UIImage(systemName: "arrowshape.turn.up.right")
+//        shareAction.backgroundColor = .blue
         
         deleteAction.image = UIImage(systemName: "trash")
         deleteAction.backgroundColor = .red
         
-        return UISwipeActionsConfiguration(actions: [deleteAction, shareAction ])
+        return UISwipeActionsConfiguration(actions: [deleteAction ])
     }
 }
