@@ -44,7 +44,6 @@
 		6CCF020E29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF020D29DEFABD006B5FB7 /* DetailTrailersMovieViewController.swift */; };
 		6CCF021129DF099A006B5FB7 /* TrailerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCF020F29DF099A006B5FB7 /* TrailerCell.swift */; };
 		6CCF021229DF099A006B5FB7 /* TrailerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCF021029DF099A006B5FB7 /* TrailerCell.xib */; };
-		6CD1A3A529DE9F9800D29B64 /* ProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 6CD1A3A429DE9F9800D29B64 /* ProgressHUD */; };
 		6CD1A3A729DEA6E200D29B64 /* PopularesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD1A3A629DEA6E200D29B64 /* PopularesCell.swift */; };
 		6CD1A3A929DEA8E600D29B64 /* MovieResponseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD1A3A829DEA8E600D29B64 /* MovieResponseDataModel.swift */; };
 		6CD1A3AB29DEAB1500D29B64 /* PopularMoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD1A3AA29DEAB1500D29B64 /* PopularMoviesViewController.swift */; };
@@ -104,7 +103,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CD1A3A529DE9F9800D29B64 /* ProgressHUD in Frameworks */,
 				6C6E9DDA29E71DDB005B0297 /* DataCache in Frameworks */,
 				6C9DD39829E0A1670044DEBC /* UIView-Shimmer in Frameworks */,
 				6C1B60AC29D529C000BE1767 /* Kingfisher in Frameworks */,
@@ -254,7 +252,6 @@
 			packageProductDependencies = (
 				6C1B60AB29D529C000BE1767 /* Kingfisher */,
 				6CBD79F529D5392900A490DF /* YouTubeiOSPlayerHelper */,
-				6CD1A3A429DE9F9800D29B64 /* ProgressHUD */,
 				6C9DD39729E0A1670044DEBC /* UIView-Shimmer */,
 				6C6E9DD929E71DDB005B0297 /* DataCache */,
 			);
@@ -289,7 +286,6 @@
 			packageReferences = (
 				6C1B60AA29D529C000BE1767 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				6CBD79F429D5392800A490DF /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
-				6CD1A3A329DE9F9800D29B64 /* XCRemoteSwiftPackageReference "ProgressHUD" */,
 				6C9DD39629E0A1670044DEBC /* XCRemoteSwiftPackageReference "UIView-Shimmer" */,
 				6C6E9DD829E71DDB005B0297 /* XCRemoteSwiftPackageReference "DataCache" */,
 			);
@@ -610,14 +606,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		6CD1A3A329DE9F9800D29B64 /* XCRemoteSwiftPackageReference "ProgressHUD" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/relatedcode/ProgressHUD";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 13.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -640,11 +628,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6CBD79F429D5392800A490DF /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
 			productName = YouTubeiOSPlayerHelper;
-		};
-		6CD1A3A429DE9F9800D29B64 /* ProgressHUD */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6CD1A3A329DE9F9800D29B64 /* XCRemoteSwiftPackageReference "ProgressHUD" */;
-			productName = ProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 

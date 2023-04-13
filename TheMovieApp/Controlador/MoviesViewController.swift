@@ -23,6 +23,7 @@ class MoviesViewController: UIViewController {
     
     var activityView: UIActivityIndicatorView?
     var manager = MoviesManager()
+    var timerGetMoteMovies = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,13 @@ class MoviesViewController: UIViewController {
         
         shouldShowOnboarding()
         
+        timerGetMoteMovies = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(getMoreMovies), userInfo: nil, repeats: true)
+        
     }
+
+@objc func getMoreMovies() {
+    obtenerPeliculas(numPag: self.numPagina)
+}
     
     override func viewWillAppear(_ animated: Bool) {
         manager.checkInternetConnectivity { isInternetAvailable in
@@ -132,6 +139,9 @@ class MoviesViewController: UIViewController {
         self.showActivityIndicator()
         
         manager.getUpcomingMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
+            
+            print("Debug: numPages\(numPages)")
+
             self?.totalPages = numPages
             
             if let listaPeliculas = listaPeliculas {
@@ -143,10 +153,16 @@ class MoviesViewController: UIViewController {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                         self?.hideActivityIndicator()
                     }
-                    self?.numPagina += 1
-
                 }
             }
+            
+            self?.numPagina += 1
+            print("Debug: numPagina \(self?.numPagina ?? 0)")
+            ///Valida si la pagina actual es menor de las disponibles
+            if self?.numPagina == self?.totalPages {
+                self?.timerGetMoteMovies.invalidate()
+            }
+            
         }
     }
     
@@ -160,40 +176,33 @@ class MoviesViewController: UIViewController {
 }
 
 extension MoviesViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        guard !isLoadingMoreCharacters else { return }
-        
-        ///This shoet delay is because at the first calculation of the scrollView do the same validation to scroll
-        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
-            guard let self = self else { return }
-            let offset = scrollView.contentOffset.x
-            let totalContentHeight = scrollView.contentSize.width
-            let totalScrollViewFixedHeight = scrollView.frame.size.width
-            
-            if offset >= (totalContentHeight - totalScrollViewFixedHeight) {
-                
-                ///Valida si la pagina actual es menor de las disponibles
-                if self.numPagina < self.totalPages {
-                    
-                    
-                    DispatchQueue.main.async {
-                        self.obtenerPeliculas(numPag: self.numPagina)
-                    }
-                }
-            }
-            t.invalidate()
-        }
-    }
-    
-    func mostrarAlerta(titulo: String, mensaje: String) {
-        let alerta = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
-        let accionAceptar = UIAlertAction(title: "OK", style: .default) { _ in
-            //Do something
-        }
-        alerta.addAction(accionAceptar)
-        present(alerta, animated: true)
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//
+//        guard !isLoadingMoreCharacters else { return }
+//
+//        ///This shoet delay is because at the first calculation of the scrollView do the same validation to scroll
+//        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
+//            guard let self = self else { return }
+//            let offset = scrollView.contentOffset.x
+//            let totalContentHeight = scrollView.contentSize.width
+//            let totalScrollViewFixedHeight = scrollView.frame.size.width
+//
+//            if offset >= (totalContentHeight - totalScrollViewFixedHeight) {
+//
+//                ///Valida si la pagina actual es menor de las disponibles
+//                if self.numPagina < self.totalPages {
+//
+//
+//                    DispatchQueue.main.async {
+//                        self.obtenerPeliculas(numPag: self.numPagina)
+//                    }
+//                } else {
+//                    timerGetMoteMovies.invalidate()
+//                }
+//            }
+//            t.invalidate()
+//        }
+//    }
 }
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {

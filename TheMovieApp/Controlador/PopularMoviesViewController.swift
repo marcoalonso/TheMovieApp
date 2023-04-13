@@ -7,7 +7,6 @@
 
 import UIKit
 import Kingfisher
-import ProgressHUD
 import DataCache
 
 class PopularMoviesViewController: UIViewController {
@@ -19,16 +18,24 @@ class PopularMoviesViewController: UIViewController {
     var numPagina = 1
     var totalPages = 1
     private var isLoadingMoreCharacters = false
-    
+    var timerGetMoteMovies = Timer()
     var manager = MoviesManager()
+    var activityView: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         popularMoviesCollection.delegate = self
         popularMoviesCollection.dataSource = self
         
         setupCollection()
+        obtenerPeliculas(numPag: self.numPagina)
+        
+        timerGetMoteMovies = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(getMoreMovies), userInfo: nil, repeats: true)
+        
+    }
+
+    @objc func getMoreMovies() {
         obtenerPeliculas(numPag: self.numPagina)
     }
     
@@ -87,6 +94,20 @@ class PopularMoviesViewController: UIViewController {
         }
     }
     
+    
+    func showActivityIndicator() {
+        activityView = UIActivityIndicatorView(style: .large)
+        activityView?.center = self.view.center
+        self.view.addSubview(activityView!)
+        activityView?.startAnimating()
+    }
+    
+    func hideActivityIndicator(){
+        if (activityView != nil){
+            activityView?.stopAnimating()
+        }
+    }
+    
     private func obtenerPeliculas(numPag: Int){
         
         ///Si esta cargando mas caracteres detente
@@ -94,10 +115,13 @@ class PopularMoviesViewController: UIViewController {
             return
         }
         isLoadingMoreCharacters = true
-        ProgressHUD.show("Buscando", icon: .shuffle)
+        showActivityIndicator()
         
-        manager.getPopularMovies(numPagina: numPag) { numPages, listaPeliculas, error in
+        manager.getPopularMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
+            guard let self = self else { return }
             self.totalPages = numPages
+            print("Debug: totalPages \(self.totalPages)")
+
             
             if let listaPeliculas = listaPeliculas {
                 print("Debug: listaPeliculas \(listaPeliculas)")
@@ -108,12 +132,16 @@ class PopularMoviesViewController: UIViewController {
                     self.popularMoviesCollection.reloadData()
                     self.isLoadingMoreCharacters = false
 
-                        ProgressHUD.remove()
-                    
-                    self.numPagina += 1
-                    print("Debug: numPag func\(self.numPagina)")
-
+                    self.hideActivityIndicator()
                 }
+            }
+            
+            self.numPagina += 1
+            print("Debug: numPag \(self.numPagina)")
+            
+            ///Valida si la pagina actual es menor de las disponibles
+            if self.numPagina == self.totalPages {
+                self.timerGetMoteMovies.invalidate()
             }
         }
     }
@@ -122,31 +150,7 @@ class PopularMoviesViewController: UIViewController {
 
 // MARK:  DidScroll
 extension PopularMoviesViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        guard !isLoadingMoreCharacters else { return }
-        
-        ///This shoet delay is because at the first calculation of the scrollView do the same validation to scroll
-        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
-            guard let self = self else { return }
-            let offset = scrollView.contentOffset.x
-            let totalContentHeight = scrollView.contentSize.width
-            let totalScrollViewFixedHeight = scrollView.frame.size.width
-            
-            if offset >= (totalContentHeight - totalScrollViewFixedHeight) {
-                
-                ///Valida si la pagina actual es menor de las disponibles
-                if self.numPagina < self.totalPages {
-                    
-                    
-                    DispatchQueue.main.async {
-                        self.obtenerPeliculas(numPag: self.numPagina)
-                    }
-                }
-            }
-            t.invalidate()
-        }
-    }
+    
 }
 
 // MARK:  FlowLayout
