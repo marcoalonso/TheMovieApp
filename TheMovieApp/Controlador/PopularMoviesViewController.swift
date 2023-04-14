@@ -134,7 +134,6 @@ class PopularMoviesViewController: UIViewController {
             }
             
             self.numPagina += 1
-            print("Debug: numPag \(self.numPagina)")
             
             ///Valida si la pagina actual es menor de las disponibles
             if self.numPagina == self.totalPages {

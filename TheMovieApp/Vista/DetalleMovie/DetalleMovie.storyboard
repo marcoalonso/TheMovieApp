@@ -19,17 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYF-LL-DAN" customClass="YTPlayerView">
-                                <rect key="frame" x="0.0" y="59" width="393" height="220"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="220"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="NIb-Kq-MBd"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nzq-E6-OHs">
-                                <rect key="frame" x="0.0" y="59" width="393" height="220"/>
+                                <rect key="frame" x="0.0" y="94" width="393" height="220"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wcV-84-eNK">
-                                <rect key="frame" x="10" y="289" width="373" height="563"/>
+                                <rect key="frame" x="10" y="324" width="373" height="528"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hpu-Lu-D0f">
                                         <rect key="frame" x="0.0" y="0.0" width="373" height="1110"/>
@@ -42,20 +42,20 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="TRz-iM-Nku"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHL-li-krs">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t5H-UG-Tx4">
                                                         <rect key="frame" x="273" y="0.0" width="30" height="30"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="30" id="qyM-N0-E9k"/>
+                                                            <constraint firstAttribute="width" constant="30" id="udT-cP-ix2"/>
                                                         </constraints>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" image="square.and.arrow.up" catalog="system"/>
                                                         <connections>
-                                                            <action selector="shareButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="uN4-4S-SA2"/>
+                                                            <action selector="shareButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RfV-La-EXu"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5F-ND-51x">
@@ -92,7 +92,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha: 23 Abril 2023" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sUd-id-QUn">
                                                         <rect key="frame" x="0.0" y="0.0" width="248.66666666666666" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -263,7 +263,7 @@
                             <constraint firstItem="IUa-76-zEn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="VFf-E1-sms"/>
                             <constraint firstItem="RYF-LL-DAN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YJf-e2-6C4"/>
                             <constraint firstAttribute="bottom" secondItem="wcV-84-eNK" secondAttribute="bottom" id="bhK-yQ-nhp"/>
-                            <constraint firstItem="RYF-LL-DAN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="gcZ-ou-8bd"/>
+                            <constraint firstItem="RYF-LL-DAN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="35" id="gcZ-ou-8bd"/>
                             <constraint firstAttribute="trailing" secondItem="wcV-84-eNK" secondAttribute="trailing" constant="10" id="jml-BM-oef"/>
                             <constraint firstItem="nzq-E6-OHs" firstAttribute="top" secondItem="RYF-LL-DAN" secondAttribute="top" id="odR-UP-afy"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RYF-LL-DAN" secondAttribute="trailing" id="vgJ-ts-rSr"/>
@@ -279,6 +279,7 @@
                         <outlet property="posterMovieImage" destination="nzq-E6-OHs" id="yhe-4I-npJ"/>
                         <outlet property="relatedMoviesConstraint" destination="rp5-hq-xKU" id="dFj-vT-ji2"/>
                         <outlet property="releaseDateMovieLabel" destination="sUd-id-QUn" id="nrR-p7-IBt"/>
+                        <outlet property="shareButtonContraint" destination="udT-cP-ix2" id="Uiw-CF-9TG"/>
                         <outlet property="similarMoviesCollection" destination="sm8-y1-6Ua" id="Bxa-Gn-ENe"/>
                         <outlet property="trailersMovieConstraint" destination="wF6-QN-rCQ" id="zD7-TT-ojs"/>
                         <outlet property="trailersTableView" destination="Hgu-p6-vEX" id="X8S-lj-awq"/>

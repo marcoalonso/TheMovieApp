@@ -27,6 +27,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     @IBOutlet weak var favouriteInfoLabel: UILabel!
     @IBOutlet weak var watchLateInfoLabel: UILabel!
     
+    @IBOutlet weak var shareButtonContraint: NSLayoutConstraint!
     
     /// Variables
     var recibirPeliculaMostrar: DataMovie?
@@ -66,7 +67,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        shareButtonContraint.constant = 0
         searchInFavouriteMovies()
         searchInWatchLate()
     }
@@ -333,18 +334,26 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
   
     @IBAction func shareButton(_ sender: UIButton) {
-        guard let image = posterMovieImage.image else {
-            print("Drbug: Error al compartir imagen de pelicula")
-            return
+        var elementosCompartir: [Any] = [nameOfMovieLabel.text ?? "Movieverse World",
+                                         "https://testflight.apple.com/join/QCF7X63I"]
+        
+        
+        if let poster = self.recibirPosterMovie {
+            if let image = UIImage(data: poster) {
+                elementosCompartir.append(image)
+            }
+        } 
+        
+
+        let activityViewController = UIActivityViewController(activityItems: elementosCompartir, applicationActivities: nil)
+
+        if let popoverController = activityViewController.popoverPresentationController {
+            popoverController.sourceView = sender as? UIView
+            popoverController.sourceRect = (sender as AnyObject).bounds
+            popoverController.permittedArrowDirections = .any
         }
-        
-        let vc = UIActivityViewController(
-            activityItems:
-                ["\(nameOfMovieLabel.text ?? "-") descarga la app en: https://testflight.apple.com/join/QCF7X63I", image], applicationActivities: nil)
-        
-        vc.popoverPresentationController?.sourceView = sender
-        vc.popoverPresentationController?.sourceRect = sender.frame
-        self.present(vc, animated: true)
+
+        present(activityViewController, animated: true, completion: nil)
     }
     
     
@@ -398,6 +407,7 @@ extension DetailTrailersMovieViewController: UITableViewDelegate, UITableViewDat
             celda.posterTrailer.kf.setImage(with: url)
             celda.posterTrailer.layer.cornerRadius = 20
             celda.posterTrailer.layer.masksToBounds = true
+            
         }
         
         if let imagenCoreData = recibirPosterMovie {
@@ -405,6 +415,9 @@ extension DetailTrailersMovieViewController: UITableViewDelegate, UITableViewDat
             celda.posterTrailer.image = image
             celda.posterTrailer.layer.cornerRadius = 20
             celda.posterTrailer.layer.masksToBounds = true
+            shareButtonContraint.constant = 30
+        } else {
+            shareButtonContraint.constant = 0
         }
         
         
