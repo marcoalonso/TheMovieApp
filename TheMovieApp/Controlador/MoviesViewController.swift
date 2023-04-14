@@ -139,8 +139,6 @@ class MoviesViewController: UIViewController {
         
         manager.getUpcomingMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
             
-            print("Debug: numPages\(numPages)")
-
             self?.totalPages = numPages
             
             if let listaPeliculas = listaPeliculas {
@@ -156,7 +154,6 @@ class MoviesViewController: UIViewController {
             }
             
             self?.numPagina += 1
-            print("Debug: numPagina \(self?.numPagina ?? 0)")
             ///Valida si la pagina actual es menor de las disponibles
             if self?.numPagina == self?.totalPages {
                 self?.timerGetMoteMovies.invalidate()

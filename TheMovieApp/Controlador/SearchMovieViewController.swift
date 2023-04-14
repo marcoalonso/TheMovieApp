@@ -11,7 +11,9 @@ class SearchMovieViewController: UIViewController {
     
     @IBOutlet weak var nameOfMovieTextField: UITextField!
     @IBOutlet weak var foundMoviesCollection: UICollectionView!
+    @IBOutlet weak var cancelButtonConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var eraseButtonConstraint: NSLayoutConstraint!
     var moviesFound: [DataMovie] = []
     
     var manager = MoviesManager()
@@ -52,6 +54,9 @@ class SearchMovieViewController: UIViewController {
         if let flowLayout = foundMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .vertical
         }
+        
+        cancelButtonConstraint.constant = 0
+        eraseButtonConstraint.constant = 0
     }
         
      
@@ -77,8 +82,6 @@ class SearchMovieViewController: UIViewController {
                     self?.foundMoviesCollection.reloadData()
                 }
             }
-        
-            
         }
     }
     
@@ -93,7 +96,23 @@ class SearchMovieViewController: UIViewController {
         alerta.addAction(accionAceptar)
         present(alerta, animated: true)
     }
-
+    
+    // MARK:  Actions
+    @IBAction func erasteTextButton(_ sender: UIButton) {
+        eraseButtonConstraint.constant = 0
+        nameOfMovieTextField.text = ""
+    }
+    
+    @IBAction func cancelButton(_ sender: UIButton) {
+        if nameOfMovieTextField.text == "" {
+            nameOfMovieTextField.text = " "
+            nameOfMovieTextField.endEditing(true)
+        }
+        cancelButtonConstraint.constant = 0
+        eraseButtonConstraint.constant = 0
+        nameOfMovieTextField.endEditing(true)
+    }
+    
 }
 
 
@@ -153,11 +172,10 @@ extension SearchMovieViewController: UITextFieldDelegate {
             print("Debug: nameOfMovie \(nameOfMovie)")
 
         }
-        
-        
         textField.text = ""
-        //ocultar teclado
         textField.endEditing(true)
+        eraseButtonConstraint.constant = 0
+        cancelButtonConstraint.constant = 0
         
     }
     
@@ -173,8 +191,20 @@ extension SearchMovieViewController: UITextFieldDelegate {
         }
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        cancelButtonConstraint.constant = 80
+        return true
+    }
+    
     ///4.- Buscando cada vez que el usuario escribe un nuevo caracter.
     func textFieldDidChangeSelection(_ textField: UITextField) {
+        cancelButtonConstraint.constant = 80
+        if textField.text!.count > 0 {
+            eraseButtonConstraint.constant = 20
+        } else {
+            eraseButtonConstraint.constant = 0
+        }
+        
         if textField.text!.count < 4 {
             self.moviesFound.removeAll()
             self.foundMoviesCollection.reloadData()

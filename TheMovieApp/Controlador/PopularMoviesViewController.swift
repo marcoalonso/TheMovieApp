@@ -120,11 +120,8 @@ class PopularMoviesViewController: UIViewController {
         manager.getPopularMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
             guard let self = self else { return }
             self.totalPages = numPages
-            print("Debug: totalPages \(self.totalPages)")
-
             
             if let listaPeliculas = listaPeliculas {
-                print("Debug: listaPeliculas \(listaPeliculas)")
 
                 self.popularMoviesList.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
                 

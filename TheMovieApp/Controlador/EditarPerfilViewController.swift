@@ -15,7 +15,8 @@ class EditarPerfilViewController: UIViewController {
     
     @IBOutlet weak var profileUser: UIImageView!
     @IBOutlet weak var nameOfUser: UITextField!
-    @IBOutlet weak var genresUser: UITextField!
+    @IBOutlet weak var genresUser: UITextView!
+    
     
     var accessOfUser: Bool = false
     
@@ -149,6 +150,10 @@ class EditarPerfilViewController: UIViewController {
     }
     
     // MARK:  Actions
+    
+    @IBAction func cancelarButton(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
     
     @IBAction func saveButton(_ sender: UIButton) {
         if nameOfUser.text != "" {
