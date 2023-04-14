@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -63,7 +64,7 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" systemColor="systemPurpleColor"/>
+                                                <color key="value" name="AccentColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -414,7 +415,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q5S-Df-9iX">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NPk-ay-D4V">
                                     <size key="itemSize" width="172" height="247"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -449,7 +450,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Q5S-Df-9iX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="U6V-9t-7Sx"/>
                             <constraint firstItem="Q5S-Df-9iX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UwP-AU-eo7"/>
@@ -489,8 +490,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXF-Tz-ZHL">
                                                 <rect key="frame" x="0.0" y="0.0" width="293" height="40"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S8j-WS-B27">
-                                                        <rect key="frame" x="3" y="3" width="287" height="34"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="S8j-WS-B27">
+                                                        <rect key="frame" x="3" y="3" width="284" height="34"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jyL-4N-DXr">
                                                                 <rect key="frame" x="0.0" y="0.99999999999999645" width="20" height="32.333333333333329"/>
@@ -500,24 +501,21 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="buscar película" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d1Q-Xb-ZSJ">
-                                                                <rect key="frame" x="20" y="0.0" width="247" height="34"/>
+                                                                <rect key="frame" x="23" y="0.0" width="238" height="34"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="search"/>
                                                                 <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                        <real key="value" value="1"/>
-                                                                    </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="10"/>
+                                                                        <real key="value" value="0.0"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                 </userDefinedRuntimeAttributes>
                                                             </textField>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zvb-Is-vep">
-                                                                <rect key="frame" x="267" y="0.0" width="20" height="34"/>
+                                                                <rect key="frame" x="264" y="0.0" width="20" height="34"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="20" id="hvB-N5-8X1"/>
                                                                 </constraints>
@@ -537,7 +535,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="bGK-yh-Ka4"/>
                                                     <constraint firstItem="S8j-WS-B27" firstAttribute="top" secondItem="TXF-Tz-ZHL" secondAttribute="top" constant="3" id="icP-ro-C3N"/>
                                                     <constraint firstAttribute="bottom" secondItem="S8j-WS-B27" secondAttribute="bottom" constant="3" id="tvH-Dw-uEI"/>
-                                                    <constraint firstAttribute="trailing" secondItem="S8j-WS-B27" secondAttribute="trailing" constant="3" id="wsI-KA-nan"/>
+                                                    <constraint firstAttribute="trailing" secondItem="S8j-WS-B27" secondAttribute="trailing" constant="6" id="wsI-KA-nan"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -627,7 +625,7 @@
             </objects>
             <point key="canvasLocation" x="951.90839694656484" y="729.57746478873241"/>
         </scene>
-        <!--Populares-->
+        <!--Películas Populares-->
         <scene sceneID="1CX-ME-wvm">
             <objects>
                 <viewController id="h4y-l7-rQC" customClass="PopularMoviesViewController" customModule="TheMovieApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -636,8 +634,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ug5-uL-WgQ">
-                                <rect key="frame" x="0.0" y="64" width="393" height="705"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="0.0" y="108" width="393" height="661"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mKs-lb-lUe">
                                     <size key="itemSize" width="165" height="238"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -672,7 +670,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jJO-Vy-Syv"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Ug5-uL-WgQ" firstAttribute="trailing" secondItem="jJO-Vy-Syv" secondAttribute="trailing" id="1Qt-bN-MM1"/>
                             <constraint firstItem="Ug5-uL-WgQ" firstAttribute="leading" secondItem="jJO-Vy-Syv" secondAttribute="leading" id="HQw-gR-WHB"/>
@@ -680,14 +678,14 @@
                             <constraint firstItem="Ug5-uL-WgQ" firstAttribute="top" secondItem="jJO-Vy-Syv" secondAttribute="top" constant="5" id="fA8-7e-Nba"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Populares" image="checkmark.seal" catalog="system" id="89y-IY-s2y"/>
+                    <navigationItem key="navigationItem" title="Películas Populares" id="rgO-9H-d7U"/>
                     <connections>
                         <outlet property="popularMoviesCollection" destination="Ug5-uL-WgQ" id="gEa-3P-kv4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zmy-64-QLL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806.8702290076335" y="729.57746478873241"/>
+            <point key="canvasLocation" x="2733.5877862595421" y="729.57746478873241"/>
         </scene>
         <!--Favoritas ⭐️-->
         <scene sceneID="3vO-OS-7Q7">
@@ -728,7 +726,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ez-rF-z3F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3530.5343511450378" y="729.57746478873241"/>
+            <point key="canvasLocation" x="4457.2519083969464" y="729.57746478873241"/>
         </scene>
         <!--Detalle Movie View Controller-->
         <scene sceneID="cwm-nu-Fiw">
@@ -914,7 +912,7 @@
                     <connections>
                         <segue destination="5Ql-GN-34s" kind="relationship" relationship="viewControllers" id="5zp-Ze-jcN"/>
                         <segue destination="dDD-ga-KIA" kind="relationship" relationship="viewControllers" id="OWP-FQ-ohe"/>
-                        <segue destination="h4y-l7-rQC" kind="relationship" relationship="viewControllers" id="nPJ-zN-I1v"/>
+                        <segue destination="otd-q0-rFQ" kind="relationship" relationship="viewControllers" id="nPJ-zN-I1v"/>
                         <segue destination="Ecg-Tp-nqU" kind="relationship" relationship="viewControllers" id="rpH-V7-WHs"/>
                         <segue destination="qh9-16-EJ5" kind="relationship" relationship="viewControllers" id="5CN-JE-zWL"/>
                     </connections>
@@ -979,7 +977,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAH-u5-9aY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2603.8167938931297" y="729.57746478873241"/>
+            <point key="canvasLocation" x="3530.5343511450378" y="729.57746478873241"/>
+        </scene>
+        <!--Populares-->
+        <scene sceneID="9cn-hI-A0m">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="otd-q0-rFQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Populares" image="checkmark.seal" catalog="system" id="89y-IY-s2y"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yhO-vD-jg8">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="h4y-l7-rQC" kind="relationship" relationship="rootViewController" id="2pC-zG-vJh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BmK-mQ-gfs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1806.8702290076335" y="729.57746478873241"/>
         </scene>
     </scenes>
     <resources>
@@ -995,6 +1012,9 @@
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
+        <namedColor name="AccentColor">
+            <color red="1" green="0.22403998223807742" blue="0.16125725061080454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

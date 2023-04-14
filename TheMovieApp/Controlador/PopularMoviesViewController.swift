@@ -181,7 +181,7 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
         let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
         
         
-        ViewController.modalPresentationStyle = .pageSheet ///Tipo de visualizacion
+        ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
         
         ///Enviar informacion a traves de la instancia del view controller

@@ -175,7 +175,7 @@ extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
         let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
         
-        ViewController.modalPresentationStyle = .pageSheet ///Tipo de visualizacion
+        ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
         
         let movieData = DataMovie(backdrop_path: "", id: Int(movieSelected.id), original_title: movieSelected.titulo, overview: movieSelected.descripcion, title: movieSelected.titulo, release_date: movieSelected.fecha, poster_path: "")

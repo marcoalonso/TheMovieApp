@@ -89,7 +89,7 @@ extension FavoriteMoviesViewController: UITableViewDelegate, UITableViewDataSour
         let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
         let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
         
-        ViewController.modalPresentationStyle = .pageSheet ///Tipo de visualizacion
+        ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
         
         ///Enviar informacion a traves de la instancia del view controller
@@ -121,23 +121,6 @@ extension FavoriteMoviesViewController: UITableViewDelegate, UITableViewDataSour
             }
             self.tableFavouriteMovies.reloadData()
         }
-        
-//        let shareAction = UIContextualAction(style: .normal, title: "compartir") { _, _, _ in
-//
-//            guard let poster = self.favoriteMovies[indexPath.row].poster else { return }
-//            guard let image = UIImage(data: poster) else { return }
-//
-//            let vc = UIActivityViewController(
-//                activityItems:
-//                    ["\(self.favoriteMovies[indexPath.row].titulo ?? "") descarga la app en: https://testflight.apple.com/join/QCF7X63I", image], applicationActivities: nil)
-//
-//            self.present(vc, animated: true)
-//
-//        }
-        
-        
-//        shareAction.image = UIImage(systemName: "arrowshape.turn.up.right")
-//        shareAction.backgroundColor = .blue
         
         deleteAction.image = UIImage(systemName: "trash")
         deleteAction.backgroundColor = .red

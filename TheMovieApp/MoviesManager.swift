@@ -84,7 +84,6 @@ struct MoviesManager {
             
             ///** Guardar Cache **
             DataCache.instance.write(data: data, forKey: "dataPopularMovies")
-            print("Debug: cache creada \(data)")
             
             do {
                 
@@ -119,7 +118,7 @@ struct MoviesManager {
 
             ///** Guardar Cache **
             DataCache.instance.write(data: data, forKey: "dataUpcoming")
-            print("Debug: cache creada \(data)")
+           
             
             do {
                 

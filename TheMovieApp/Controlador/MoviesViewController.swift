@@ -103,7 +103,7 @@ class MoviesViewController: UIViewController {
     private func showTutorial(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "OnboardingViewController") as! OnboardingViewController
-        vc.modalPresentationStyle = .formSheet
+        vc.modalPresentationStyle = .fullScreen
         vc.modalTransitionStyle = .coverVertical
         self.present(vc, animated: true)
     }
@@ -233,7 +233,7 @@ extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDele
         let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
         let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
         
-        ViewController.modalPresentationStyle = .pageSheet ///Tipo de visualizacion
+        ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
         
         ///Enviar informacion a traves de la instancia del view controller

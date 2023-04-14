@@ -309,6 +309,11 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
     
     // MARK:  Actions
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func favouriteButton(_ sender: UIButton) {
         if !isFavourite {
             let generator = UINotificationFeedbackGenerator()
@@ -327,6 +332,20 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     }
     
   
+    @IBAction func shareButton(_ sender: UIButton) {
+        guard let image = posterMovieImage.image else {
+            print("Drbug: Error al compartir imagen de pelicula")
+            return
+        }
+        
+        let vc = UIActivityViewController(
+            activityItems:
+                ["\(nameOfMovieLabel.text ?? "-") descarga la app en: https://testflight.apple.com/join/QCF7X63I", image], applicationActivities: nil)
+        
+        vc.popoverPresentationController?.sourceView = sender
+        vc.popoverPresentationController?.sourceRect = sender.frame
+        self.present(vc, animated: true)
+    }
     
     
     
