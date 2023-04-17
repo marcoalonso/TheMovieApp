@@ -10,6 +10,7 @@ import CoreData
 
 class PerfilViewController: UIViewController {
     
+    @IBOutlet weak var historialEliminadoLabel: UILabel!
     @IBOutlet weak var photoUser: UIImageView!
     @IBOutlet weak var nameUser: UILabel!
     @IBOutlet weak var genresUser: UITextView!
@@ -40,6 +41,7 @@ class PerfilViewController: UIViewController {
     private func setupUI(){
         photoUser.layer.cornerRadius = 25
         photoUser.layer.masksToBounds = true
+        historialEliminadoLabel.isHidden = true
     }
     
     private func readProfileData(){
@@ -140,6 +142,16 @@ class PerfilViewController: UIViewController {
         let aceptar = UIAlertAction(title: "Si", style: .default) { _ in
             let historialMovies : [String] = []
             UserDefaults.standard.set(historialMovies, forKey: "historialMovies")
+            //Animacion
+            UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+                self.historialEliminadoLabel.isHidden = false
+            }, completion: nil)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+                UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseOut, animations: {
+                    self.historialEliminadoLabel.isHidden = true
+                }, completion: nil)
+            }
         }
         
         let cancelar = UIAlertAction(title: "No", style: .destructive)

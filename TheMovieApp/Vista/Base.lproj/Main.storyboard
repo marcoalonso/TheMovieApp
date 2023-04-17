@@ -201,7 +201,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Atb-4v-sUJ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Eliminar historia de búsqueda"/>
@@ -220,8 +220,14 @@
                                             <action selector="borrarHistorialButton:" destination="JlC-TB-JyR" eventType="touchUpInside" id="3vj-Vb-YUJ"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Historial de Búsqueda eliminado!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHY-cA-MdB">
+                                        <rect key="frame" x="0.0" y="265" width="353" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Películas que me gustaría ver" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hl-np-WFE">
-                                        <rect key="frame" x="0.0" y="265" width="353" height="40"/>
+                                        <rect key="frame" x="0.0" y="293" width="353" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="HYH-4Q-Cjt"/>
                                         </constraints>
@@ -230,7 +236,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WWu-3L-19h">
-                                        <rect key="frame" x="0.0" y="315" width="353" height="331"/>
+                                        <rect key="frame" x="0.0" y="343" width="353" height="303"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="WatchLateCell" id="gdT-Qx-9sk">
@@ -264,6 +270,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="genresUser" destination="PMM-Ax-gwi" id="7Dn-uZ-dhQ"/>
+                        <outlet property="historialEliminadoLabel" destination="cHY-cA-MdB" id="jTI-vk-c6N"/>
                         <outlet property="nameUser" destination="eNP-Gm-HLL" id="voT-lW-p6G"/>
                         <outlet property="photoUser" destination="2MA-vd-vvY" id="B3n-Gb-YnF"/>
                         <outlet property="tableWishListMovies" destination="WWu-3L-19h" id="NpE-Ll-1tI"/>
