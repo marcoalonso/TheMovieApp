@@ -132,6 +132,25 @@ class PerfilViewController: UIViewController {
         
     }
     
+    @IBAction func borrarHistorialButton(_ sender: UIButton) {
+        
+        
+        let alerta = UIAlertController(title: "Borrar historial", message: "¿Quieres eliminar el historia de búsqueda?", preferredStyle: .alert)
+        
+        let aceptar = UIAlertAction(title: "Si", style: .default) { _ in
+            let historialMovies : [String] = []
+            UserDefaults.standard.set(historialMovies, forKey: "historialMovies")
+        }
+        
+        let cancelar = UIAlertAction(title: "No", style: .destructive)
+        
+        alerta.addAction(aceptar)
+        alerta.addAction(cancelar)
+        present(alerta, animated: true)
+    }
+    
+    
+    
     @IBAction func editProfileButton(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "EditarPerfilViewController") as! EditarPerfilViewController
