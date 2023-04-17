@@ -13,7 +13,12 @@ class SearchMovieViewController: UIViewController {
     @IBOutlet weak var foundMoviesCollection: UICollectionView!
     @IBOutlet weak var cancelButtonConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var tablaHistorialMovies: UITableView!
+    @IBOutlet weak var alturaTablaHistorialConstraint: NSLayoutConstraint!
     @IBOutlet weak var eraseButtonConstraint: NSLayoutConstraint!
+    
+    var historialMovies : [String] = []
+    
     var moviesFound: [DataMovie] = []
     
     var manager = MoviesManager()
@@ -21,6 +26,9 @@ class SearchMovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tablaHistorialMovies.delegate = self
+        tablaHistorialMovies.dataSource = self
+        
         nameOfMovieTextField.delegate = self
         foundMoviesCollection.delegate = self
         foundMoviesCollection.dataSource = self
@@ -57,6 +65,7 @@ class SearchMovieViewController: UIViewController {
         
         cancelButtonConstraint.constant = 0
         eraseButtonConstraint.constant = 0
+        alturaTablaHistorialConstraint.constant = 0
     }
         
      
@@ -66,6 +75,7 @@ class SearchMovieViewController: UIViewController {
     
     private func searchMovie(nameOfMovie: String){
         self.moviesFound.removeAll()
+        self.foundMoviesCollection.reloadData()
         manager.searchMovies(nameOfMovie: nameOfMovie) { [weak self] numPagesFounded, listOfMovies, error in
             
             if error != nil || listOfMovies.isEmpty {
@@ -76,7 +86,6 @@ class SearchMovieViewController: UIViewController {
             
             if !listOfMovies.isEmpty {
                 self?.moviesFound = listOfMovies
-                print("Debug: listOfMovies VC \(listOfMovies)")
 
                 DispatchQueue.main.async {
                     self?.foundMoviesCollection.reloadData()
@@ -110,6 +119,7 @@ class SearchMovieViewController: UIViewController {
         }
         cancelButtonConstraint.constant = 0
         eraseButtonConstraint.constant = 0
+        alturaTablaHistorialConstraint.constant = 0
         nameOfMovieTextField.endEditing(true)
     }
     
@@ -149,7 +159,37 @@ extension SearchMovieViewController: UICollectionViewDelegate, UICollectionViewD
     
 }
 
-//EXTENSION
+// MARK:  Tabla Historial
+extension SearchMovieViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        historialMovies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let celda = tableView.dequeueReusableCell(withIdentifier: "celda", for: indexPath)
+        
+        celda.textLabel?.text = historialMovies[indexPath.row]
+        
+        return celda
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        nameOfMovieTextField.text = historialMovies[indexPath.row]
+        
+        if let movieToSearch = nameOfMovieTextField.text?.lowercased().replacingOccurrences(of: " ", with: "%20") {
+            searchMovie(nameOfMovie: movieToSearch)
+            alturaTablaHistorialConstraint.constant = 0
+            nameOfMovieTextField.endEditing(true)
+            nameOfMovieTextField.text = ""
+        }
+        
+    }
+    
+}
+
+
 extension SearchMovieViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 145, height: 195)
@@ -167,15 +207,36 @@ extension SearchMovieViewController: UITextFieldDelegate {
     ///2.- Identificar cuando el usuario termina de editar y que pueda borrar el contenido del textField
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField.text!.count > 2 {
-            let nameOfMovie = textField.text!.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current)
+            let nameOfMovie = textField.text!.lowercased().replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current)
             searchMovie(nameOfMovie: nameOfMovie )
-            print("Debug: nameOfMovie \(nameOfMovie)")
+            
+            //Buscar en el historial si ya existe p borrarlo y agregarlo mas reciente
+            if let historial = UserDefaults.standard.array(forKey: "historialMovies") as? [String] {
+                print("Debug: Buscando historial guardado...")
 
+                historialMovies = historial
+                historialMovies.reverse()
+                print("Debug: historialMovies \(historialMovies)")
+
+                print("Debug: nameOfMovie \(nameOfMovie)")
+
+                if let elementoEliminar = historialMovies.firstIndex(where: { $0 == "\(nameOfMovie.replacingOccurrences(of: "%20", with: " "))" }) {
+                    historialMovies.remove(at: elementoEliminar)
+                    print("Debug: elementoEliminar \(elementoEliminar)")
+                }
+            }
+            let nameWithouthCharacters = nameOfMovie.replacingOccurrences(of: "%20", with: " ")
+            historialMovies.append(nameWithouthCharacters)
+            historialMovies.reverse()
+            UserDefaults.standard.set(historialMovies, forKey: "historialMovies")
+
+            textField.text = ""
+            alturaTablaHistorialConstraint.constant = 0
+            textField.endEditing(true)
+            eraseButtonConstraint.constant = 0
+            cancelButtonConstraint.constant = 0
         }
-        textField.text = ""
-        textField.endEditing(true)
-        eraseButtonConstraint.constant = 0
-        cancelButtonConstraint.constant = 0
+        
         
     }
     
@@ -209,11 +270,43 @@ extension SearchMovieViewController: UITextFieldDelegate {
             self.moviesFound.removeAll()
             self.foundMoviesCollection.reloadData()
         }
-        if let nameOfMovie = textField.text?.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current) {
+         let nameOfMovie = nameOfMovieTextField.text!.replacingOccurrences(of: " ", with: "%20").folding( options: .diacriticInsensitive,locale: .current)
             if nameOfMovie.count > 3 {
                 self.moviesFound.removeAll()
+                self.foundMoviesCollection.reloadData()
+
                 self.searchMovie(nameOfMovie: nameOfMovie)
             }
+        
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        ///Buscar historial guardado para mostrar tabla
+        if let historial = UserDefaults.standard.array(forKey: "historialMovies") as? [String] {
+            
+            historialMovies = historial
+
+            if !historialMovies.isEmpty {
+//                self.borrarHistorialButton.isHidden = false
+                
+                switch historial.count {
+                case 1...2 :
+                    self.alturaTablaHistorialConstraint.constant = 70
+                case 3...4:
+                    self.alturaTablaHistorialConstraint.constant = 150
+                case 5...6:
+                    self.alturaTablaHistorialConstraint.constant = 200
+                default:
+                    self.alturaTablaHistorialConstraint.constant = 250
+                }
+                                self.tablaHistorialMovies.reloadData()
+            } else {
+                alturaTablaHistorialConstraint.constant = 0
+            }
+            
+        } else {
+            print("Debug: no hay historial guardado!")
+
         }
     }
 }

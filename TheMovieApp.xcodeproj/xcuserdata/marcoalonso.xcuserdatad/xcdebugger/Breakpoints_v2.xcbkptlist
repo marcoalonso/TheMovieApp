@@ -3,4 +3,159 @@
    uuid = "597035F6-B15E-495D-852C-7256330D4B88"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "31F889A1-42E9-415F-8A58-242072D22FB7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TheMovieApp/Controlador/SearchMovieViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "textFieldDidChangeSelection(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "31F889A1-42E9-415F-8A58-242072D22FB7 - 4b20381500959663"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheMovieApp.SearchMovieViewController.textFieldDidBeginEditing(__C.UITextField) -&gt; ()"
+                  moduleName = "TheMovieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcoalonso/Desktop/iOS%20Bootcamp%20Mx/TheMovieApp/TheMovieApp/Controlador/SearchMovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "552">
+               </Location>
+               <Location
+                  uuid = "31F889A1-42E9-415F-8A58-242072D22FB7 - afe66e7422017739"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheMovieApp.SearchMovieViewController.textFieldDidChangeSelection(__C.UITextField) -&gt; ()"
+                  moduleName = "TheMovieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcoalonso/Desktop/iOS%20Bootcamp%20Mx/TheMovieApp/TheMovieApp/Controlador/SearchMovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "2220">
+               </Location>
+               <Location
+                  uuid = "31F889A1-42E9-415F-8A58-242072D22FB7 - afe66e7422017739"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheMovieApp.SearchMovieViewController.textFieldDidChangeSelection(__C.UITextField) -&gt; ()"
+                  moduleName = "TheMovieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcoalonso/Desktop/iOS%20Bootcamp%20Mx/TheMovieApp/TheMovieApp/Controlador/SearchMovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "2240">
+               </Location>
+               <Location
+                  uuid = "31F889A1-42E9-415F-8A58-242072D22FB7 - afe66e7422017739"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheMovieApp.SearchMovieViewController.textFieldDidChangeSelection(__C.UITextField) -&gt; ()"
+                  moduleName = "TheMovieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcoalonso/Desktop/iOS%20Bootcamp%20Mx/TheMovieApp/TheMovieApp/Controlador/SearchMovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "3140">
+               </Location>
+               <Location
+                  uuid = "31F889A1-42E9-415F-8A58-242072D22FB7 - afe66e7422017739"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheMovieApp.SearchMovieViewController.textFieldDidChangeSelection(__C.UITextField) -&gt; ()"
+                  moduleName = "TheMovieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcoalonso/Desktop/iOS%20Bootcamp%20Mx/TheMovieApp/TheMovieApp/Controlador/SearchMovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "2228">
+               </Location>
+               <Location
+                  uuid = "31F889A1-42E9-415F-8A58-242072D22FB7 - afe66e7422017739"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheMovieApp.SearchMovieViewController.textFieldDidChangeSelection(__C.UITextField) -&gt; ()"
+                  moduleName = "TheMovieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcoalonso/Desktop/iOS%20Bootcamp%20Mx/TheMovieApp/TheMovieApp/Controlador/SearchMovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "2500">
+               </Location>
+               <Location
+                  uuid = "31F889A1-42E9-415F-8A58-242072D22FB7 - afe66e7422017739"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheMovieApp.SearchMovieViewController.textFieldDidChangeSelection(__C.UITextField) -&gt; ()"
+                  moduleName = "TheMovieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcoalonso/Desktop/iOS%20Bootcamp%20Mx/TheMovieApp/TheMovieApp/Controlador/SearchMovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "2204">
+               </Location>
+               <Location
+                  uuid = "31F889A1-42E9-415F-8A58-242072D22FB7 - afe66e7422017739"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheMovieApp.SearchMovieViewController.textFieldDidChangeSelection(__C.UITextField) -&gt; ()"
+                  moduleName = "TheMovieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcoalonso/Desktop/iOS%20Bootcamp%20Mx/TheMovieApp/TheMovieApp/Controlador/SearchMovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "1764">
+               </Location>
+               <Location
+                  uuid = "31F889A1-42E9-415F-8A58-242072D22FB7 - afe66e7422017758"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TheMovieApp.SearchMovieViewController.textFieldDidChangeSelection(__C.UITextField) -&gt; ()"
+                  moduleName = "TheMovieApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marcoalonso/Desktop/iOS%20Bootcamp%20Mx/TheMovieApp/TheMovieApp/Controlador/SearchMovieViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "267"
+                  endingLineNumber = "267"
+                  offsetFromSymbolStart = "1316">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

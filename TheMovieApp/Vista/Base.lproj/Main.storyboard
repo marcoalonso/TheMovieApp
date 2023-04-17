@@ -481,7 +481,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="osR-Lw-gnG">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="osR-Lw-gnG">
                                 <rect key="frame" x="10" y="64" width="373" height="695"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ma6-8a-DWX">
@@ -565,8 +565,30 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
+                                    <tableView clipsSubviews="YES" alpha="0.75" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qrv-fA-kmc">
+                                        <rect key="frame" x="0.0" y="40" width="373" height="250"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="zZd-Qd-rrw"/>
+                                        </constraints>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celda" id="3c0-JL-loy">
+                                                <rect key="frame" x="0.0" y="50" width="373" height="43.666667938232422"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3c0-JL-loy" id="5Bb-XX-MUX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="373" height="43.666667938232422"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </tableViewCellContentView>
+                                            </tableViewCell>
+                                        </prototypes>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tableView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Isc-rS-9Q5">
-                                        <rect key="frame" x="0.0" y="50" width="373" height="645"/>
+                                        <rect key="frame" x="0.0" y="290" width="373" height="405"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Dr4-9h-jYd">
                                             <size key="itemSize" width="154" height="227"/>
@@ -615,10 +637,12 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Buscar" image="magnifyingglass" catalog="system" id="Zkb-1N-8Db"/>
                     <connections>
+                        <outlet property="alturaTablaHistorialConstraint" destination="zZd-Qd-rrw" id="yQE-at-eVH"/>
                         <outlet property="cancelButtonConstraint" destination="OsW-CI-V1S" id="xgo-Xc-e3h"/>
                         <outlet property="eraseButtonConstraint" destination="hvB-N5-8X1" id="hxY-zJ-Xus"/>
                         <outlet property="foundMoviesCollection" destination="Isc-rS-9Q5" id="RGg-c7-6BM"/>
                         <outlet property="nameOfMovieTextField" destination="d1Q-Xb-ZSJ" id="hgm-Zo-1mo"/>
+                        <outlet property="tablaHistorialMovies" destination="qrv-fA-kmc" id="f3X-MY-PJo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fiT-TU-Fci" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1013,7 +1037,7 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
         <namedColor name="AccentColor">
-            <color red="1" green="0.22403998223807742" blue="0.16125725061080454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="1" green="0.22400000691413879" blue="0.16099999845027924" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
