@@ -73,9 +73,17 @@ extension FavoriteMoviesViewController: UITableViewDelegate, UITableViewDataSour
         cell.releaseDateMovie.text = favoriteMovies[indexPath.row].fecha
         cell.descripctionMovie.text = favoriteMovies[indexPath.row].descripcion
         
-        if let image = UIImage(data: favoriteMovies[indexPath.row].poster!) {
-            cell.posterMovie.image = image
+        if let dataImagen = favoriteMovies[indexPath.row].poster {
+            print("Debug: dataImagen \(dataImagen)")
+
+            if let image = UIImage(data: dataImagen) {
+                print("Debug: image \(image)")
+
+                cell.posterMovie.image = image
+            }
         }
+        
+        
        
         cell.posterMovie.layer.cornerRadius = 12
         cell.posterMovie.layer.masksToBounds = true
@@ -109,7 +117,7 @@ extension FavoriteMoviesViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let deleteAction  = UIContextualAction(style: .normal, title: "quitar") { _, _, _ in
+        let deleteAction  = UIContextualAction(style: .normal, title: "eliminar") { _, _, _ in
             
             self.contexto.delete(self.favoriteMovies[indexPath.row])
             self.favoriteMovies.remove(at: indexPath.row)

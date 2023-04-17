@@ -92,7 +92,7 @@ class EditarPerfilViewController: UIViewController {
             vc.allowsEditing = true
             
             let alerta = UIAlertController(title: "Seleccionar Foto", message: "Elige desde donde quieres escoger la foto", preferredStyle: .alert)
-            let camara = UIAlertAction(title: "Camara", style: .cancel) { _ in
+            let camara = UIAlertAction(title: "Camara", style: .default) { _ in
                 //Do something
                 vc.sourceType = .camera
                 self.present(vc, animated: true)
@@ -102,7 +102,7 @@ class EditarPerfilViewController: UIViewController {
                 vc.sourceType = .photoLibrary
                 self.present(vc, animated: true)
             }
-            let cancelar = UIAlertAction(title: "Cancelar", style: .default)
+            let cancelar = UIAlertAction(title: "Cancelar", style: .destructive)
             alerta.addAction(photos)
             alerta.addAction(camara)
             alerta.addAction(cancelar)

@@ -334,6 +334,8 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
   
     @IBAction func shareButton(_ sender: UIButton) {
+        print("Debug: share Button Tapped")
+
         var elementosCompartir: [Any] = [nameOfMovieLabel.text ?? "Movieverse World",
                                          "https://testflight.apple.com/join/QCF7X63I"]
         

@@ -71,9 +71,6 @@ struct MoviesManager {
         //URL
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=2cfa8720256036601fb9ac4e4bce1a9b&language=es-MX&page=\(numPagina)") else { return }
         
-        print("Debug: \(url)")
-
-        
         let tarea = URLSession.shared.dataTask(with: url) { data, _, error in
             
             guard let data = data, error == nil else {

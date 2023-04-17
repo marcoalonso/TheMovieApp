@@ -160,9 +160,13 @@ extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
         cell.namoOfMovieWatchLate.text = watchLateMovies[indexPath.row].titulo
         cell.releaseDateWatchLate.text = watchLateMovies[indexPath.row].fecha
         if let dataImage = watchLateMovies[indexPath.row].poster {
+            print("Debug: dataImage watch Late Movies : \(dataImage)")
+
             cell.posterMovieWatchLate.image = UIImage(data: dataImage)
             cell.posterMovieWatchLate.layer.masksToBounds = true
             cell.posterMovieWatchLate.layer.cornerRadius = 15
+        } else {
+            print("Debug: no hay data en ver peliculas despues")
         }
         return cell
     }
@@ -188,7 +192,7 @@ extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let deleteAction  = UIContextualAction(style: .normal, title: "quitar") { _, _, _ in
+        let deleteAction  = UIContextualAction(style: .normal, title: "eliminar") { _, _, _ in
             
             self.contexto.delete(self.watchLateMovies[indexPath.row])
             self.watchLateMovies.remove(at: indexPath.row)
