@@ -14,11 +14,23 @@ class PopularMoviesViewController: UIViewController {
     
     @IBOutlet weak var popularMoviesCollection: UICollectionView!
     
+    @IBOutlet weak var topRatedMoviesCollection: UICollectionView!
+    
     var popularMoviesList: [DataMovie] = []
-    var numPagina = 1
-    var totalPages = 1
-    private var isLoadingMoreCharacters = false
+    var topRatedMovies: [DataMovie] = []
+    
+    var numPagePopularMovies = 1
+    var totalPagesPopularMovies = 1
+    
+    var numPageTopRatedMovies = 1
+    var totalPagesTopRatedMovies  = 1
+    
+    private var isLoadingMorePopularMovies = false
+    private var isLoadingMoreTopRatedMovies = false
+    
     var timerGetMoteMovies = Timer()
+    var timerGetTopRatedMovies = Timer()
+    
     var manager = MoviesManager()
     var activityView: UIActivityIndicatorView?
     
@@ -28,15 +40,25 @@ class PopularMoviesViewController: UIViewController {
         popularMoviesCollection.delegate = self
         popularMoviesCollection.dataSource = self
         
+        topRatedMoviesCollection.delegate = self
+        topRatedMoviesCollection.dataSource = self
+        
         setupCollection()
-        obtenerPeliculas(numPag: self.numPagina)
+        obtenerPeliculas(numPag: self.numPagePopularMovies)
+        obtenerTopMovies(numPag: self.numPageTopRatedMovies)
+        
         
         timerGetMoteMovies = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getMoreMovies), userInfo: nil, repeats: true)
         
+        timerGetTopRatedMovies = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getTopRatedMovies), userInfo: nil, repeats: true)
     }
 
     @objc func getMoreMovies() {
-        obtenerPeliculas(numPag: self.numPagina)
+        obtenerPeliculas(numPag: self.numPagePopularMovies)
+    }
+    
+    @objc func getTopRatedMovies() {
+        obtenerTopMovies(numPag: self.numPageTopRatedMovies)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,6 +74,11 @@ class PopularMoviesViewController: UIViewController {
     private func setupCollection(){
         popularMoviesCollection.collectionViewLayout = UICollectionViewFlowLayout()
         if let flowLayout = popularMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .horizontal
+        }
+        
+        topRatedMoviesCollection.collectionViewLayout = UICollectionViewFlowLayout()
+        if let flowLayout = topRatedMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
         }
     }
@@ -109,17 +136,15 @@ class PopularMoviesViewController: UIViewController {
     }
     
     private func obtenerPeliculas(numPag: Int){
-        
-        ///Si esta cargando mas caracteres detente
-        guard !isLoadingMoreCharacters else {
+        guard !isLoadingMorePopularMovies else {
             return
         }
-        isLoadingMoreCharacters = true
-//        showActivityIndicator()
+        
+        isLoadingMorePopularMovies = true
         
         manager.getPopularMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
             guard let self = self else { return }
-            self.totalPages = numPages
+            self.totalPagesPopularMovies = numPages
             
             if let listaPeliculas = listaPeliculas {
 
@@ -127,16 +152,45 @@ class PopularMoviesViewController: UIViewController {
                 
                 DispatchQueue.main.async { ///Hilo principal, actualizar la Interfaz de usuario
                     self.popularMoviesCollection.reloadData()
-                    self.isLoadingMoreCharacters = false
-
-//                    self.hideActivityIndicator()
+                    self.isLoadingMorePopularMovies = false
                 }
             }
             
-            self.numPagina += 1
+            self.numPagePopularMovies += 1
             
             ///Valida si la pagina actual es menor de las disponibles
-            if self.numPagina == self.totalPages {
+            if self.numPagePopularMovies == self.totalPagesPopularMovies {
+                self.timerGetMoteMovies.invalidate()
+            }
+        }
+    }
+    
+    private func obtenerTopMovies(numPag: Int){
+        guard !isLoadingMoreTopRatedMovies else {
+            return
+        }
+        
+        isLoadingMoreTopRatedMovies = true
+        
+        manager.getTopRatedMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
+            guard let self = self else { return }
+            self.totalPagesTopRatedMovies = numPages
+            
+            if let listaPeliculas = listaPeliculas {
+                print("Debug: listaPeliculas VC Popular \(listaPeliculas)")
+
+                self.topRatedMovies.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
+                
+                DispatchQueue.main.async { ///Hilo principal, actualizar la Interfaz de usuario
+                    self.topRatedMoviesCollection.reloadData()
+                    self.isLoadingMoreTopRatedMovies = false
+                }
+            }
+            
+            self.numPageTopRatedMovies += 1
+            
+            ///Valida si la pagina actual es menor de las disponibles
+            if self.numPageTopRatedMovies == self.totalPagesTopRatedMovies {
                 self.timerGetMoteMovies.invalidate()
             }
         }
@@ -144,38 +198,58 @@ class PopularMoviesViewController: UIViewController {
 
 }
 
-// MARK:  DidScroll
-extension PopularMoviesViewController: UIScrollViewDelegate {
-    
-}
 
-// MARK:  FlowLayout
-extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 145, height: 195)
-    }
 
-}
-
+// MARK:  CollectionView Methods
 extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        popularMoviesList.count
+        if collectionView == self.popularMoviesCollection {
+            return popularMoviesList.count
+        }
+        
+        if collectionView == self.topRatedMoviesCollection {
+            return topRatedMovies.count
+        }
+        
+        else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let celda = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularesCell", for: indexPath) as! PopularesCell
+        if collectionView == self.popularMoviesCollection {
+            let celda = collectionView.dequeueReusableCell(withReuseIdentifier: "PopularesCell", for: indexPath) as! PopularesCell
+            
+            celda.setupCell(movie: popularMoviesList[indexPath.row])
+            
+            return celda
+        }
         
-        celda.setupCell(movie: popularMoviesList[indexPath.row])
-        
-        return celda
+        if collectionView == self.topRatedMoviesCollection {
+            let celda = collectionView.dequeueReusableCell(withReuseIdentifier: "TopRatedCell", for: indexPath) as! TopRatedCell
+            
+            celda.setupCell(movie: topRatedMovies[indexPath.row])
+            
+            return celda
+        } else {
+            return UICollectionViewCell()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let ViewController = storyboard.instantiateViewController(withIdentifier: "DetalleMovieViewController") as! DetalleMovieViewController
-        
-        ///- * New Flow of Movie Detail
+
+        switch collectionView {
+        case popularMoviesCollection:
+            goToDetailMovieTrailer(movieToWatch: popularMoviesList[indexPath.row])
+            
+        case topRatedMoviesCollection:
+            goToDetailMovieTrailer(movieToWatch: topRatedMovies[indexPath.row])
+        default:
+            print("Default")
+        }
+    }
+    
+    func goToDetailMovieTrailer(movieToWatch: DataMovie){
         let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
         let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
         
@@ -184,9 +258,24 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
         
         ///Enviar informacion a traves de la instancia del view controller
-        ViewController.recibirPeliculaMostrar = popularMoviesList[indexPath.row]
+        ViewController.recibirPeliculaMostrar = movieToWatch
         
         present(ViewController, animated: true)
     }
-    
+}
+
+// MARK:  FlowLayout
+extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.topRatedMoviesCollection {
+            return CGSize(width: 145, height: 195)
+        }
+        
+        if collectionView == self.popularMoviesCollection {
+            return CGSize(width: 145, height: 195)
+        } else {
+            return CGSize(width: 145, height: 195)
+        }
+    }
+
 }

@@ -101,6 +101,36 @@ struct MoviesManager {
         tarea.resume()
     }
     
+    func getTopRatedMovies(numPagina : Int = 1, completion: @escaping (Int, [DataMovie]?, Error?) -> () ) {
+        guard let url = URL(string: "https://api.themoviedb.org/3/movie/top_rated?api_key=2cfa8720256036601fb9ac4e4bce1a9b&language=es-MX&page=\(numPagina)") else { return }
+        
+        let tarea = URLSession.shared.dataTask(with: url) { data, _, error in
+            
+            guard let data = data, error == nil else {
+                print("Error al obtener la data desde el server")
+                completion(0, nil, error)
+                return
+            }
+
+            ///** Guardar Cache **
+            DataCache.instance.write(data: data, forKey: "dataTopRated")
+            
+            do {
+                let dataDecodificada = try JSONDecoder().decode(MovieResponseDataModel.self, from: data)
+                let listaPeliculas = dataDecodificada.results ///Extraer la informacion de las peliculas
+                let numPages = dataDecodificada.total_pages
+                
+                completion(numPages ?? 0, listaPeliculas, nil) ///Devuelve al ViewController el arreglo de peliculas
+                
+            } catch {
+                print("Error al decodificar la data \(error.localizedDescription)")
+            }
+            
+        }
+        
+        tarea.resume()
+    }
+    
     func getUpcomingMovies(numPagina: Int = 1, completion: @escaping (Int, [DataMovie]?, Error?) -> Void ) {
         //URL
         guard let url = URL(string: "https://api.themoviedb.org/3/movie/upcoming?api_key=2cfa8720256036601fb9ac4e4bce1a9b&language=es-MX&page=\(numPagina)") else { return }

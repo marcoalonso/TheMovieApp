@@ -14,7 +14,7 @@ class MoviesViewController: UIViewController {
     
     @IBOutlet weak var estrenosCollection: UICollectionView!
     
-    var listaProximosEstrenos: [DataMovie] = []
+    var upcomingMovies: [DataMovie] = []
     var numPagina = 1
     var totalPages = 1
     
@@ -75,8 +75,8 @@ class MoviesViewController: UIViewController {
         if let dataCache = DataCache.instance.readData(forKey: "dataUpcoming") {
             do {
                 let moviesFromCache = try JSONDecoder().decode(MovieDataModel.self, from: dataCache)
-                self.listaProximosEstrenos = moviesFromCache.results ?? []
-                print("Debug: listaProximosEstrenos \(self.listaProximosEstrenos.count)")
+                self.upcomingMovies = moviesFromCache.results ?? []
+                print("Debug: listaProximosEstrenos \(self.upcomingMovies.count)")
 
                 DispatchQueue.main.async {
                     self.estrenosCollection.reloadData()
@@ -142,7 +142,7 @@ class MoviesViewController: UIViewController {
             self?.totalPages = numPages
             
             if let listaPeliculas = listaPeliculas {
-                self?.listaProximosEstrenos.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
+                self?.upcomingMovies.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
                 
                 DispatchQueue.main.async { ///Hilo principal, actualizar la Interfaz de usuario
                     self?.estrenosCollection.reloadData()
@@ -172,33 +172,6 @@ class MoviesViewController: UIViewController {
 }
 
 extension MoviesViewController: UIScrollViewDelegate {
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//
-//        guard !isLoadingMoreCharacters else { return }
-//
-//        ///This shoet delay is because at the first calculation of the scrollView do the same validation to scroll
-//        Timer.scheduledTimer(withTimeInterval: 0.2, repeats: false) { [weak self] t in
-//            guard let self = self else { return }
-//            let offset = scrollView.contentOffset.x
-//            let totalContentHeight = scrollView.contentSize.width
-//            let totalScrollViewFixedHeight = scrollView.frame.size.width
-//
-//            if offset >= (totalContentHeight - totalScrollViewFixedHeight) {
-//
-//                ///Valida si la pagina actual es menor de las disponibles
-//                if self.numPagina < self.totalPages {
-//
-//
-//                    DispatchQueue.main.async {
-//                        self.obtenerPeliculas(numPag: self.numPagina)
-//                    }
-//                } else {
-//                    timerGetMoteMovies.invalidate()
-//                }
-//            }
-//            t.invalidate()
-//        }
-//    }
 }
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
@@ -211,14 +184,14 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
 // MARK:  UICollectionViewDataSource
 extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listaProximosEstrenos.count
+        return upcomingMovies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let celda = collectionView.dequeueReusableCell(withReuseIdentifier: "EstrenosCell", for: indexPath) as! EstrenosCell
         
-        celda.setupCell(movie: listaProximosEstrenos[indexPath.row])
+        celda.setupCell(movie: upcomingMovies[indexPath.row])
         
         
         return celda
@@ -237,7 +210,7 @@ extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDele
         ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
         
         ///Enviar informacion a traves de la instancia del view controller
-        ViewController.recibirPeliculaMostrar = listaProximosEstrenos[indexPath.row]
+        ViewController.recibirPeliculaMostrar = upcomingMovies[indexPath.row]
         
         present(ViewController, animated: true)
     }

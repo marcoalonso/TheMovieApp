@@ -51,6 +51,7 @@
 		6CD1A3B129DEB25100D29B64 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD1A3B029DEB25100D29B64 /* Date+Extension.swift */; };
 		6CDAA4FF29E22E7B0050F0BD /* WatchLateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDAA4FD29E22E7B0050F0BD /* WatchLateCell.swift */; };
 		6CDAA50029E22E7B0050F0BD /* WatchLateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CDAA4FE29E22E7B0050F0BD /* WatchLateCell.xib */; };
+		6CE4BC0B29EE015600B37955 /* TopRatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE4BC0A29EE015600B37955 /* TopRatedCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		6CD1A3B029DEB25100D29B64 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		6CDAA4FD29E22E7B0050F0BD /* WatchLateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLateCell.swift; sourceTree = "<group>"; };
 		6CDAA4FE29E22E7B0050F0BD /* WatchLateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchLateCell.xib; sourceTree = "<group>"; };
+		6CE4BC0A29EE015600B37955 /* TopRatedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +196,7 @@
 				6C5195C629E1C937008D275C /* FavoriteCell.xib */,
 				6CDAA4FD29E22E7B0050F0BD /* WatchLateCell.swift */,
 				6CDAA4FE29E22E7B0050F0BD /* WatchLateCell.xib */,
+				6CE4BC0A29EE015600B37955 /* TopRatedCell.swift */,
 			);
 			path = Vista;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				6C63325329E0EDB100E8B2E9 /* OnboardingViewController.swift in Sources */,
 				6C44FAF329E5F1BF0017E605 /* WebViewController.swift in Sources */,
 				6CD1A3A929DEA8E600D29B64 /* MovieResponseDataModel.swift in Sources */,
+				6CE4BC0B29EE015600B37955 /* TopRatedCell.swift in Sources */,
 				6C1B609129D5192500BE1767 /* AppDelegate.swift in Sources */,
 				6C63325129E0E21F00E8B2E9 /* Constants.swift in Sources */,
 				6C5195C429E1BA1A008D275C /* FavoriteMoviesViewController.swift in Sources */,
