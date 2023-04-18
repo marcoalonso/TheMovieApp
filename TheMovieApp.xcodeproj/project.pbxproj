@@ -52,6 +52,7 @@
 		6CDAA4FF29E22E7B0050F0BD /* WatchLateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CDAA4FD29E22E7B0050F0BD /* WatchLateCell.swift */; };
 		6CDAA50029E22E7B0050F0BD /* WatchLateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CDAA4FE29E22E7B0050F0BD /* WatchLateCell.xib */; };
 		6CE4BC0B29EE015600B37955 /* TopRatedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE4BC0A29EE015600B37955 /* TopRatedCell.swift */; };
+		6CE4BC0D29EE17FD00B37955 /* NowPlayingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE4BC0C29EE17FD00B37955 /* NowPlayingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		6CDAA4FD29E22E7B0050F0BD /* WatchLateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchLateCell.swift; sourceTree = "<group>"; };
 		6CDAA4FE29E22E7B0050F0BD /* WatchLateCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WatchLateCell.xib; sourceTree = "<group>"; };
 		6CE4BC0A29EE015600B37955 /* TopRatedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedCell.swift; sourceTree = "<group>"; };
+		6CE4BC0C29EE17FD00B37955 /* NowPlayingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 				6CDAA4FD29E22E7B0050F0BD /* WatchLateCell.swift */,
 				6CDAA4FE29E22E7B0050F0BD /* WatchLateCell.xib */,
 				6CE4BC0A29EE015600B37955 /* TopRatedCell.swift */,
+				6CE4BC0C29EE17FD00B37955 /* NowPlayingCell.swift */,
 			);
 			path = Vista;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				6C1B60A929D5201900BE1767 /* MoviesManager.swift in Sources */,
 				6C63324D29E0DCCD00E8B2E9 /* SearchMovieViewController.swift in Sources */,
 				6C5195BF29E1B460008D275C /* MoreInfoSheetViewController.swift in Sources */,
+				6CE4BC0D29EE17FD00B37955 /* NowPlayingCell.swift in Sources */,
 				6C1B609329D5192500BE1767 /* SceneDelegate.swift in Sources */,
 				6CD1A3B129DEB25100D29B64 /* Date+Extension.swift in Sources */,
 				6C9DD39529E09C4B0044DEBC /* SimilarMovieCell.swift in Sources */,
