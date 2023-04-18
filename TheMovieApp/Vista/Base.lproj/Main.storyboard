@@ -689,10 +689,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buR-es-T0n">
-                                <rect key="frame" x="5" y="0.0" width="383" height="852"/>
+                                <rect key="frame" x="5" y="79" width="383" height="773"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6j1-61-6CN">
-                                        <rect key="frame" x="1" y="0.0" width="383" height="1109"/>
+                                        <rect key="frame" x="1" y="0.0" width="383" height="709"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Apb-qV-DFh" userLabel="SV Populares">
                                                 <rect key="frame" x="0.0" y="0.0" width="383" height="200"/>
@@ -744,7 +744,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W68-m3-FkE" userLabel="SV Cartelera">
-                                                <rect key="frame" x="0.0" y="210" width="383" height="400"/>
+                                                <rect key="frame" x="0.0" y="210" width="383" height="200"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peliculas en carteleras" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCF-vN-Bx4">
                                                         <rect key="frame" x="0.0" y="0.0" width="383" height="24"/>
@@ -753,7 +753,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xeL-sf-TgV">
-                                                        <rect key="frame" x="0.0" y="29" width="383" height="371"/>
+                                                        <rect key="frame" x="0.0" y="29" width="383" height="171"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aj8-Lz-xVG">
                                                             <size key="itemSize" width="128" height="128"/>
@@ -788,11 +788,11 @@
                                                     </collectionView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="400" id="4aV-6c-y0o"/>
+                                                    <constraint firstAttribute="height" constant="200" id="4aV-6c-y0o"/>
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6mX-FX-J4l" userLabel="SV Top Rated">
-                                                <rect key="frame" x="0.0" y="620" width="383" height="429"/>
+                                                <rect key="frame" x="0.0" y="420" width="383" height="229"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peliculas más valoradas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8L-mh-9Dl">
                                                         <rect key="frame" x="0.0" y="0.0" width="383" height="24"/>
@@ -801,10 +801,10 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="V6A-T5-5XF">
-                                                        <rect key="frame" x="0.0" y="29" width="383" height="400"/>
+                                                        <rect key="frame" x="0.0" y="29" width="383" height="200"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="400" id="Ydn-AX-m1U"/>
+                                                            <constraint firstAttribute="height" constant="200" id="Ydn-AX-m1U"/>
                                                         </constraints>
                                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WEr-cx-HzA">
                                                             <size key="itemSize" width="114" height="121"/>
@@ -841,12 +841,12 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7c1-B7-xF6">
-                                                <rect key="frame" x="0.0" y="1059" width="383" height="50"/>
+                                                <rect key="frame" x="0.0" y="659" width="383" height="50"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1109" id="cTo-Xf-0hh"/>
+                                            <constraint firstAttribute="height" constant="709" id="cTo-Xf-0hh"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -866,7 +866,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="buR-es-T0n" secondAttribute="bottom" id="8Yh-l9-jBJ"/>
-                            <constraint firstItem="buR-es-T0n" firstAttribute="top" secondItem="Hvq-rM-AUc" secondAttribute="top" id="LKt-Fo-er4"/>
+                            <constraint firstItem="buR-es-T0n" firstAttribute="top" secondItem="jJO-Vy-Syv" secondAttribute="top" constant="20" id="LKt-Fo-er4"/>
                             <constraint firstAttribute="trailing" secondItem="buR-es-T0n" secondAttribute="trailing" constant="5" id="QF7-IY-kmd"/>
                             <constraint firstItem="buR-es-T0n" firstAttribute="leading" secondItem="Hvq-rM-AUc" secondAttribute="leading" constant="5" id="wri-rm-yg3"/>
                         </constraints>
@@ -1106,11 +1106,11 @@
                         <color key="tintColor" systemColor="systemRedColor"/>
                     </tabBar>
                     <connections>
-                        <segue destination="5Ql-GN-34s" kind="relationship" relationship="viewControllers" id="5zp-Ze-jcN"/>
-                        <segue destination="dDD-ga-KIA" kind="relationship" relationship="viewControllers" id="OWP-FQ-ohe"/>
-                        <segue destination="Ecg-Tp-nqU" kind="relationship" relationship="viewControllers" id="rpH-V7-WHs"/>
-                        <segue destination="qh9-16-EJ5" kind="relationship" relationship="viewControllers" id="5CN-JE-zWL"/>
-                        <segue destination="h4y-l7-rQC" kind="relationship" relationship="viewControllers" id="cyu-ZV-APO"/>
+                        <segue destination="h4y-l7-rQC" kind="relationship" relationship="viewControllers" id="tb7-Ed-FlD"/>
+                        <segue destination="5Ql-GN-34s" kind="relationship" relationship="viewControllers" id="zhJ-ey-W0U"/>
+                        <segue destination="dDD-ga-KIA" kind="relationship" relationship="viewControllers" id="DHc-s3-DPm"/>
+                        <segue destination="Ecg-Tp-nqU" kind="relationship" relationship="viewControllers" id="Zh3-oc-h3u"/>
+                        <segue destination="qh9-16-EJ5" kind="relationship" relationship="viewControllers" id="DOH-pJ-bLo"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7GS-DF-gLH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
