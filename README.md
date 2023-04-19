@@ -1,11 +1,23 @@
 # TheMovieApp
 
-![image](https://user-images.githubusercontent.com/49013250/230734410-8d42bbb9-ca9b-40ee-a931-9a7cbcb500f9.png)
-![image](https://user-images.githubusercontent.com/49013250/230734418-c8395ebc-b8ab-415e-9b0b-e5eb372f268c.png)
-![image](https://user-images.githubusercontent.com/49013250/230734428-a253a490-37c7-4f9e-9a35-720ca32b9333.png)
-![image](https://user-images.githubusercontent.com/49013250/230734442-82bbe52a-1554-46f3-b5ba-502ccaba39bd.png)
-![image](https://user-images.githubusercontent.com/49013250/230734451-88a049ae-c449-4757-8ff0-f63561479052.png)
-![image](https://user-images.githubusercontent.com/49013250/230734463-256e5eff-4540-4f8e-8b83-6efd2b05c80d.png)
-![image](https://user-images.githubusercontent.com/49013250/230734466-4f92fa87-6081-4a57-8abf-58b3fe0bdb1e.png)
-![image](https://user-images.githubusercontent.com/49013250/230734472-3449903a-49c8-4b08-8c4f-607e65ba1b31.png)
-![image](https://user-images.githubusercontent.com/49013250/230734501-e252d921-9eeb-4e5d-8146-ec3f32bd3c41.png)
+Disponible en:
+App Store https://apps.apple.com/us/app/movieverse-world/id6447369429 
+
+Unete al grupo público de testers con testFlight  
+https://testflight.apple.com/join/QCF7X63I 
+
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233158548-bf70c5ca-2216-4c52-900d-23b2cce5cbd9.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233158597-641cb4c0-ed22-43ea-8c60-58dfacaea722.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233158615-116128a5-1afc-41ec-85cf-6559eb5b91f1.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233158653-3697a094-7e6c-4383-87f4-d6bfc3d494c2.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233158676-d17a174b-1df1-4d4c-ad7c-85bc30c6e895.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233158706-f44a6ff9-67eb-4362-91ac-0487fe9db496.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233158933-c52e7857-90a6-4926-b84d-108f4b9f2605.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233158962-3bd840d3-6d84-4be5-b8d5-c1dc0a1f3931.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233159006-031ceb67-82ca-4930-b9e3-e0d873363f52.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233159054-e37ddedc-0409-4a83-adae-616913089b81.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233159092-44d1365d-3114-4e1f-8ca8-0c13e3180fec.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233159176-63804ff0-35ce-4821-80c3-9fd1c579d2fa.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233159214-f935dec8-bef3-4b71-9de1-7f72b6be6c35.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233159253-8f979bdb-5a86-4ae7-85ab-84407ad0c17d.png">
+<img width="385" alt="image" src="https://user-images.githubusercontent.com/49013250/233159374-326e3d4e-c8bf-42ed-97a3-07fe65d4791c.png">
