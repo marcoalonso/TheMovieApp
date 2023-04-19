@@ -43,7 +43,9 @@ class MoviesViewController: UIViewController {
     func isUpdateAvailable() -> Bool {
         var resultAppStoreVersion: Bool = false
         if let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            if let appStoreURL = URL(string: "http://itunes.apple.com/lookup?bundleId=com.example.myapp") {
+            print("Debug: currentVersion \(currentVersion)")
+
+            if let appStoreURL = URL(string: "http://itunes.apple.com/lookup?bundleId=com.rotadevsolutions.TheMovieApp") {
                 
                 URLSession.shared.dataTask(with: appStoreURL) { data, _, error in
                     
@@ -53,7 +55,6 @@ class MoviesViewController: UIViewController {
                                let result = (json["results"] as? [Any])?.first as? [String: Any],
                                let appStoreVersion = result["version"] as? String {
                                 resultAppStoreVersion = appStoreVersion != currentVersion
-                                print("Debug: resultAppStoreVersion \(resultAppStoreVersion)")
                             }
                         } catch {
                             print("Error checking for app update: \(error.localizedDescription)")
