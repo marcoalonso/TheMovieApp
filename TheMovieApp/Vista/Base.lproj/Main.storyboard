@@ -691,7 +691,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="buR-es-T0n">
                                 <rect key="frame" x="5" y="79" width="383" height="773"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="6j1-61-6CN">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="6j1-61-6CN">
                                         <rect key="frame" x="1" y="0.0" width="383" height="709"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Apb-qV-DFh" userLabel="SV Populares">
@@ -744,7 +744,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="W68-m3-FkE" userLabel="SV Cartelera">
-                                                <rect key="frame" x="0.0" y="210" width="383" height="200"/>
+                                                <rect key="frame" x="0.0" y="215" width="383" height="200"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peliculas en carteleras" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCF-vN-Bx4">
                                                         <rect key="frame" x="0.0" y="0.0" width="383" height="24"/>
@@ -792,7 +792,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6mX-FX-J4l" userLabel="SV Top Rated">
-                                                <rect key="frame" x="0.0" y="420" width="383" height="229"/>
+                                                <rect key="frame" x="0.0" y="430" width="383" height="229"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Peliculas más valoradas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8L-mh-9Dl">
                                                         <rect key="frame" x="0.0" y="0.0" width="383" height="24"/>
@@ -841,7 +841,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7c1-B7-xF6">
-                                                <rect key="frame" x="0.0" y="659" width="383" height="50"/>
+                                                <rect key="frame" x="0.0" y="674" width="383" height="35"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             </view>
                                         </subviews>

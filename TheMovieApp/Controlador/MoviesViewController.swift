@@ -36,14 +36,50 @@ class MoviesViewController: UIViewController {
         shouldShowOnboarding()
         
         timerGetMoteMovies = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getMoreMovies), userInfo: nil, repeats: true)
-        
     }
+    
+    
+    
+    func isUpdateAvailable() -> Bool {
+        var resultAppStoreVersion: Bool = false
+        if let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            if let appStoreURL = URL(string: "http://itunes.apple.com/lookup?bundleId=com.example.myapp") {
+                
+                URLSession.shared.dataTask(with: appStoreURL) { data, _, error in
+                    
+                    if let data = data {
+                        do {
+                            if let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any],
+                               let result = (json["results"] as? [Any])?.first as? [String: Any],
+                               let appStoreVersion = result["version"] as? String {
+                                resultAppStoreVersion = appStoreVersion != currentVersion
+                                print("Debug: resultAppStoreVersion \(resultAppStoreVersion)")
+                            }
+                        } catch {
+                            print("Error checking for app update: \(error.localizedDescription)")
+                        }
+                    }
+                }.resume()
+                return resultAppStoreVersion
+            }
+        }
+        return false
+    }
+
 
 @objc func getMoreMovies() {
     obtenerPeliculas(numPag: self.numPagina)
 }
     
     override func viewWillAppear(_ animated: Bool) {
+        ///Check new version
+        if isUpdateAvailable() {
+            print("Debug: Nueva version disponible")
+        } else {
+            print("Debug: No hay ninguna version disponible")
+        }
+        
+        //Check internet connection
         manager.checkInternetConnectivity { isInternetAvailable in
             if !isInternetAvailable {
                 DispatchQueue.main.async {
