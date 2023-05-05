@@ -32,18 +32,20 @@ final class TheMovieAppTests: XCTestCase {
         
         let nameOfMovieDemo = "Titanic"
         
-        sut.searchMovies(nameOfMovie: nameOfMovieDemo) { [weak self] numPages, listOfMovies , error in
-            guard let self = self else { return }
+        sut.searchMovies(nameOfMovie: nameOfMovieDemo) {  numPages, listOfMovies , error in
             XCTAssertNotNil(listOfMovies)
-            
+            XCTAssertGreaterThanOrEqual(numPages, 1)
         }
+    }
+    
+    func test_search_upcoming_movies(){
+        sut.getUpcomingMovies { numPages, listOfMovies, error in
+            XCTAssertNotNil(listOfMovies)
+            XCTAssertGreaterThanOrEqual(numPages, 1)
+        }
+        
+       
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 
 }
