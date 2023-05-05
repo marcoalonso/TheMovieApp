@@ -23,6 +23,7 @@ class MoviesViewController: UIViewController {
     var activityView: UIActivityIndicatorView?
     var manager = MoviesManager()
     var timerGetMoteMovies = Timer()
+    var hasInternetConnection = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,32 +41,9 @@ class MoviesViewController: UIViewController {
     
     
     
-    func isUpdateAvailable() -> Bool {
-        var resultAppStoreVersion: Bool = false
-        if let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            print("Debug: currentVersion \(currentVersion)")
-
-            if let appStoreURL = URL(string: "http://itunes.apple.com/lookup?bundleId=com.rotadevsolutions.TheMovieApp") {
-                
-                URLSession.shared.dataTask(with: appStoreURL) { data, _, error in
-                    
-                    if let data = data {
-                        do {
-                            if let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any],
-                               let result = (json["results"] as? [Any])?.first as? [String: Any],
-                               let appStoreVersion = result["version"] as? String {
-                                resultAppStoreVersion = appStoreVersion != currentVersion
-                            }
-                        } catch {
-                            print("Error checking for app update: \(error.localizedDescription)")
-                        }
-                    }
-                }.resume()
-                return resultAppStoreVersion
-            }
-        }
-        return false
-    }
+    
+    
+    
 
 
 @objc func getMoreMovies() {
@@ -73,21 +51,50 @@ class MoviesViewController: UIViewController {
 }
     
     override func viewWillAppear(_ animated: Bool) {
-        ///Check new version
-        if isUpdateAvailable() {
-            print("Debug: Nueva version disponible")
-        } else {
-            print("Debug: No hay ninguna version disponible")
-        }
-        
-        //Check internet connection
-        manager.checkInternetConnectivity { isInternetAvailable in
+       checkInternetConnection()
+    }
+    
+    private func checkInternetConnection(){
+        manager.checkInternetConnectivity { [weak self] isInternetAvailable in
             if !isInternetAvailable {
                 DispatchQueue.main.async {
-                    self.showAlertToAction()
+                    self?.showAlertToAction()
                 }
+            } else {
+                self?.hasInternetConnection = true
+                self?.checkNewVersionAvailable()
             }
         }
+    }
+    
+    private func checkNewVersionAvailable(){
+        manager.isUpdateAvailable { [weak self] updateAvailable in
+            if updateAvailable {
+                print("Actualizacion disponible")
+                DispatchQueue.main.async {
+                    self?.alertUpdateApp()
+                }
+            } else {
+                print("Debug: NO Hay ninguna actualizacion disponible")
+            }
+        }
+    }
+    
+    func alertUpdateApp() {
+        let alerta = UIAlertController(title: "Nueva Actualización Disponible", message: "La Aplicación cuenta con una nueva versión, actualiza ahora para disfrutar de las mejoras.", preferredStyle: .alert)
+        
+        let aceptar = UIAlertAction(title: "Aceptar", style: .default) { _ in
+            let url = "https://itunes.apple.com/app/id6447369429"
+            
+            if let path = URL(string: url) {
+                    UIApplication.shared.open(path, options: [:], completionHandler: nil)
+            }
+        }
+        
+        alerta.addAction(aceptar)
+        present(alerta, animated: true)
+        
+        
     }
     
     func showAlertToAction(){
@@ -166,34 +173,27 @@ class MoviesViewController: UIViewController {
     }
     
     private func obtenerPeliculas(numPag: Int){
-        
-        ///Si esta cargando mas caracteres detente
-        guard !isLoadingMoreCharacters else {
-            return
-        }
-        isLoadingMoreCharacters = true
-//        self.showActivityIndicator()
-        
-        manager.getUpcomingMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
+        if hasInternetConnection {
+            guard !isLoadingMoreCharacters else { return }
+            isLoadingMoreCharacters = true
             
-            self?.totalPages = numPages
-            
-            if let listaPeliculas = listaPeliculas {
-                self?.upcomingMovies.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
+            manager.getUpcomingMovies(numPagina: numPag) { [weak self] numPages, listaPeliculas, error in
                 
-                DispatchQueue.main.async { ///Hilo principal, actualizar la Interfaz de usuario
-                    self?.estrenosCollection.reloadData()
-                    self?.isLoadingMoreCharacters = false
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//                        self?.hideActivityIndicator()
+                self?.totalPages = numPages
+                
+                if let listaPeliculas = listaPeliculas {
+                    self?.upcomingMovies.append(contentsOf: listaPeliculas)  ///Agregar al arreglo
+                    
+                    DispatchQueue.main.async { ///Hilo principal, actualizar la Interfaz de usuario
+                        self?.estrenosCollection.reloadData()
+                        self?.isLoadingMoreCharacters = false
                     }
                 }
-            }
-            
-            self?.numPagina += 1
-            ///Valida si la pagina actual es menor de las disponibles
-            if self?.numPagina == self?.totalPages {
-                self?.timerGetMoteMovies.invalidate()
+                
+                self?.numPagina += 1
+                if self?.numPagina == self?.totalPages {
+                    self?.timerGetMoteMovies.invalidate()
+                }
             }
             
         }

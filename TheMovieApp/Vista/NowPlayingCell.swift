@@ -13,7 +13,7 @@ class NowPlayingCell: UICollectionViewCell {
     @IBOutlet weak var posterMovie: UIImageView!
     
     func setupCell(movie: DataMovie){
-        let url = URL(string: "https://image.tmdb.org/t/p/w200/\(movie.poster_path ?? "")")
+        let url = URL(string: "\(Constants.urlImages)\(movie.poster_path ?? "")")
         
         posterMovie.kf.setImage(with: url)
         posterMovie.layer.cornerRadius = 10

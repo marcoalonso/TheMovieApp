@@ -52,8 +52,8 @@ class DetalleMovieViewController: UIViewController {
         releaseDateMovie.text = "Fecha estreno: \(recibirPeliculaMostrar?.release_date ?? "Próximamente")"
         
         ///URL
-        guard let urlImagen = recibirPeliculaMostrar?.backdrop_path else { return }
-        let url = URL(string: "https://image.tmdb.org/t/p/w200/\(urlImagen)")
+        guard let urlImagen = recibirPeliculaMostrar?.poster_path else { return }
+        let url = URL(string: "\(Constants.urlImages)\(urlImagen)")
         
         posterMovie.kf.setImage(with: url)
     }

@@ -239,4 +239,31 @@ struct MoviesManager {
         }
         tarea.resume()
     }
+    
+    func isUpdateAvailable(completion: @escaping (Bool) -> ()) {
+        var resultAppStoreVersion: Bool = false
+        if let currentVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            print("Debug: currentVersion \(currentVersion)")
+
+            if let appStoreURL = URL(string: "http://itunes.apple.com/lookup?bundleId=com.rotadevsolutions.TheMovieApp") {
+                
+                URLSession.shared.dataTask(with: appStoreURL) { data, _, error in
+                    
+                    if let data = data {
+                        do {
+                            if let json = try JSONSerialization.jsonObject(with: data, options: [.allowFragments]) as? [String: Any],
+                               let result = (json["results"] as? [Any])?.first as? [String: Any],
+                               let appStoreVersion = result["version"] as? String {
+                                resultAppStoreVersion = appStoreVersion != currentVersion
+                            }
+                        } catch {
+                            print("Error checking for app update: \(error.localizedDescription)")
+                        }
+                    }
+                }.resume()
+                completion(resultAppStoreVersion)
+            }
+        }
+        completion(resultAppStoreVersion)
+    }
 }

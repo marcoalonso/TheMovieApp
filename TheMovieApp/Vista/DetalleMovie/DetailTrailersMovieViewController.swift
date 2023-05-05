@@ -198,7 +198,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     }
     
     private func showOnlyImageOfMovie(){
-        guard let urlImagen = recibirPeliculaMostrar?.backdrop_path else { return }
+        guard let urlImagen = recibirPeliculaMostrar?.poster_path else { return }
         let url = URL(string: "https://image.tmdb.org/t/p/w200/\(urlImagen)")
         
         posterMovieImage.kf.setImage(with: url)
@@ -337,7 +337,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         print("Debug: share Button Tapped")
 
         var elementosCompartir: [Any] = [nameOfMovieLabel.text ?? "Movieverse World",
-                                         "https://testflight.apple.com/join/QCF7X63I"]
+                                         "https://apps.apple.com/us/app/movieverse-world/id6447369429"]
         
         
         if let poster = self.recibirPosterMovie {
@@ -403,8 +403,8 @@ extension DetailTrailersMovieViewController: UITableViewDelegate, UITableViewDat
         
         celda.dateReleaseTrailerLabel.text = "Fecha: \(mySubstring)"
         
-        if let urlImagen = recibirPeliculaMostrar?.backdrop_path {
-            let url = URL(string: "https://image.tmdb.org/t/p/w200/\(urlImagen)")
+        if let urlImagen = recibirPeliculaMostrar?.poster_path {
+            let url = URL(string: "\(Constants.urlImages)\(urlImagen)")
             
             celda.posterTrailer.kf.setImage(with: url)
             celda.posterTrailer.layer.cornerRadius = 20
