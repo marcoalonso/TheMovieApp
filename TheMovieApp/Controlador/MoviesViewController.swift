@@ -39,12 +39,6 @@ class MoviesViewController: UIViewController {
         timerGetMoteMovies = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(getMoreMovies), userInfo: nil, repeats: true)
     }
     
-    
-    
-    
-    
-    
-
 
 @objc func getMoreMovies() {
     obtenerPeliculas(numPag: self.numPagina)
@@ -53,6 +47,12 @@ class MoviesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
        checkInternetConnection()
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        estrenosCollection.collectionViewLayout.invalidateLayout()
+    }
+
     
     private func checkInternetConnection(){
         manager.checkInternetConnectivity { [weak self] isInternetAvailable in
@@ -212,9 +212,23 @@ extension MoviesViewController: UIScrollViewDelegate {
 }
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: 145, height: 195)
+//    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 145, height: 195)
+        let screenWidth = UIScreen.main.bounds.width
+        let screenHeight = UIScreen.main.bounds.height
+        let cellWidth = screenWidth * 0.5 // El ancho de la celda se ajustará a la mitad del ancho de la pantalla
+        let cellHeight = screenHeight * 0.3 // La altura de la celda se ajustará al 30% de la altura de la pantalla
+        return CGSize(width: cellWidth, height: cellHeight)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+
+
 }
 
 

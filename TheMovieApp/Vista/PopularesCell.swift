@@ -16,7 +16,7 @@ class PopularesCell: UICollectionViewCell {
         let url = URL(string: "\(Constants.urlImages)\(movie.poster_path ?? "")")
         
         posterMovie.kf.setImage(with: url)
-        posterMovie.layer.cornerRadius = 10
+        posterMovie.layer.cornerRadius = 12
         posterMovie.layer.masksToBounds = true
     }
     

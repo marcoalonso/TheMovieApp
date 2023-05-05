@@ -12,6 +12,7 @@ import DataCache
 class PopularMoviesViewController: UIViewController {
     
     
+    @IBOutlet weak var scrollMain: UIScrollView!
     @IBOutlet weak var popularMoviesCollection: UICollectionView!
     @IBOutlet weak var nowPlayingMoviesCollection: UICollectionView!
     @IBOutlet weak var topRatedMoviesCollection: UICollectionView!
@@ -82,6 +83,11 @@ class PopularMoviesViewController: UIViewController {
     }
     
     private func setupCollection(){
+        //Scroll
+        scrollMain.isDirectionalLockEnabled = true
+        scrollMain.alwaysBounceVertical = true
+        scrollMain.showsVerticalScrollIndicator = false
+        scrollMain.showsHorizontalScrollIndicator = false
         popularMoviesCollection.collectionViewLayout = UICollectionViewFlowLayout()
         if let flowLayout = popularMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
@@ -306,7 +312,12 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
 // MARK:  FlowLayout
 extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 145, height: 195)
+        return CGSize(width: 165, height: 195)
     }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+
 
 }
