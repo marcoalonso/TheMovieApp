@@ -19,7 +19,7 @@ class FoundMovieCell: UICollectionViewCell {
         if let urlImagen = movie.poster_path {
             let url = URL(string: "\(Constants.urlImages)\(urlImagen)")
             posterMovieFound.kf.setImage(with: url)
-            
+            posterMovieFound.layer.cornerRadius = 12
         }  
     }
     

@@ -10,6 +10,7 @@ import CoreData
 
 class PerfilViewController: UIViewController {
     
+    @IBOutlet weak var historialButton: UIButton!
     @IBOutlet weak var historialEliminadoLabel: UILabel!
     @IBOutlet weak var photoUser: UIImageView!
     @IBOutlet weak var nameUser: UILabel!
@@ -42,6 +43,20 @@ class PerfilViewController: UIViewController {
         photoUser.layer.cornerRadius = 25
         photoUser.layer.masksToBounds = true
         historialEliminadoLabel.isHidden = true
+        
+        //Check if there are history and show button
+        if let historial = UserDefaults.standard.array(forKey: "historialMovies") as? [String] {
+            if historial.isEmpty {
+                historialButton.isHidden = true
+                print("Debug: Se encontro historial se muestra boton para eliminar")
+            } else {
+                historialButton.isHidden = false
+                print("Debug: No se encontro historial")
+            }
+            
+
+        }
+        
     }
     
     private func readProfileData(){
