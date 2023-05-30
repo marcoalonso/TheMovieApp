@@ -31,12 +31,13 @@ class PerfilViewController: UIViewController {
         tableWishListMovies.delegate = self
         tableWishListMovies.dataSource = self
         
-        setupUI()
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
         readMovies()
         readProfileData()
+        setupUI()
     }
     
     private func setupUI(){
@@ -48,10 +49,11 @@ class PerfilViewController: UIViewController {
         if let historial = UserDefaults.standard.array(forKey: "historialMovies") as? [String] {
             if historial.isEmpty {
                 historialButton.isHidden = true
-                print("Debug: Se encontro historial se muestra boton para eliminar")
+                print("Debug: No se encontro historial, ocultar boton para eliminar")
+                
             } else {
                 historialButton.isHidden = false
-                print("Debug: No se encontro historial")
+                print("Debug: Se encontro historial se muestra boton para eliminar")
             }
             
 

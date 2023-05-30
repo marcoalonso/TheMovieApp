@@ -103,7 +103,7 @@ class ReminderViewController: UIViewController {
                             self.tituloTextField.text = ""
                             self.mensajeTextView.text = ""
                             
-                            let alerta = UIAlertController(title: "Recordatorio Agendado", message: "Para : \(self.formattedDate(date: fecha))", preferredStyle: .alert)
+                            let alerta = UIAlertController(title: "Recordatorio Agendado", message: "\(self.formattedDate(date: fecha))", preferredStyle: .alert)
                             let accionAceptar = UIAlertAction(title: "Aceptar", style: .default) { _ in
                                 //Vibracion
                                 let generator = UINotificationFeedbackGenerator()
