@@ -106,6 +106,14 @@ class PerfilViewController: UIViewController {
     }
     
     // MARK:  Actions
+    @IBAction func moreButton(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MoreViewController") as! MoreViewController
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        self.present(vc, animated: true)
+    }
+    
     
     @IBAction func cinesCercanosButton(_ sender: UIButton) {
         let viewControllerCines = CinesCercanosViewController(nibName: "CinesCercanosViewController", bundle: nil)

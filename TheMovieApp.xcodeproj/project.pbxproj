@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C10F2422A25C1AC0045D8F7 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C10F2412A25C1AC0045D8F7 /* MoreViewController.swift */; };
+		6C10F2442A25CB3B0045D8F7 /* ReminderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C10F2432A25CB3B0045D8F7 /* ReminderViewController.swift */; };
+		6C10F2462A25CF220045D8F7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C10F2452A25CF220045D8F7 /* SettingsViewController.swift */; };
+		6C10F2482A25CFBD0045D8F7 /* water.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6C10F2472A25CFBD0045D8F7 /* water.wav */; };
 		6C1B609129D5192500BE1767 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B609029D5192500BE1767 /* AppDelegate.swift */; };
 		6C1B609329D5192500BE1767 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B609229D5192500BE1767 /* SceneDelegate.swift */; };
 		6C1B609529D5192500BE1767 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1B609429D5192500BE1767 /* MoviesViewController.swift */; };
@@ -68,6 +72,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6C10F2412A25C1AC0045D8F7 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		6C10F2432A25CB3B0045D8F7 /* ReminderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewController.swift; sourceTree = "<group>"; };
+		6C10F2452A25CF220045D8F7 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6C10F2472A25CFBD0045D8F7 /* water.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = water.wav; sourceTree = "<group>"; };
 		6C1B608D29D5192500BE1767 /* TheMovieApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheMovieApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C1B609029D5192500BE1767 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C1B609229D5192500BE1767 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,6 +169,7 @@
 		6C1B608F29D5192500BE1767 /* TheMovieApp */ = {
 			isa = PBXGroup;
 			children = (
+				6C10F2472A25CFBD0045D8F7 /* water.wav */,
 				6C9A507329E5D5500017219D /* CinesCercanos */,
 				6C1D0DC229E1351400379BC7 /* demo.gif */,
 				6C1B60A829D5201900BE1767 /* MoviesManager.swift */,
@@ -203,6 +212,9 @@
 				6C5195CB29E1DD81008D275C /* PerfilViewController.swift */,
 				6C44FAF129E5F1BF0017E605 /* WebViewController.swift */,
 				6C44FAF229E5F1BF0017E605 /* WebViewController.xib */,
+				6C10F2412A25C1AC0045D8F7 /* MoreViewController.swift */,
+				6C10F2432A25CB3B0045D8F7 /* ReminderViewController.swift */,
+				6C10F2452A25CF220045D8F7 /* SettingsViewController.swift */,
 			);
 			path = Controlador;
 			sourceTree = "<group>";
@@ -380,6 +392,7 @@
 				6CCF020C29DEF5E9006B5FB7 /* DetalleMovie.storyboard in Resources */,
 				6C44FAF429E5F1BF0017E605 /* WebViewController.xib in Resources */,
 				6C1B609A29D5192800BE1767 /* Assets.xcassets in Resources */,
+				6C10F2482A25CFBD0045D8F7 /* water.wav in Resources */,
 				6C1B609829D5192500BE1767 /* Main.storyboard in Resources */,
 				6CCF021229DF099A006B5FB7 /* TrailerCell.xib in Resources */,
 				6C5195C829E1C937008D275C /* FavoriteCell.xib in Resources */,
@@ -417,6 +430,7 @@
 				6C63325329E0EDB100E8B2E9 /* OnboardingViewController.swift in Sources */,
 				6C44FAF329E5F1BF0017E605 /* WebViewController.swift in Sources */,
 				6CD1A3A929DEA8E600D29B64 /* MovieResponseDataModel.swift in Sources */,
+				6C10F2422A25C1AC0045D8F7 /* MoreViewController.swift in Sources */,
 				6CE4BC0B29EE015600B37955 /* TopRatedCell.swift in Sources */,
 				6C1B609129D5192500BE1767 /* AppDelegate.swift in Sources */,
 				6C63325129E0E21F00E8B2E9 /* Constants.swift in Sources */,
@@ -424,11 +438,13 @@
 				6CD1A3AB29DEAB1500D29B64 /* PopularMoviesViewController.swift in Sources */,
 				6C1B60A929D5201900BE1767 /* MoviesManager.swift in Sources */,
 				6C63324D29E0DCCD00E8B2E9 /* SearchMovieViewController.swift in Sources */,
+				6C10F2462A25CF220045D8F7 /* SettingsViewController.swift in Sources */,
 				6C5195BF29E1B460008D275C /* MoreInfoSheetViewController.swift in Sources */,
 				6CE4BC0D29EE17FD00B37955 /* NowPlayingCell.swift in Sources */,
 				6C1B609329D5192500BE1767 /* SceneDelegate.swift in Sources */,
 				6CD1A3B129DEB25100D29B64 /* Date+Extension.swift in Sources */,
 				6C9DD39529E09C4B0044DEBC /* SimilarMovieCell.swift in Sources */,
+				6C10F2442A25CB3B0045D8F7 /* ReminderViewController.swift in Sources */,
 				6C5195CA29E1DD69008D275C /* EditarPerfilViewController.swift in Sources */,
 				6C8A1C6429DBBA7500F44ECA /* ResponseTrailerModel.swift in Sources */,
 				6C1B60AE29D5300100BE1767 /* DetalleMovieViewController.swift in Sources */,
