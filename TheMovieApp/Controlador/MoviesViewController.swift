@@ -48,10 +48,7 @@ class MoviesViewController: UIViewController {
        checkInternetConnection()
     }
     
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        estrenosCollection.collectionViewLayout.invalidateLayout()
-    }
+    
 
     
     private func checkInternetConnection(){

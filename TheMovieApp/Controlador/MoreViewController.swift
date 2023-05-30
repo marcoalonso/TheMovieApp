@@ -21,12 +21,12 @@ class MoreViewController: UIViewController {
     Action(name: "Hacer una sugerencia", action: "sugerencia", icon: "slider.vertical.3"),
     Action(name: "Califica la aplicación", action: "califica", icon: "star.leadinghalf.filled"),
     Action(name: "Crear un recordatorio", action: "recordatorio", icon: "bell.badge"),
-    Action(name: "Compartir con amigos", action: "compartir", icon: "square.and.arrow.up"),
     Action(name: "Conocer más sobre nosotros", action: "seguir", icon: "hand.thumbsup"),
 //    Action(name: "Ir a configuracion", action: "configuracion", icon: "slider.vertical.3"),
     Action(name: "Desarrollador", action: "developer", icon: "person")
     ]
     
+    @IBOutlet weak var compartirButton: UIButton!
     @IBOutlet weak var moreActionsTableview: UITableView!
     
     
@@ -43,6 +43,11 @@ class MoreViewController: UIViewController {
     @IBAction func backButton(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    
+    @IBAction func shareButton(_ sender: UIButton) {
+        compartir()
+    }
+    
     
 }
 
@@ -62,8 +67,6 @@ extension MoreViewController: MFMailComposeViewControllerDelegate {
             composeVC.setMessageBody("Me gustaría ", isHTML: false)
             self.present(composeVC, animated: true)
         }
-        
-        
     }
     
     
@@ -142,9 +145,6 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         case "recordatorio":
             goReminders()
             
-        case "compartir":
-            compartir()
-            
         case "seguir":
             showRedes()
             
@@ -192,7 +192,8 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         let activityViewController = UIActivityViewController(activityItems: elementosCompartir, applicationActivities: nil)
 
         if let popoverController = activityViewController.popoverPresentationController {
-            
+            popoverController.sourceView = compartirButton
+            popoverController.sourceRect = compartirButton.bounds
             popoverController.permittedArrowDirections = .any
         }
 
