@@ -27,7 +27,7 @@ class ReminderViewController: UIViewController {
                 print("Permiso denegado \(permiso)")
                 //utilizar el hilo principal
                 DispatchQueue.main.async {
-                    self.mostrarAlerta(titulo: "ATENCION", mensaje: "Para utilizar esta aplicacion debes activar las notificaciones")
+                    self.mostrarAlerta(titulo: "ATENCION", mensaje: "Para utilizar esta aplicacion debes activar las notificaciones", textButton: "En otro momento", configButton: true)
                 }
             }
         }
@@ -45,24 +45,27 @@ class ReminderViewController: UIViewController {
     }
 
     
-    func mostrarAlerta(titulo: String, mensaje: String) {
+    func mostrarAlerta(titulo: String, mensaje: String, textButton: String, configButton: Bool) {
         let alerta = UIAlertController(title: titulo, message: mensaje, preferredStyle: .alert)
-        let accionAceptar = UIAlertAction(title: "Despues", style: .destructive) { _ in
+        let accionAceptar = UIAlertAction(title: textButton, style: .destructive) { _ in
             //Do something
         }
         
-        let accionCofiguracion = UIAlertAction(title: "Ir a configuracion", style: .default) { _ in
-            //mandar al usuario a la configuracion del dispositivo
-            guard let configuracionURL = URL(string: UIApplication.openSettingsURLString) else { return }
-            
-            if UIApplication.shared.canOpenURL(configuracionURL) {
-                UIApplication.shared.openURL(configuracionURL)
+        if configButton {
+            let accionCofiguracion = UIAlertAction(title: "Ir a configuracion", style: .default) { _ in
+                //mandar al usuario a la configuracion del dispositivo
+                guard let configuracionURL = URL(string: UIApplication.openSettingsURLString) else { return }
+                
+                if UIApplication.shared.canOpenURL(configuracionURL) {
+                    UIApplication.shared.openURL(configuracionURL)
+                }
             }
+            alerta.addAction(accionCofiguracion)
         }
         
         
         alerta.addAction(accionAceptar)
-        alerta.addAction(accionCofiguracion)
+        
         present(alerta, animated: true)
     }
 
@@ -71,7 +74,10 @@ class ReminderViewController: UIViewController {
             
             //-- ejecutar en el hilo principal, de lo contrario truena la app
             DispatchQueue.main.async {
-                let titulo = self.tituloTextField.text ?? ""
+                guard let titulo = self.tituloTextField.text , titulo != "" else {
+                    self.mostrarAlerta(titulo: "Atención", mensaje: "Para crear un recordatorio es necesario escribir un titulo y seleccionar una fecha", textButton: "Aceptar", configButton: false)
+                    return
+                }
                 let mensaje = self.mensajeTextView.text ?? ""
                 let fecha = self.fechaDatePicker.date
                 

@@ -18,12 +18,13 @@ struct Action {
 class MoreViewController: UIViewController {
     
     var actions: [Action] = [
-    Action(name: "Hacer una sugerencia", action: "sugerencia", icon: "person"),
+    Action(name: "Hacer una sugerencia", action: "sugerencia", icon: "slider.vertical.3"),
     Action(name: "Califica la aplicación", action: "califica", icon: "star.leadinghalf.filled"),
     Action(name: "Crear un recordatorio", action: "recordatorio", icon: "bell.badge"),
     Action(name: "Compartir con amigos", action: "compartir", icon: "square.and.arrow.up"),
-    Action(name: "Siguenos en redes", action: "seguir", icon: "hand.thumbsup"),
-    Action(name: "Ir a configuracion", action: "configuracion", icon: "slider.vertical.3")
+    Action(name: "Conocer más sobre nosotros", action: "seguir", icon: "hand.thumbsup"),
+//    Action(name: "Ir a configuracion", action: "configuracion", icon: "slider.vertical.3"),
+    Action(name: "Desarrollador", action: "developer", icon: "person")
     ]
     
     @IBOutlet weak var moreActionsTableview: UITableView!
@@ -147,6 +148,9 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         case "seguir":
             showRedes()
             
+        case "developer":
+            showDeveloper()
+            
         case "configuracion":
             goSettings()
            
@@ -163,7 +167,12 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     private func showRedes(){
-        guard let url = URL(string: "https://www.linkedin.com/in/marcoalonso/") else { return }
+        guard let url = URL(string: "https://mobilestudio.mx/") else { return }
+        let vcSS = SFSafariViewController(url: url)
+        present(vcSS, animated: true)
+    }
+    private func showDeveloper(){
+        guard let url = URL(string: "https://github.com/marcoalonso") else { return }
         let vcSS = SFSafariViewController(url: url)
         present(vcSS, animated: true)
     }

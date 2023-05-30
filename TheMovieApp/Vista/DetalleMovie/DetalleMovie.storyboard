@@ -240,7 +240,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="Ff5-Aa-27S"/>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUa-76-zEn">
-                                <rect key="frame" x="5" y="61.000000000000007" width="25" height="31.333333333333321"/>
+                                <rect key="frame" x="10" y="61.000000000000007" width="25" height="31.333333333333321"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="HdR-xo-ylm"/>
                                     <constraint firstAttribute="height" constant="35" id="qEC-3T-fUq"/>
@@ -252,10 +252,13 @@
                                     <action selector="backButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="mdH-gE-kUm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tráiler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Iu-eA-pGs">
-                                <rect key="frame" x="175" y="59" width="73" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tráiler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Iu-eA-pGs">
+                                <rect key="frame" x="161.66666666666666" y="64" width="70" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="1al-MO-olD"/>
+                                    <constraint firstAttribute="width" constant="70" id="Olf-Mr-qcl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -269,12 +272,14 @@
                             <constraint firstItem="IUa-76-zEn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="KuX-K3-Yqg"/>
                             <constraint firstItem="nzq-E6-OHs" firstAttribute="width" secondItem="RYF-LL-DAN" secondAttribute="width" id="Si4-Nq-sGo"/>
                             <constraint firstItem="nzq-E6-OHs" firstAttribute="leading" secondItem="RYF-LL-DAN" secondAttribute="leading" id="T6i-l3-HNB"/>
-                            <constraint firstItem="IUa-76-zEn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="5" id="VFf-E1-sms"/>
+                            <constraint firstItem="RYF-LL-DAN" firstAttribute="top" secondItem="3Iu-eA-pGs" secondAttribute="bottom" constant="10" id="TCy-pt-zIR"/>
+                            <constraint firstItem="IUa-76-zEn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="VFf-E1-sms"/>
                             <constraint firstItem="RYF-LL-DAN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YJf-e2-6C4"/>
                             <constraint firstAttribute="bottom" secondItem="wcV-84-eNK" secondAttribute="bottom" id="bhK-yQ-nhp"/>
                             <constraint firstItem="RYF-LL-DAN" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="35" id="gcZ-ou-8bd"/>
                             <constraint firstAttribute="trailing" secondItem="wcV-84-eNK" secondAttribute="trailing" constant="10" id="jml-BM-oef"/>
                             <constraint firstItem="nzq-E6-OHs" firstAttribute="top" secondItem="RYF-LL-DAN" secondAttribute="top" id="odR-UP-afy"/>
+                            <constraint firstItem="3Iu-eA-pGs" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="q2i-lv-mZB"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RYF-LL-DAN" secondAttribute="trailing" id="vgJ-ts-rSr"/>
                         </constraints>
                     </view>
