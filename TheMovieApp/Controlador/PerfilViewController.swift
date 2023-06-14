@@ -229,6 +229,10 @@ extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Vibracion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
         let movieSelected = watchLateMovies[indexPath.row]

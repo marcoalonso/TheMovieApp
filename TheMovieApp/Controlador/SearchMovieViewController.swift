@@ -142,6 +142,10 @@ extension SearchMovieViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        //Vibracion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
         print("Debug: moviesFound \(moviesFound[indexPath.row])")
 
         let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
@@ -175,6 +179,9 @@ extension SearchMovieViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        //Vibracion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         
         nameOfMovieTextField.text = historialMovies[indexPath.row]
         

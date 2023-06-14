@@ -14,8 +14,8 @@
             filePath = "TheMovieApp/Controlador/SearchMovieViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "textFieldDidChangeSelection(_:)"
             landmarkType = "7">
             <Locations>

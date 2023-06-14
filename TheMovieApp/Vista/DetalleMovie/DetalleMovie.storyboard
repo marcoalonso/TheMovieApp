@@ -32,7 +32,7 @@
                                 <rect key="frame" x="10" y="324" width="373" height="528"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hpu-Lu-D0f">
-                                        <rect key="frame" x="0.0" y="0.0" width="373" height="1130"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="373" height="1450"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MJ2-Lj-gei">
                                                 <rect key="frame" x="0.0" y="0.0" width="373" height="50"/>
@@ -223,9 +223,15 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PIh-GM-nI7">
+                                                <rect key="frame" x="0.0" y="1150" width="373" height="300"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="300" id="z5L-Ag-8cu"/>
+                                                </constraints>
+                                            </imageView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="1130" id="Nb5-VU-wFB"/>
+                                            <constraint firstAttribute="height" constant="1450" id="Nb5-VU-wFB"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -284,6 +290,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backdropMovie" destination="PIh-GM-nI7" id="OWW-l4-EJ5"/>
                         <outlet property="descripcionMovie" destination="JvH-yg-4qc" id="mP4-9f-M9C"/>
                         <outlet property="favouriteInfoLabel" destination="TpF-it-fdL" id="Kqw-kh-Hve"/>
                         <outlet property="favouriteStyleButton" destination="cN6-5v-Fa9" id="fjj-JZ-XWQ"/>

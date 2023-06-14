@@ -28,6 +28,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     @IBOutlet weak var watchLateInfoLabel: UILabel!
     @IBOutlet weak var mainScroll: UIScrollView!
     
+    @IBOutlet weak var backdropMovie: UIImageView!
     @IBOutlet weak var shareButtonContraint: NSLayoutConstraint!
     
     /// Variables
@@ -51,6 +52,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         
         playerView.delegate = self
         trailersTableView.delegate = self
@@ -216,6 +218,9 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         guard let urlImagen = recibirPeliculaMostrar?.backdrop_path else { return }
         let url = URL(string: "\(Constants.urlImages)\(urlImagen)")
         posterMovieImage.kf.setImage(with: url)
+        backdropMovie.kf.setImage(with: url)
+        backdropMovie.layer.cornerRadius = 12
+        backdropMovie.layer.masksToBounds = true
         
     }
     
@@ -441,6 +446,10 @@ extension DetailTrailersMovieViewController: UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Vibracion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let ViewController = storyboard.instantiateViewController(withIdentifier: "TrailerViewController") as! TrailerViewController

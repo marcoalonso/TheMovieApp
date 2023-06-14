@@ -278,6 +278,9 @@ extension PopularMoviesViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //Vibracion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
 
         switch collectionView {
         case popularMoviesCollection:

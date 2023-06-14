@@ -26,6 +26,7 @@ class MoreViewController: UIViewController {
     Action(name: "Desarrollador", action: "developer", icon: "person")
     ]
     
+    @IBOutlet weak var darkModeSwitch: UISwitch!
     @IBOutlet weak var compartirButton: UIButton!
     @IBOutlet weak var moreActionsTableview: UITableView!
     
@@ -131,6 +132,10 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Vibracion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         print(actions[indexPath.row].name)
         

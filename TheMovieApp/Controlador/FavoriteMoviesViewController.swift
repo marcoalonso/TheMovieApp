@@ -91,6 +91,10 @@ extension FavoriteMoviesViewController: UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Vibracion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
         tableView.deselectRow(at: indexPath, animated: true)
         ///Send data to DetailTrailerMovie
         

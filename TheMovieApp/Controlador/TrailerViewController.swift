@@ -37,6 +37,10 @@ class TrailerViewController: UIViewController, YTPlayerViewDelegate {
     
     @IBAction func backButton(_ sender: UIButton) {
         dismiss(animated: true)
+        //Vibracion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.error)
+        
     }
     
 

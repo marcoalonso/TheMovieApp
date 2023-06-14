@@ -246,8 +246,10 @@ extension MoviesViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let ViewController = storyboard.instantiateViewController(withIdentifier: "DetalleMovieViewController") as! DetalleMovieViewController
+        //Vibracion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
         
         ///- * New Flow of Movie Detail
         let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
