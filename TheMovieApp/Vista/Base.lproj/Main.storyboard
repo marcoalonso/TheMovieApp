@@ -3,7 +3,7 @@
     <device id="retina6_72" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -138,7 +138,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XfK-TK-3b1">
                                         <rect key="frame" x="10" y="55" width="410" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mas acciones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpX-t7-Mb9">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Más acciones" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpX-t7-Mb9">
                                                 <rect key="frame" x="0.0" y="0.0" width="385" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="highlightedColor"/>
@@ -460,6 +460,17 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" systemColor="labelColor"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.75" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Aqui podrás ver los géneros de películas que más te gustan, para agregarlos dale en &quot;editar&quot;" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PMM-Ax-gwi">
                                                 <rect key="frame" x="200" y="0.0" width="190" height="50"/>
@@ -561,7 +572,8 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Perfil" id="dQo-eT-hW4">
-                        <barButtonItem key="leftBarButtonItem" title="Mas" image="ellipsis.circle" catalog="system" id="agf-ps-zOn">
+                        <barButtonItem key="leftBarButtonItem" image="ellipsis.rectangle" catalog="system" id="agf-ps-zOn">
+                            <color key="tintColor" name="AccentColor"/>
                             <connections>
                                 <action selector="moreButton:" destination="JlC-TB-JyR" id="bte-aJ-YGn"/>
                             </connections>
@@ -1557,7 +1569,7 @@
         <image name="avatar" width="512" height="512"/>
         <image name="bell.badge" catalog="system" width="125" height="128"/>
         <image name="chevron.left" catalog="system" width="97" height="128"/>
-        <image name="ellipsis.circle" catalog="system" width="128" height="123"/>
+        <image name="ellipsis.rectangle" catalog="system" width="128" height="79"/>
         <image name="engine" width="512" height="512"/>
         <image name="info.circle" catalog="system" width="128" height="123"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>

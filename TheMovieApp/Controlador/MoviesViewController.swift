@@ -7,7 +7,6 @@
 
 import UIKit
 import Kingfisher
-import Network
 import DataCache
 
 class MoviesViewController: UIViewController {

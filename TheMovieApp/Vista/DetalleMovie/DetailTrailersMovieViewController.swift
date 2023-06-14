@@ -26,6 +26,7 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     @IBOutlet weak var posterMovieImage: UIImageView!
     @IBOutlet weak var favouriteInfoLabel: UILabel!
     @IBOutlet weak var watchLateInfoLabel: UILabel!
+    @IBOutlet weak var mainScroll: UIScrollView!
     
     @IBOutlet weak var shareButtonContraint: NSLayoutConstraint!
     
@@ -136,9 +137,23 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
         nameOfMovieLabel.text = recibirPeliculaMostrar?.title
         descripcionMovie.text = recibirPeliculaMostrar?.overview
         releaseDateMovieLabel.text = "Fecha estreno: \(recibirPeliculaMostrar?.release_date ?? "Próximamente")"
+        self.view.addGestureRecognizer(crearSwipeGRecognizer(for: .right))
         
+    }
+    
+    //Saber en que direccion el user desliza el dedo
+    private func crearSwipeGRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
         
-        
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(cambiarDiapositiva(_:)))
+        swipeGestureRecognizer.direction = direction
+        return swipeGestureRecognizer
+    }
+    
+    //
+    @objc func cambiarDiapositiva(_ sender: UISwipeGestureRecognizer){
+        if sender.direction == .right {
+            self.dismiss(animated: true)
+        }
     }
     
     ///This function verify if the selected movie is already saved as favorite
@@ -198,9 +213,8 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     }
     
     private func showOnlyImageOfMovie(){
-        guard let urlImagen = recibirPeliculaMostrar?.poster_path else { return }
-        let url = URL(string: "https://image.tmdb.org/t/p/w200/\(urlImagen)")
-        
+        guard let urlImagen = recibirPeliculaMostrar?.backdrop_path else { return }
+        let url = URL(string: "\(Constants.urlImages)\(urlImagen)")
         posterMovieImage.kf.setImage(with: url)
         
     }

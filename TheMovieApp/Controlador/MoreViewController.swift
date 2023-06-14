@@ -62,9 +62,9 @@ extension MoreViewController: MFMailComposeViewControllerDelegate {
             composeVC.mailComposeDelegate = self
             
             //Configurar el cueroo del correo
-            composeVC.setToRecipients(["marco.alonso@mobilestudio.mx"])
+            composeVC.setToRecipients(["marcoalonsoiosdeveloper@gmail.com"])
             composeVC.setSubject("Quiero hacer una sugerencia")
-            composeVC.setMessageBody("Me gustaría ", isHTML: false)
+            composeVC.setMessageBody("Me gustaría ...", isHTML: false)
             self.present(composeVC, animated: true)
         }
     }

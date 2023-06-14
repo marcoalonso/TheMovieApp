@@ -161,7 +161,7 @@ class PerfilViewController: UIViewController {
     
     @IBAction func borrarHistorialButton(_ sender: UIButton) {
         
-        
+        self.historialButton.isHidden = true
         let alerta = UIAlertController(title: "Borrar historial", message: "¿Quieres eliminar el historia de búsqueda?", preferredStyle: .alert)
         
         let aceptar = UIAlertAction(title: "Si", style: .default) { _ in
@@ -170,6 +170,7 @@ class PerfilViewController: UIViewController {
             //Animacion
             UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
                 self.historialEliminadoLabel.isHidden = false
+                
             }, completion: nil)
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
@@ -270,7 +271,7 @@ extension PerfilViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 120
     }
     
     

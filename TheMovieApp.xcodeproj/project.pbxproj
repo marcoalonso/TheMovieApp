@@ -615,6 +615,9 @@
 				DEVELOPMENT_TEAM = 28Z45T22J2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheMovieApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Necesitamos permiso para acceder a la cámara y poder tomar fotos para usarla de perfil";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos permiso para acceder a tu ubicación y mostrarte cines cercanos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Necesitamos permiso para acceder a la galeria de fotos y usarla como foto de perfil";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -625,7 +628,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rotadevsolutions.TheMovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -644,6 +647,9 @@
 				DEVELOPMENT_TEAM = 28Z45T22J2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TheMovieApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Necesitamos permiso para acceder a la cámara y poder tomar fotos para usarla de perfil";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Necesitamos permiso para acceder a tu ubicación y mostrarte cines cercanos";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Necesitamos permiso para acceder a la galeria de fotos y usarla como foto de perfil";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -654,7 +660,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.5;
+				MARKETING_VERSION = 1.0.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.rotadevsolutions.TheMovieApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -3,7 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -287,6 +287,7 @@
                         <outlet property="descripcionMovie" destination="JvH-yg-4qc" id="mP4-9f-M9C"/>
                         <outlet property="favouriteInfoLabel" destination="TpF-it-fdL" id="Kqw-kh-Hve"/>
                         <outlet property="favouriteStyleButton" destination="cN6-5v-Fa9" id="fjj-JZ-XWQ"/>
+                        <outlet property="mainScroll" destination="wcV-84-eNK" id="47d-TN-8Iq"/>
                         <outlet property="moreMoviesTrailersSegmented" destination="0vY-yK-qFq" id="iN6-n0-XHM"/>
                         <outlet property="nameOfMovieLabel" destination="n6L-XV-GES" id="YVs-cb-Pin"/>
                         <outlet property="playerView" destination="RYF-LL-DAN" id="ILA-EJ-y5T"/>
