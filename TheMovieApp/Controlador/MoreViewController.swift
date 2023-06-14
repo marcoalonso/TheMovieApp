@@ -39,6 +39,30 @@ class MoreViewController: UIViewController {
         moreActionsTableview.delegate = self
         moreActionsTableview.dataSource = self
         
+        let isDarkModeEnabled = UserDefaults.standard.bool(forKey: "darkModeEnabled")
+        darkModeSwitch.isOn = isDarkModeEnabled
+        darkModeSwitch.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
+    }
+    
+    @objc func switchValueChanged(_ sender: UISwitch) {
+        
+        if sender.isOn {
+            print("Debug: true darkMode")
+
+            UserDefaults.standard.set(sender.isOn, forKey: "darkModeEnabled")
+        } else {
+            print("Debug: false darkMode")
+            UserDefaults.standard.set(sender.isOn, forKey: "darkModeEnabled")
+        }
+        
+        if let appDelegate = UIApplication.shared.windows.first {
+            if sender.isOn {
+                appDelegate.overrideUserInterfaceStyle = .dark
+            } else {
+                appDelegate.overrideUserInterfaceStyle = .light
+            }
+        }
+        
     }
     
     @IBAction func backButton(_ sender: UIButton) {
