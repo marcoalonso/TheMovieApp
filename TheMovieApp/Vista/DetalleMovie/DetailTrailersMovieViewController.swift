@@ -12,6 +12,7 @@ import CoreData
 
 class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate {
     
+    @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var similarMoviesCollection: UICollectionView!
     @IBOutlet weak var descripcionMovie: UITextView!
     @IBOutlet weak var moreMoviesTrailersSegmented: UISegmentedControl!
@@ -330,6 +331,20 @@ class DetailTrailersMovieViewController: UIViewController, YTPlayerViewDelegate 
     
     // MARK:  Actions
     
+    @IBAction func GoHome(_ sender: UIButton) {
+        let elementosCompartir: [Any] = ["https://apps.apple.com/us/app/movieverse-world/id6447369429"]
+        
+        let activityViewController = UIActivityViewController(activityItems: elementosCompartir, applicationActivities: nil)
+
+        if let popoverController = activityViewController.popoverPresentationController {
+            popoverController.sourceView = shareButton
+            popoverController.sourceRect = shareButton.bounds
+            popoverController.permittedArrowDirections = .any
+        }
+
+        present(activityViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func backButton(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
@@ -480,6 +495,20 @@ extension DetailTrailersMovieViewController: UICollectionViewDelegate, UICollect
         celda.setup(movie: similarMovies[indexPath.row])
         
         return celda
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "DetalleMovie", bundle: nil)
+        let ViewController = storyboard.instantiateViewController(withIdentifier: "DetailTrailersMovieViewController") as! DetailTrailersMovieViewController
+        
+        
+        ViewController.modalPresentationStyle = .fullScreen ///Tipo de visualizacion
+        ViewController.modalTransitionStyle = .crossDissolve ///Tipo de animacion al cambiar pantalla
+        
+        ///Enviar informacion a traves de la instancia del view controller
+        ViewController.recibirPeliculaMostrar = similarMovies[indexPath.row]
+        
+        present(ViewController, animated: true)
     }
     
     

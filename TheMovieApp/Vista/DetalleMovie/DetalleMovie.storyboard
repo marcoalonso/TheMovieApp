@@ -120,7 +120,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="ScG-oO-Her"/>
                                                 </constraints>
                                             </stackView>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Descripcion de la pelicula" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-yg-4qc">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Descripcion de la pelicula" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="JvH-yg-4qc">
                                                 <rect key="frame" x="0.0" y="120" width="373" height="110"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
@@ -245,7 +245,7 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="1WQ-wE-Ekf"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="Ff5-Aa-27S"/>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUa-76-zEn">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IUa-76-zEn" userLabel="Button Back">
                                 <rect key="frame" x="10" y="61.000000000000007" width="25" height="31.333333333333321"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="HdR-xo-ylm"/>
@@ -268,6 +268,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9de-My-xxE">
+                                <rect key="frame" x="348" y="60.666666666666657" width="35" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="lsC-bN-C1h"/>
+                                    <constraint firstAttribute="width" constant="35" id="zR2-wo-qsD"/>
+                                </constraints>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" backgroundImage="arrow.up.forward.app" catalog="system"/>
+                                <connections>
+                                    <action selector="GoHome:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="e2E-3k-kAj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -275,6 +288,7 @@
                             <constraint firstItem="wcV-84-eNK" firstAttribute="top" secondItem="RYF-LL-DAN" secondAttribute="bottom" constant="10" id="0fm-wX-jcW"/>
                             <constraint firstItem="wcV-84-eNK" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="10" id="1Fl-25-9L9"/>
                             <constraint firstItem="nzq-E6-OHs" firstAttribute="height" secondItem="RYF-LL-DAN" secondAttribute="height" id="AOi-Gz-omg"/>
+                            <constraint firstItem="RYF-LL-DAN" firstAttribute="top" secondItem="9de-My-xxE" secondAttribute="bottom" id="Aty-h2-vov"/>
                             <constraint firstItem="IUa-76-zEn" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="KuX-K3-Yqg"/>
                             <constraint firstItem="nzq-E6-OHs" firstAttribute="width" secondItem="RYF-LL-DAN" secondAttribute="width" id="Si4-Nq-sGo"/>
                             <constraint firstItem="nzq-E6-OHs" firstAttribute="leading" secondItem="RYF-LL-DAN" secondAttribute="leading" id="T6i-l3-HNB"/>
@@ -286,6 +300,7 @@
                             <constraint firstAttribute="trailing" secondItem="wcV-84-eNK" secondAttribute="trailing" constant="10" id="jml-BM-oef"/>
                             <constraint firstItem="nzq-E6-OHs" firstAttribute="top" secondItem="RYF-LL-DAN" secondAttribute="top" id="odR-UP-afy"/>
                             <constraint firstItem="3Iu-eA-pGs" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="q2i-lv-mZB"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9de-My-xxE" secondAttribute="trailing" constant="10" id="uPl-Vk-Q2a"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="RYF-LL-DAN" secondAttribute="trailing" id="vgJ-ts-rSr"/>
                         </constraints>
                     </view>
@@ -301,6 +316,7 @@
                         <outlet property="posterMovieImage" destination="nzq-E6-OHs" id="yhe-4I-npJ"/>
                         <outlet property="relatedMoviesConstraint" destination="rp5-hq-xKU" id="dFj-vT-ji2"/>
                         <outlet property="releaseDateMovieLabel" destination="sUd-id-QUn" id="nrR-p7-IBt"/>
+                        <outlet property="shareButton" destination="9de-My-xxE" id="0FS-8h-2Eq"/>
                         <outlet property="shareButtonContraint" destination="udT-cP-ix2" id="Uiw-CF-9TG"/>
                         <outlet property="similarMoviesCollection" destination="sm8-y1-6Ua" id="Bxa-Gn-ENe"/>
                         <outlet property="trailersMovieConstraint" destination="wF6-QN-rCQ" id="zD7-TT-ojs"/>
@@ -369,6 +385,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.up.forward.app" catalog="system" width="128" height="114"/>
         <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="play.rectangle" catalog="system" width="128" height="93"/>
