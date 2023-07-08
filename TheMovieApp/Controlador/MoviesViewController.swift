@@ -208,21 +208,21 @@ extension MoviesViewController: UIScrollViewDelegate {
 }
 
 extension MoviesViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 145, height: 195)
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let screenWidth = UIScreen.main.bounds.width
-        let screenHeight = UIScreen.main.bounds.height
-        let cellWidth = screenWidth * 0.5 // El ancho de la celda se ajustará a la mitad del ancho de la pantalla
-        let cellHeight = screenHeight * 0.3 // La altura de la celda se ajustará al 30% de la altura de la pantalla
-        return CGSize(width: cellWidth, height: cellHeight)
+        return CGSize(width: 120, height: 180)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let screenWidth = UIScreen.main.bounds.width
+//        let screenHeight = UIScreen.main.bounds.height
+//        let cellWidth = screenWidth * 0.35 // El ancho de la celda se ajustará a la mitad del ancho de la pantalla
+//        let cellHeight = screenHeight * 0.3 // La altura de la celda se ajustará al 30% de la altura de la pantalla
+//        return CGSize(width: cellWidth, height: cellHeight)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+//    }
 
 
 }

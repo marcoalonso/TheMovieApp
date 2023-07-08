@@ -60,7 +60,7 @@ class SearchMovieViewController: UIViewController {
     private func setupCollection() {
         foundMoviesCollection.collectionViewLayout = UICollectionViewFlowLayout()
         if let flowLayout = foundMoviesCollection.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.scrollDirection = .vertical
+            flowLayout.scrollDirection = .horizontal
         }
         
         cancelButtonConstraint.constant = 0
@@ -199,7 +199,7 @@ extension SearchMovieViewController: UITableViewDelegate, UITableViewDataSource 
 
 extension SearchMovieViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 145, height: 195)
+        return CGSize(width: 120, height: 180)
     }
 }
 
